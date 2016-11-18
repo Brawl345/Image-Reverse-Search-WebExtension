@@ -1,0 +1,13 @@
+{
+  "extensionName": {
+    "message": "Suche Bild mit Google"
+  },
+
+  "extensionDescription": {
+    "message": "Fügt Option zum Kontextmenü hinzu, um mit einem Bild auf Google zu suchen."
+  },
+  
+  "contextMenuTitle": {
+    "message": "Bildersuche mit Google"
+  }
+}
