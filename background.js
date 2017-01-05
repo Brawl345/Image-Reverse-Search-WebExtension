@@ -1,16 +1,29 @@
-// replace the "browser.*" namespace with "chrome.*" for Chrome & Opera compatibility
-
 // Set up context menu for images
-var title = browser.i18n.getMessage("contextMenuTitle");
-browser.contextMenus.create({
-  id: "search-with-google-andreas-add-on",
-  title: title,
-  contexts: ["image"]
+var title = chrome.i18n.getMessage("contextMenuTitle");
+chrome.contextMenus.create({
+    id: "search-with-google-andreas-add-on",
+    title: title,
+    contexts: ["image"]
 });
+
+// main function
+function searchImageWithGoogle(info, tab) {
+    // get option
+    chrome.storage.local.get('open_in_bg', function(r) {
+        if (typeof r.open_in_bg != 'undefined') {
+            open_in_foreground = !r.open_in_bg;
+        } else {
+            open_in_foreground = true;
+        }
+	
+        // open image search in fore- or background
+        chrome.tabs.create({
+            url:'https://www.google.com/searchbyimage?image_url=' + encodeURIComponent(info.srcUrl),
+            active: open_in_foreground
+        });
+    });
+}
 
 // Add listener
-browser.contextMenus.onClicked.addListener(function(info, tab) {
-    browser.tabs.create({
-        url:'https://www.google.com/searchbyimage?image_url=' + encodeURIComponent(info.srcUrl)
-    });
-});
+chrome.contextMenus.onClicked.addListener(searchImageWithGoogle);
+
