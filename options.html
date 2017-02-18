@@ -3,14 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>Image Reverse Search with Google | Options</title>
+    
+    <style>
+      label.checkbox-label input[type=checkbox]{
+        position: relative;
+        vertical-align: middle;
+        bottom: 1px;
+      }
+      
+      #status {
+        color: green;
+      }
+    </style>
   </head>
   <body>
-    <label for="open_in_bg">
-      <input type="checkbox" id="open_in_bg">Open image in background tab
+    <label class="checkbox-label" for="open_in_bg">
+      <input type="checkbox" id="open_in_bg"> Open image in background tab
     </label>
+    <br><br>
 
+    <button id="save">Save</button><br>
     <div id="status"></div>
-    <button id="save">Save</button>
 
     <script src="options.js"></script>
   </body>
