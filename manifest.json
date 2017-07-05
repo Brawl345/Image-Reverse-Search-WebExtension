@@ -4,7 +4,7 @@
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
   "author": "Andreas Bielawski",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "icons" : {
     "16": "icons/16.png",
     "32": "icons/32.png",
@@ -20,11 +20,18 @@
   },
   
   "options_ui": {
-    "page": "options.html",
-    "chrome_style": true,
-    "open_in_tab": true
+    "page": "options/options.html",
+    "open_in_tab": true,
+    "browser_style": false
   },
   
+  "applications": {
+    "gecko": {
+      "id": "{0da2e603-21ba-4422-8049-b6d9e013ed84}",
+      "strict_min_version": "48.0"
+    }
+  },
+
   "permissions": [
     "contextMenus",
     "storage"
