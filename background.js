@@ -43,13 +43,15 @@ function reverseSearch(info, storedSettings) {
   
   function getSearchProvider(searchProvider) {
     if (searchProvider == 'google') {
-      return 'https://www.google.com/searchbyimage?image_url=%s'
+      return 'https://www.google.com/searchbyimage?image_url=%s';
     } else if (searchProvider == 'bing') {
-      return 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=%s'
+      return 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=%s';
     } else if (searchProvider == 'yandex') {
-      return 'https://yandex.com/images/search?url=%s&rpt=imageview'
+      return 'https://yandex.com/images/search?url=%s&rpt=imageview';
     } else if (searchProvider == 'tineye') {
-      return 'https://www.tineye.com/parse?url=%s'
+      return 'https://www.tineye.com/parse?url=%s';
+    } else if (searchProvider == 'other') {
+      return storedSettings.cseProvider;
     }
   }
   

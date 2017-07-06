@@ -12,7 +12,7 @@
   },
   
   "optionsPageTitle": {
-    "message": "Bilder-Rückwärtssuche | Optionen"
+    "message": "Optionen"
   },
   
   "openTabAtLabel": {
@@ -37,6 +37,22 @@
   
   "searchProviderLabel": {
     "message": "Suchanbieter"
+  },
+  
+  "other": {
+    "message": "Anderer"
+  },
+  
+  "customSearchProviderLabel": {
+    "message": "Eigener Suchanbieter"
+  },
+  
+  "customSearchProviderPlaceholder": {
+    "message": "Gib eine URL ein und nutze %s als Platzhalter für die Bilder-URL..."
+  },
+  
+  "cseError": {
+    "message": "Dies ist keine gültige URL. Enthält sie %s, beginnt mit http(s):// und enthält keine Anführungs- und Leerzeichen?"
   },
   
   "saveOptions": {

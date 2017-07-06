@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     
     <style>
-      #status {
+      #status, .hidden {
         display: none;
       }
       
@@ -40,7 +40,17 @@
               <option value="bing">Bing</option>
               <option value="yandex">Yandex</option>
               <option value="tineye">TinEye</option>
+              <option id="otherCSE" value="other"></option>
             </select>
+          </div>
+        </div>
+        
+        <!-- Custom search provider -->
+        <div id="customSearchProviderForm" class="form-group row hidden">
+          <label for="customSearchProvider" class="col-sm-3 col-form-label" id="customSearchProviderLabel"></label>
+          <div class="col-sm-9">
+            <input type="url" pattern="https?://.+" class="form-control" id="customSearchProvider" name="customSearchProvider">
+            <div id="cseError" class="form-control-feedback hidden"></div>
           </div>
         </div>
         

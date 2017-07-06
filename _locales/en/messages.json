@@ -12,7 +12,7 @@
   },
   
   "optionsPageTitle": {
-    "message": "Image reverse search | Options"
+    "message": "Options"
   },
   
   "openTabAtLabel": {
@@ -37,6 +37,22 @@
   
   "searchProviderLabel": {
     "message": "Search provider"
+  },
+  
+  "other": {
+    "message": "Other"
+  },
+  
+  "customSearchProviderLabel": {
+    "message": "Custom search provider"
+  },
+  
+  "customSearchProviderPlaceholder": {
+    "message": "Type a URL and use %s as placeholder for the image URL..."
+  },
+  
+  "cseError": {
+    "message": "This is not a valid URL. Does it contain %s, begins with http(s):// and doesn't contain any quotes or spaces?"
   },
   
   "saveOptions": {
