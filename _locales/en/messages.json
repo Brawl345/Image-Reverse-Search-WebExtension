@@ -1,13 +1,65 @@
 {
   "extensionName": {
-    "message": "Image reverse search with Google"
+    "message": "Image reverse search"
   },
 
   "extensionDescription": {
-    "message": "Adds an option to the context menu to search with an image on Google."
+    "message": "Adds an option to the context menu to reverse search an image on various services"
   },
   
   "contextMenuTitle": {
-    "message": "Image search with Google"
+    "message": "Image reverse search"
+  },
+  
+  "optionsPageTitle": {
+    "message": "Options"
+  },
+  
+  "openTabAtLabel": {
+    "message": "Open the search page"
+  },
+  
+  "openAtRight": {
+    "message": "Right to the current tab"
+  },
+  
+  "openAtLeft": {
+    "message": "Left to the current tab"
+  },
+  
+  "openAtEnd": {
+    "message": "At the end"
+  },
+  
+  "openInBackground": {
+    "message": "Open in background"
+  },
+  
+  "searchProviderLabel": {
+    "message": "Search provider"
+  },
+  
+  "other": {
+    "message": "Other"
+  },
+  
+  "customSearchProviderLabel": {
+    "message": "Custom search provider"
+  },
+  
+  "customSearchProviderPlaceholder": {
+    "message": "Type a URL and use %s as placeholder for the image URL..."
+  },
+  
+  "cseError": {
+    "message": "This is not a valid URL. Does it contain %s, begins with http(s):// and doesn't contain any quotes or spaces?"
+  },
+  
+  "saveOptions": {
+    "message": "Save options"
+  },
+  
+  "saved": {
+    "message": "Saved!"
   }
 }

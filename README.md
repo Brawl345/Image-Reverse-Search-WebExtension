@@ -1,10 +1,10 @@
-Image Reverse Search with Google
+Image Reverse Search
 ================================
-WebExtension which adds an option to the context menu to search with an image on Google.
+Firefox WebExtension which adds an option to the context menu to search with an image on various services, such as Google, Bing, Yandex and TinEye. Also has options to open the search page in a background tab and left or right to the current tab or at the end of the tabstrip.
 
-Compatible with every browser that supports WebExtensions (Firefox, Chrome, Edge, etc.).
-* Newer version (from master branch) available for Firefox on [addons.mozilla.org](https://addons.mozilla.org/firefox/addon/image-reverse-search/)
-* Available for Opera in the [Opera Add-Ons Store](https://addons.opera.com/extensions/details/image-reverse-search-with-google/)
+* Available for Firefox on [addons.mozilla.org](https://addons.mozilla.org/firefox/addon/image-reverse-search/)
+* Available for Opera in the [Opera Add-Ons Store](https://addons.opera.com/extensions/details/image-reverse-search-with-google/) (legacy)
 
-## Credits
-* Thanks to [wmq21](https://addons.opera.com/en/extensions/details/image-reverse-search-with-google/) for polish language support
+For the older chrome version, see the ["chrome" branch](https://github.com/Brawl345/Image-Reverse-Search-with-Google/tree/chrome).
+
+![Screenshot](https://raw.githubusercontent.com/Brawl345/Image-Reverse-Search-with-Google/master/screenshot.png)
