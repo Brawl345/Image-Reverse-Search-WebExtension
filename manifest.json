@@ -21,15 +21,7 @@
   
   "options_ui": {
     "page": "options/options.html",
-    "open_in_tab": true,
-    "browser_style": false
-  },
-  
-  "applications": {
-    "gecko": {
-      "id": "{0da2e603-21ba-4422-8049-b6d9e013ed84}",
-      "strict_min_version": "48.0"
-    }
+    "open_in_tab": true
   },
 
   "permissions": [

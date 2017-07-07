@@ -1,20 +1,20 @@
 /* Localization */
-document.title = browser.i18n.getMessage("extensionName") + " | " + browser.i18n.getMessage("optionsPageTitle");
-document.getElementById("navbarTitle").textContent = browser.i18n.getMessage("extensionName");
-document.getElementById("openTabAtLabel").textContent = browser.i18n.getMessage("openTabAtLabel");
-document.getElementById("right").textContent = browser.i18n.getMessage("openAtRight");
-document.getElementById("left").textContent = browser.i18n.getMessage("openAtLeft");
-document.getElementById("end").textContent = browser.i18n.getMessage("openAtEnd");
-document.getElementById("openInBackgroundLabel").textContent = browser.i18n.getMessage("openInBackground");
-document.getElementById("searchProviderLabel").textContent = browser.i18n.getMessage("searchProviderLabel");
-document.getElementById("otherCSE").textContent = browser.i18n.getMessage("other");
-document.getElementById("customSearchProviderLabel").textContent = browser.i18n.getMessage("customSearchProviderLabel");
-document.getElementById("customSearchProvider").placeholder = browser.i18n.getMessage("customSearchProviderPlaceholder");
-document.getElementById("cseError").textContent = browser.i18n.getMessage("cseError");
-document.getElementById("save-button").textContent = browser.i18n.getMessage("saveOptions");
-document.getElementById("status").textContent = browser.i18n.getMessage("saved");
+document.title = chrome.i18n.getMessage("extensionName") + " | " + chrome.i18n.getMessage("optionsPageTitle");
+document.getElementById("navbarTitle").textContent = chrome.i18n.getMessage("extensionName");
+document.getElementById("openTabAtLabel").textContent = chrome.i18n.getMessage("openTabAtLabel");
+document.getElementById("right").textContent = chrome.i18n.getMessage("openAtRight");
+document.getElementById("left").textContent = chrome.i18n.getMessage("openAtLeft");
+document.getElementById("end").textContent = chrome.i18n.getMessage("openAtEnd");
+document.getElementById("openInBackgroundLabel").textContent = chrome.i18n.getMessage("openInBackground");
+document.getElementById("searchProviderLabel").textContent = chrome.i18n.getMessage("searchProviderLabel");
+document.getElementById("otherCSE").textContent = chrome.i18n.getMessage("other");
+document.getElementById("customSearchProviderLabel").textContent = chrome.i18n.getMessage("customSearchProviderLabel");
+document.getElementById("customSearchProvider").placeholder = chrome.i18n.getMessage("customSearchProviderPlaceholder");
+document.getElementById("cseError").textContent = chrome.i18n.getMessage("cseError");
+document.getElementById("save-button").textContent = chrome.i18n.getMessage("saveOptions");
+document.getElementById("status").textContent = chrome.i18n.getMessage("saved");
 
-/* Store the currently selected settings using browser.storage.sync. */
+/* Store the currently selected settings using chrome.storage.sync. */
 function storeSettings() {
     
   function getOpenTabAt() {
@@ -64,7 +64,7 @@ function storeSettings() {
   const openInBackground = document.getElementById("openInBackground").checked;
   const openTabAt = getOpenTabAt();
 
-  browser.storage.sync.set({
+  chrome.storage.sync.set({
     openInBackground,
     openTabAt,
     searchProvider,
@@ -110,8 +110,7 @@ function showOtherField(name) {
 }
 
 /* On opening the options page, fetch stored settings and update the UI with them. */
-const gettingStoredSettings = browser.storage.sync.get();
-gettingStoredSettings.then(updateUI, onError);
+const gettingStoredSettings = chrome.storage.sync.get(null, updateUI);
 
 /* On changing the searchProvider to "other", show the text field */
 const searchProviderSelect = document.querySelector("#searchProvider");

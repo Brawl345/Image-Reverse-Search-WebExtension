@@ -1,6 +1,6 @@
 // Set up context menu for images
-var title = browser.i18n.getMessage("contextMenuTitle");
-browser.contextMenus.create({
+var title = chrome.i18n.getMessage("contextMenuTitle");
+chrome.contextMenus.create({
   id: "343642_image-reverse-search",
   title: title,
   contexts: ["image"]
@@ -22,15 +22,13 @@ function onError(e) {
 If we don't, then store the default settings. */
 function checkStoredSettings(storedSettings) {
   if (!storedSettings.openInBackground || !storedSettings.openTabAt || !storedSettings.searchProvider) {
-    browser.storage.sync.set(defaultSettings);
+    chrome.storage.sync.set(defaultSettings);
   }
 }
 
-const gettingStoredSettings = browser.storage.sync.get();
-gettingStoredSettings.then(checkStoredSettings, onError);
+const gettingStoredSettings = chrome.storage.sync.get(null, checkStoredSettings);
 
 function reverseSearch(info, storedSettings) {
-  
   function getTabIndex(openTabAt, tabs) {
     if (openTabAt == 'right') {
       return tabs[0].index + 1;
@@ -62,19 +60,17 @@ function reverseSearch(info, storedSettings) {
   
   function openImageSearch(tabs) {
     tabIndex = getTabIndex(openTabAt, tabs);
-    browser.tabs.create({
+    chrome.tabs.create({
       url: searchProvider.replace('%s', encodeURIComponent(imageURL)),
       active: !openInBackground,
       index: tabIndex
     });
   }
   
-  var querying = browser.tabs.query({currentWindow: true, active: true});
-  querying.then(openImageSearch, onError);
+  chrome.tabs.query({currentWindow: true, active: true}, openImageSearch);
 }
 
 /* On click, fetch stored settings and reverse search. */
-browser.contextMenus.onClicked.addListener((info, tab) => {
-  const gettingStoredSettings = browser.storage.sync.get();
-  gettingStoredSettings.then(reverseSearch.bind(null, info), onError);
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  chrome.storage.sync.get(null, reverseSearch.bind(null, info));
 });
