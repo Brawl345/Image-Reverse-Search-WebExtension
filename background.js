@@ -46,8 +46,12 @@ function reverseSearch(info, storedSettings) {
       return 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=%s';
     } else if (searchProvider == 'yandex') {
       return 'https://yandex.com/images/search?url=%s&rpt=imageview';
+    } else if (searchProvider == 'yandexru') {
+      return 'https://yandex.ru/images/search?url=%s&rpt=imageview';
     } else if (searchProvider == 'tineye') {
       return 'https://www.tineye.com/parse?url=%s';
+    } else if (searchProvider == 'baidu') {
+      return 'https://image.baidu.com/n/pc_search?queryImageUrl=%s'
     } else if (searchProvider == 'other') {
       return storedSettings.cseProvider;
     }
