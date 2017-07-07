@@ -48,10 +48,11 @@ function storeSettings() {
           toggleCSEform(false);
       } else {
           toggleCSEform(true);
-          if (cseForm.value.indexOf("%s") == "-1") {
+          if (cseForm.value.indexOf("%s") == "-1") { /* no %s in URL! */
               toggleCSEform(false);
+          } else {
+            var cseProvider = cseForm.value;
           }
-          var cseProvider = cseForm.value;
       }
   }
 
