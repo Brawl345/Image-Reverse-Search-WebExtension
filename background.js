@@ -52,6 +52,10 @@ function reverseSearch(info, storedSettings) {
       return 'https://www.tineye.com/parse?url=%s';
     } else if (searchProvider == 'baidu') {
       return 'https://image.baidu.com/n/pc_search?queryImageUrl=%s'
+    } else if (searchProvider == 'saucenao') {
+      return 'https://saucenao.com/search.php?db=999&url=%s'
+    } else if (searchProvider == 'iqdb') {
+      return 'https://iqdb.org/?url=%s'
     } else if (searchProvider == 'other') {
       return storedSettings.cseProvider;
     }
