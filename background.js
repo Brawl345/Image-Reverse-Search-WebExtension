@@ -1,7 +1,7 @@
 // Set up context menu for images
 function createContextMenu(options) {
   const title = chrome.i18n.getMessage("contextMenuTitle");
-  
+
   /* If there is only one search provider, do not create a submenu */
   if (options.searchProviders.length == 1) {
     chrome.contextMenus.create({
@@ -18,13 +18,22 @@ function createContextMenu(options) {
     title: title,
     contexts: ["image"]
   });
-  for (i = 0; i < options.searchProviders.length; i++) { 
-    chrome.contextMenus.create({
+  for (i = 0; i < options.searchProviders.length; i++) {
+    var contextMenuOptions = {
       parentId: "Image-Reverse-Search",
       id: options.searchProviders[i],
+      icons: {
+        64: "icons/" + options.searchProviders[i] + ".png"
+      },
       title: searchProviderNames[options.searchProviders[i]],
       contexts: ["image"]
-    });
+    }
+    try {
+        chrome.contextMenus.create(contextMenuOptions);
+    } catch(exception) { // when the browser doesn't support icons for submenus
+        delete contextMenuOptions.icons
+        chrome.contextMenus.create(contextMenuOptions);
+    }
   }
 }
 
