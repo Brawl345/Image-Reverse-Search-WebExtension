@@ -1,32 +1,50 @@
 // Set up context menu for images
-var title = chrome.i18n.getMessage("contextMenuTitle");
-chrome.contextMenus.create({
-  id: "343642_image-reverse-search",
-  title: title,
-  contexts: ["image"]
-});
+function createContextMenu(options) {
+  const title = chrome.i18n.getMessage("contextMenuTitle");
+  
+  /* If there is only one search provider, do not create a submenu */
+  if (options.searchProviders.length == 1) {
+    chrome.contextMenus.create({
+      id: options.searchProviders[0],
+      title: title,
+      contexts: ["image"]
+    });
+    return
+  }
+  
+  /* Create menu and submenu entries */
+  chrome.contextMenus.create({
+    id: "Image-Reverse-Search",
+    title: title,
+    contexts: ["image"]
+  });
+  for (i = 0; i < options.searchProviders.length; i++) { 
+    chrome.contextMenus.create({
+      parentId: "Image-Reverse-Search",
+      id: options.searchProviders[i],
+      title: searchProviderNames[options.searchProviders[i]],
+      contexts: ["image"]
+    });
+  }
+}
 
 /* Default settings. If there is nothing in storage, use these values. */
 var defaultSettings = {
   openInBackground: false,
   openTabAt: "right",
-  searchProvider: "google"
+  searchProviders: ["google"]
 }
 
-/* Generic error logger. */
-function onError(e) {
-  console.error(e);
-}
-
-/* On startup, check whether we have stored settings.
-If we don't, then store the default settings. */
+/* On startup, check whether we have stored settings and set up the context menu.
+  If we don't, then store the default settings. */
 function checkStoredSettings(storedSettings) {
-  if (!storedSettings.openInBackground || !storedSettings.openTabAt || !storedSettings.searchProvider) {
+  if (storedSettings.openInBackground == null || !storedSettings.openTabAt || !storedSettings.searchProviders) {
     chrome.storage.sync.set(defaultSettings);
+    createContextMenu(defaultSettings);
+  } else {
+    chrome.storage.sync.get("searchProviders", createContextMenu);
   }
 }
-
-const gettingStoredSettings = chrome.storage.sync.get(null, checkStoredSettings);
 
 function reverseSearch(info, storedSettings) {
   function getTabIndex(openTabAt, tabs) {
@@ -39,24 +57,24 @@ function reverseSearch(info, storedSettings) {
     }
   }
   
-  function getSearchProvider(searchProvider) {
-    if (searchProvider == 'google') {
+  function getSearchProviderURL(searchProviderName) {
+    if (searchProviderName == 'google') {
       return 'https://www.google.com/searchbyimage?image_url=%s';
-    } else if (searchProvider == 'bing') {
+    } else if (searchProviderName == 'bing') {
       return 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=%s';
-    } else if (searchProvider == 'yandex') {
+    } else if (searchProviderName == 'yandex') {
       return 'https://yandex.com/images/search?url=%s&rpt=imageview';
-    } else if (searchProvider == 'yandexru') {
+    } else if (searchProviderName == 'yandexru') {
       return 'https://yandex.ru/images/search?url=%s&rpt=imageview';
-    } else if (searchProvider == 'tineye') {
+    } else if (searchProviderName == 'tineye') {
       return 'https://www.tineye.com/parse?url=%s';
-    } else if (searchProvider == 'baidu') {
+    } else if (searchProviderName == 'baidu') {
       return 'https://image.baidu.com/n/pc_search?queryImageUrl=%s'
-    } else if (searchProvider == 'saucenao') {
+    } else if (searchProviderName == 'saucenao') {
       return 'https://saucenao.com/search.php?db=999&url=%s'
-    } else if (searchProvider == 'iqdb') {
+    } else if (searchProviderName == 'iqdb') {
       return 'https://iqdb.org/?url=%s'
-    } else if (searchProvider == 'other') {
+    } else if (searchProviderName == 'other') {
       return storedSettings.cseProvider;
     }
   }
@@ -64,7 +82,7 @@ function reverseSearch(info, storedSettings) {
   const imageURL = info.srcUrl;
   const openInBackground = storedSettings.openInBackground;
   const openTabAt = storedSettings.openTabAt;
-  const searchProvider = getSearchProvider(storedSettings.searchProvider);
+  const searchProvider = getSearchProviderURL(info.menuItemId);
   
   function openImageSearch(tabs) {
     tabIndex = getTabIndex(openTabAt, tabs);
@@ -77,6 +95,20 @@ function reverseSearch(info, storedSettings) {
   
   chrome.tabs.query({currentWindow: true, active: true}, openImageSearch);
 }
+
+/* Load search engine names and settings and set up context menu */
+const searchProviderNames = {
+  google: "Google",
+  bing: "Bing",
+  yandex: "Yandex",
+  yandexru: "Яндекс",
+  baidu: "Baidu",
+  tineye: "TinEye",
+  saucenao: "SauceNAO",
+  iqdb: "IQDB",
+  other: chrome.i18n.getMessage("customSearchProviderLabel")
+};
+chrome.storage.sync.get(null, checkStoredSettings);
 
 /* On click, fetch stored settings and reverse search. */
 chrome.contextMenus.onClicked.addListener((info, tab) => {

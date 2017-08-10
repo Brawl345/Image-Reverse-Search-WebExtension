@@ -16,6 +16,10 @@
      .custom-control-indicator {
         background-color: #fff;
      }
+     
+     .jumbotron {
+        padding: 2rem 2rem;
+     }
     </style>
   </head>
   <body>
@@ -31,25 +35,69 @@
     <div class="container">
       <div class="jumbotron">
 
-        <!-- "Search provider" select dropdown -->
+        <!-- Search provider list -->
         <div class="form-group row">
           <label for="searchProvider" class="col-sm-3 col-form-label" id="searchProviderLabel"></label>
           <div class="col-sm-9">
-            <select id="searchProvider" class="custom-select">
-              <option value="google" selected>Google</option> 
-              <option value="bing">Bing</option>
-              <option value="yandex">Yandex</option>
-              <option value="yandexru">Яндекс</option>
-              <option value="baidu">Baidu</option>
-              <option value="tineye">TinEye</option>
-              <option value="saucenao">SauceNAO</option>
-              <option value="iqdb">IQDB</option>
-              <option id="otherCSE" value="other"></option>
-            </select>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label custom-control custom-checkbox">
+                <input class="form-check-input custom-control-input" type="checkbox" id="google" value="google">
+                <span class="custom-control-indicator"></span> Google
+              </label>
+            </div><br>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label custom-control custom-checkbox">
+                <input class="form-check-input custom-control-input" type="checkbox" id="bing" value="bing">
+                <span class="custom-control-indicator"></span> Bing
+              </label>
+            </div><br>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label custom-control custom-checkbox">
+                <input class="form-check-input custom-control-input" type="checkbox" id="yandex" value="yandex">
+                <span class="custom-control-indicator"></span> Yandex
+              </label>
+            </div><br>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label custom-control custom-checkbox">
+                <input class="form-check-input custom-control-input" type="checkbox" id="yandexru" value="yandexru">
+                <span class="custom-control-indicator"></span> Яндекс
+              </label>
+            </div><br>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label custom-control custom-checkbox">
+                <input class="form-check-input custom-control-input" type="checkbox" id="baidu" value="baidu">
+                <span class="custom-control-indicator"></span> Baidu
+              </label>
+            </div><br>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label custom-control custom-checkbox">
+                <input class="form-check-input custom-control-input" type="checkbox" id="tineye" value="tineye">
+                <span class="custom-control-indicator"></span> TinEye
+              </label>
+            </div><br>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label custom-control custom-checkbox">
+                <input class="form-check-input custom-control-input" type="checkbox" id="saucenao" value="saucenao">
+                <span class="custom-control-indicator"></span> SauceNAO
+              </label>
+            </div><br>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label custom-control custom-checkbox">
+                <input class="form-check-input custom-control-input" type="checkbox" id="iqdb" value="iqdb">
+                <span class="custom-control-indicator"></span> IQDB
+              </label>
+            </div><br>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label custom-control custom-checkbox">
+                <input class="form-check-input custom-control-input" type="checkbox" id="other" value="other">
+                <span class="custom-control-indicator"></span> <span id="otherCSE"></span>
+              </label>
+            </div>
           </div>
+          <div class="alert alert-danger col-sm-12 hidden" role="alert" id="searchProvidersError"></div>
         </div>
         
-        <!-- Custom search provider -->
+        <!-- Custom search provider  -->
         <div id="customSearchProviderForm" class="form-group row hidden">
           <label for="customSearchProvider" class="col-sm-3 col-form-label" id="customSearchProviderLabel"></label>
           <div class="col-sm-9">
@@ -85,7 +133,7 @@
 
         <!-- "Save options" button -->
         <button type="button" id="save-button" class="btn btn-success"></button><br><br>
-        <div class="alert alert-success" role="alert" id="status"></div>
+        <div class="alert" role="alert" id="status"></div>
     
       </div> <!-- ./jumbotron -->
     </div> <!-- ./container -->
