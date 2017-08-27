@@ -25,9 +25,9 @@ function storeSettings() {
   /* Returns an array with all checked search providers */
   function getSearchProviders() {
     const chosenSearchProviders = new Array()
-    for (i = 0; i < allSearchProviders.length; i++) { 
-      if (document.getElementById(allSearchProviders[i]).checked) {
-          chosenSearchProviders.push(allSearchProviders[i])
+    for (let searchProvider of allSearchProviders) { 
+      if (document.getElementById(searchProvider).checked) {
+          chosenSearchProviders.push(searchProvider)
       }
     }
     return chosenSearchProviders
@@ -47,7 +47,7 @@ function storeSettings() {
       }
   }
 
-  var searchProviders = getSearchProviders();
+  const searchProviders = getSearchProviders();
 
   // if no checkbox is selected
   const searchProvidersError = document.getElementById("searchProvidersError");
@@ -71,6 +71,7 @@ function storeSettings() {
   }
   
   /* Check if custom search provider is valid */
+  let cseProvider = "";
   if (searchProviders.includes("other")) {
       const cseForm = document.getElementById("customSearchProvider");
       if (cseForm.checkValidity() == false || cseForm.value == null || cseForm.value == "") {
@@ -80,13 +81,13 @@ function storeSettings() {
           if (cseForm.value.indexOf("%s") == "-1") { // no %s in URL!
               toggleCSEform(false);
           } else {
-            var cseProvider = cseForm.value;
+              cseProvider = cseForm.value;
           }
       }
   }
 
   /* If custom search provider is not valid, but checked */
-  if (typeof cseProvider == "undefined" && searchProviders.includes("other")) {
+  if (cseProvider === "" && searchProviders.includes("other")) {
       const status = document.getElementById("status");
       status.classList.add("alert-danger");
       status.textContent = chrome.i18n.getMessage("error");
@@ -97,8 +98,6 @@ function storeSettings() {
         status.classList.remove("alert-danger");
       }, 1800);
       return
-  } else if (typeof cseProvider == "undefined") {
-      var cseProvider = "";
   }
 
   const openInBackground = document.getElementById("openInBackground").checked;
@@ -135,9 +134,9 @@ function updateUI(restoredSettings) {
   const tabAtSelectList = document.querySelector("#openTabAt");
   tabAtSelectList.value = restoredSettings.openTabAt;
   
-  for (i = 0; i < allSearchProviders.length; i++) { 
-    if (restoredSettings.searchProviders.includes(allSearchProviders[i])) {
-      document.getElementById(allSearchProviders[i]).checked = true;
+  for (let searchProvider of allSearchProviders) { 
+    if (restoredSettings.searchProviders.includes(searchProvider)) {
+      document.getElementById(searchProvider).checked = true;
     }
   }
 
