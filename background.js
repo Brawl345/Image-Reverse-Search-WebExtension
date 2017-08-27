@@ -19,7 +19,7 @@ function createContextMenu(options) {
     contexts: ["image"]
   });
   for (let searchProvider of options.searchProviders) {
-    var contextMenuOptions = {
+    let contextMenuOptions = {
       parentId: "Image-Reverse-Search",
       id: searchProvider,
       icons: {
@@ -38,7 +38,7 @@ function createContextMenu(options) {
 }
 
 /* Default settings. If there is nothing in storage, use these values. */
-var defaultSettings = {
+const defaultSettings = {
   openInBackground: false,
   openTabAt: "right",
   searchProviders: ["google"]
