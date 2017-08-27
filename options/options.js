@@ -25,9 +25,9 @@ function storeSettings() {
   /* Returns an array with all checked search providers */
   function getSearchProviders() {
     const chosenSearchProviders = new Array()
-    for (i = 0; i < allSearchProviders.length; i++) { 
-      if (document.getElementById(allSearchProviders[i]).checked) {
-          chosenSearchProviders.push(allSearchProviders[i])
+    for (let searchProvider of allSearchProviders) { 
+      if (document.getElementById(searchProvider).checked) {
+          chosenSearchProviders.push(searchProvider)
       }
     }
     return chosenSearchProviders
@@ -135,9 +135,9 @@ function updateUI(restoredSettings) {
   const tabAtSelectList = document.querySelector("#openTabAt");
   tabAtSelectList.value = restoredSettings.openTabAt;
   
-  for (i = 0; i < allSearchProviders.length; i++) { 
-    if (restoredSettings.searchProviders.includes(allSearchProviders[i])) {
-      document.getElementById(allSearchProviders[i]).checked = true;
+  for (let searchProvider of allSearchProviders) { 
+    if (restoredSettings.searchProviders.includes(searchProvider)) {
+      document.getElementById(searchProvider).checked = true;
     }
   }
 

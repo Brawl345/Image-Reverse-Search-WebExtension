@@ -18,14 +18,14 @@ function createContextMenu(options) {
     title: title,
     contexts: ["image"]
   });
-  for (i = 0; i < options.searchProviders.length; i++) {
+  for (let searchProvider of options.searchProviders) {
     var contextMenuOptions = {
       parentId: "Image-Reverse-Search",
-      id: options.searchProviders[i],
+      id: searchProvider,
       icons: {
-        64: "icons/" + options.searchProviders[i] + ".png"
+        64: "icons/" + searchProvider + ".png"
       },
-      title: searchProviderNames[options.searchProviders[i]],
+      title: searchProviderNames[searchProvider],
       contexts: ["image"]
     }
     try {
