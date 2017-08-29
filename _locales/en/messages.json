@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Image Reverse Search"
+    "message": "Reverse Image Search"
   },
 
   "extensionDescription": {
@@ -8,7 +8,7 @@
   },
   
   "contextMenuTitle": {
-    "message": "Image Reverse Search"
+    "message": "Reverse Image Search"
   },
   
   "optionsPageTitle": {
