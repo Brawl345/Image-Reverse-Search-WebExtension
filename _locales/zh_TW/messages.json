@@ -1,0 +1,69 @@
+{
+  "extensionName": {
+    "message": "Image Reverse Search"
+  },
+
+  "extensionDescription": {
+    "message": "增加右鍵選項支持多種逆向圖片搜索"
+  },
+
+  "contextMenuTitle": {
+    "message": "逆向圖片搜索"
+  },
+
+  "optionsPageTitle": {
+    "message": "選項"
+  },
+
+  "openTabAtLabel": {
+    "message": "打開搜索頁面"
+  },
+
+  "openAtRight": {
+    "message": "當前分頁右側"
+  },
+
+  "openAtLeft": {
+    "message": "當前分頁左側"
+  },
+
+  "openAtEnd": {
+    "message": "分頁欄最尾端"
+  },
+
+  "openInBackground": {
+    "message": "在背景開啟結果"
+  },
+
+  "searchProviderLabel": {
+    "message": "搜索引擎"
+  },
+
+  "customSearchProviderLabel": {
+    "message": "自定義搜索引擎"
+  },
+
+  "searchProvidersError": {
+    "message": "請至少選擇一搜索引擎！"
+  },
+
+  "customSearchProviderPlaceholder": {
+    "message": "請輸入一網址，使用 %s 作為圖片網址的參數..."
+  },
+
+  "cseError": {
+    "message": "無效網址。請以 http(s):// 開頭，包含 %s 且不包含引號和空格。"
+  },
+
+  "saveOptions": {
+    "message": "保存選項"
+  },
+
+  "saved": {
+    "message": "已保存！"
+  },
+
+  "error": {
+    "message": "錯誤！選項未保存！"
+  }
+}
