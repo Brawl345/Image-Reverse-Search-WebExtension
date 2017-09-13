@@ -1,171 +1,217 @@
 /* Localization */
-document.title = chrome.i18n.getMessage("extensionName") + " | " + chrome.i18n.getMessage("optionsPageTitle");
-document.getElementById("navbarTitle").textContent = chrome.i18n.getMessage("extensionName");
-document.getElementById("openTabAtLabel").textContent = chrome.i18n.getMessage("openTabAtLabel");
-document.getElementById("right").textContent = chrome.i18n.getMessage("openAtRight");
-document.getElementById("left").textContent = chrome.i18n.getMessage("openAtLeft");
-document.getElementById("end").textContent = chrome.i18n.getMessage("openAtEnd");
-document.getElementById("openInBackgroundLabel").textContent = chrome.i18n.getMessage("openInBackground");
-document.getElementById("searchProviderLabel").textContent = chrome.i18n.getMessage("searchProviderLabel");
-document.getElementById("otherCSE").textContent = chrome.i18n.getMessage("customSearchProviderLabel");
-document.getElementById("customSearchProviderLabel").textContent = chrome.i18n.getMessage("customSearchProviderLabel");
-document.getElementById("searchProvidersError").textContent = chrome.i18n.getMessage("searchProvidersError");
-document.getElementById("customSearchProvider").placeholder = chrome.i18n.getMessage("customSearchProviderPlaceholder");
-document.getElementById("cseError").textContent = chrome.i18n.getMessage("cseError");
-document.getElementById("save-button").textContent = chrome.i18n.getMessage("saveOptions");
+// document.title = chrome.i18n.getMessage('extensionName') + ' | ' + chrome.i18n.getMessage('optionsPageTitle');
+// document.getElementById('navbarTitle').textContent = chrome.i18n.getMessage('extensionName');
 
-/* Store the currently selected settings using chrome.storage.sync. */
-function storeSettings() {
-    
-  function getOpenTabAt() {
-    const openTabAt = document.querySelector("#openTabAt");
-    return openTabAt.value
-  }
-  
-  /* Returns an array with all checked search providers */
-  function getSearchProviders() {
-    const chosenSearchProviders = new Array()
-    for (let searchProvider of allSearchProviders) { 
-      if (document.getElementById(searchProvider).checked) {
-          chosenSearchProviders.push(searchProvider)
-      }
-    }
-    return chosenSearchProviders
-  }
-  
-  /* Toggles the CSE form error warning */
-  function toggleCSEform(tovalid) {
-      const cseForm = document.getElementById("customSearchProvider");
-      if (tovalid) {
-        cseForm.classList.remove("form-control-danger");
-        document.getElementById("customSearchProviderForm").classList.remove("has-danger");
-        document.getElementById("cseError").classList.add("hidden");
-      } else {
-        cseForm.classList.add("form-control-danger");
-        document.getElementById("customSearchProviderForm").classList.add("has-danger");
-        document.getElementById("cseError").classList.remove("hidden");
-      }
-  }
+/* Abbreviation */
+// sp / SP: search provider
 
-  const searchProviders = getSearchProviders();
+/* Extension default search providers */
 
-  // if no checkbox is selected
-  const searchProvidersError = document.getElementById("searchProvidersError");
-  if (searchProviders.length == 0) {
-      searchProvidersError.classList.remove("hidden")
-      const status = document.getElementById("status");
-      status.classList.add("alert-danger");
-      status.textContent = chrome.i18n.getMessage("error");
-      status.style.display = "block";
-      status.style.fontWeight = "bold";
-      setTimeout(function() {
-        status.style.display = "none";
-        status.classList.remove("alert-danger");
-      }, 1800);
-      return
-  }
+/* provider : {
+		abbr: string, // as provider id
+		icon: string | base64, // todo
+		url: url,
+		checked: bool, // from storage
+		mode: 'default' | 'edit', // for view state
+	}
+*/
 
-  // If above error was shown to user before, hide it
-  if (! searchProvidersError.classList.contains("hidden")) {
-      searchProvidersError.classList.add("hidden")
-  }
-  
-  /* Check if custom search provider is valid */
-  let cseProvider = "";
-  if (searchProviders.includes("other")) {
-      const cseForm = document.getElementById("customSearchProvider");
-      if (cseForm.checkValidity() == false || cseForm.value == null || cseForm.value == "") {
-          toggleCSEform(false);
-      } else {
-          toggleCSEform(true);
-          if (cseForm.value.indexOf("%s") == "-1") { // no %s in URL!
-              toggleCSEform(false);
-          } else {
-              cseProvider = cseForm.value;
-          }
-      }
-  }
+const spGoogle = {
+	abbr: 'google',
+	icon: '../icons/google.png',
+	url: 'https://www.google.com/searchbyimage?image_url=%s',
+	checked: true,
+};
+const spBing = {
+	abbr: 'bing',
+	icon: '../icons/bing.png',
+	url: 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=%s',
+};
+const spYandex = {
+	abbr: 'yandex',
+	icon: '../icons/yandex.png',
+	url: 'https://yandex.com/images/search?url=%s&rpt=imageview',
+};
+const spYandexru = {
+	abbr: 'yandexru',
+	icon: '../icons/yandexru.png',
+	url: 'https://yandex.ru/images/search?url=%s&rpt=imageview',
+};
+const spTineye = {
+	abbr: 'tineye',
+	icon: '../icons/tineye.png',
+	url: 'https://www.tineye.com/parse?url=%s',
+};
+const spBaidu = {
+	abbr: 'baidu',
+	icon: '../icons/baidu.png',
+	url: 'https://image.baidu.com/n/pc_search?queryImageUrl=%s',
+};
+const spSaucenao = {
+	abbr: 'saucenao',
+	icon: '../icons/saucenao.png',
+	url: 'https://saucenao.com/search.php?db=999&url=%s',
+};
+const spIqdb = {
+	abbr: 'iqdb',
+	icon: '../icons/iqdb.png',
+	url: 'https://iqdb.org/?url=%s',
+};
 
-  /* If custom search provider is not valid, but checked */
-  if (cseProvider === "" && searchProviders.includes("other")) {
-      const status = document.getElementById("status");
-      status.classList.add("alert-danger");
-      status.textContent = chrome.i18n.getMessage("error");
-      status.style.display = "block";
-      status.style.fontWeight = "bold";
-      setTimeout(function() {
-        status.style.display = "none";
-        status.classList.remove("alert-danger");
-      }, 1800);
-      return
-  }
-
-  const openInBackground = document.getElementById("openInBackground").checked;
-  const openTabAt = getOpenTabAt();
-
-  /* Create contextMenu */
-  chrome.contextMenus.removeAll();
-  backgroundPage.createContextMenu({searchProviders}); // Pass searchProviders as object
-
-  chrome.storage.sync.set({
-    openInBackground,
-    openTabAt,
-    searchProviders,
-    cseProvider
-  }, function() {
-    // Update status to let user know options were saved.
-    const status = document.getElementById("status");
-    status.classList.add("alert-success");
-    status.textContent = chrome.i18n.getMessage("saved");
-    status.style.display = "block";
-    status.style.fontWeight = "bold";
-    setTimeout(function() {
-      status.style.display = "none";
-      status.classList.remove("alert-success");
-    }, 1800);
-  });
+function getDefaultSearchProviders() {
+	const DSPs = JSON.parse(
+		JSON.stringify([spGoogle, spBing, spYandex, spYandexru, spTineye, spBaidu, spSaucenao, spIqdb]),
+	);
+	for (let sp of DSPs) {
+		sp.checked = sp.checked || false;
+		sp.mode = 'default';
+	}
+	return DSPs;
 }
 
-/* Update the options UI with the settings values retrieved from storage,
-   or the default settings if the stored settings are empty. */
-function updateUI(restoredSettings) {
-  document.getElementById("openInBackground").checked = restoredSettings.openInBackground;
+/* View */
+const providerTemplate = `
+<div class="input-group">
+	<span class="sp-check input-group-addon form-check">
+		<label class="form-check-label custom-control custom-checkbox">
+			<input type="checkbox" class="custom-control-input" v-model="sp.checked"/>
+			<span class="custom-control-indicator"></span>
+		</label>
+	</span>
+	<span class="sp-icon input-group-addon">
+		<img :src="sp.icon">
+	</span>
+	<input type="text" class="sp-abbr form-control col-sm-3" pattern="\\w{2,9}"
+		v-model="sp.abbr" :class="{'default': sp.mode !== 'edit'}" :placeholder="abbrPlaceholder"
+		@click="sp.mode = 'edit'"/>
+	<input type="url" class="sp-url form-control" pattern="https?:\/\/.*%s.*"
+		v-model="sp.url" :style="urlStyle" :placeholder="urlPlaceholder"/>
+	<a class="sp-status curser-ptr input-group-addon" :style="urlStyle" @click="validate">
+		<i class="fa fa-check text-success" aria-hidden="true" v-show="valid"></i>
+		<i class="fa fa-times text-danger" aria-hidden="true" v-show="!valid"></i>
+	</a>
+	<a class="sp-remove curser-ptr input-group-addon" @click="$emit('remove')">
+		<i class="fa fa-trash" aria-hidden="true"></i>
+	</a>
 
-  const tabAtSelectList = document.querySelector("#openTabAt");
-  tabAtSelectList.value = restoredSettings.openTabAt;
-  
-  for (let searchProvider of allSearchProviders) { 
-    if (restoredSettings.searchProviders.includes(searchProvider)) {
-      document.getElementById(searchProvider).checked = true;
-    }
-  }
+</div>`;
 
-  if (otherCSECheckbox.checked) {
-    document.getElementById("customSearchProviderForm").classList.remove("hidden");
-    const cseProviderInput = document.querySelector("#customSearchProvider")
-    cseProviderInput.value = restoredSettings.cseProvider;
-  }
-}
+Vue.component('provider', {
+	props: ['sp', 'index'],
+	data() {
+		return {
+			abbrPlaceholder: '2 ~ 9 個英文 / 數字',
+			urlPlaceholder: '需以 http(s):// 開頭且包含 %s',
+		};
+	},
+	methods: {
+		validate() {
+			if (!/^\w{2,9}$/.test(this.sp.abbr)) {
+				const msg = '第 $index$ 個搜尋引擎的縮寫不符合格式，請使用 $abbrPlaceholder$'
+					.replace('$index$', this.index + 1)
+					.replace('$abbrPlaceholder$', this.abbrPlaceholder);
+				this.$emit('alert', msg);
+			}
+			if (!/^https?:\/\/.*%s.*$/.test(this.sp.url)) {
+				const msg = '第 $index$ 個搜尋引擎的網址不符合格式，請使用 $urlPlaceholder$'
+					.replace('$index$', this.index + 1)
+					.replace('$urlPlaceholder$', this.urlPlaceholder);
+				this.$emit('alert', msg);
+			}
+			if (this.valid) {
+				this.sp.mode = 'default';
+			}
+			return;
+		},
+	},
+	computed: {
+		urlStyle() {
+			return {
+				display: this.sp.mode !== 'edit' ? 'none' : '',
+			};
+		},
+		valid() {
+			return (
+				this.sp.abbr && /^\w{2,9}$/.test(this.sp.abbr) && this.sp.url && /^https?:\/\/.*%s.*$/.test(this.sp.url)
+			);
+		},
+	},
+	template: providerTemplate,
+});
 
-function showOtherField(name) {
-  if (name.target.checked) {
-    document.getElementById("customSearchProviderForm").classList.remove("hidden");
-  } else {
-    document.getElementById("customSearchProviderForm").classList.add("hidden");
-  }
-}
-
-/* We need those here */
-const backgroundPage = chrome.extension.getBackgroundPage();
-const allSearchProviders = ["google", "bing", "yandex", "yandexru", "baidu", "tineye", "saucenao", "iqdb", "other"];
-
-/* On checking "other", show the text field */
-const otherCSECheckbox = document.getElementById("other");
-otherCSECheckbox.addEventListener("change", showOtherField)
-
-/* On opening the options page, fetch stored settings and update the UI with them. */
-chrome.storage.sync.get(null, updateUI);
-
-/* On clicking the save button, save the currently selected settings. */
-const saveButton = document.querySelector("#save-button");
-saveButton.addEventListener("click", storeSettings);
+const vm = new Vue({
+	el: '#container',
+	data: {
+		i18n: {
+			openInBackgroundLabel: '在背景打開結果',
+			openTabAtLabel: '打開搜尋結果',
+			openTabAtRight: '當前分頁右側',
+			openTabAtLeft: '當前分頁左側',
+			openTabAtEnd: '分頁欄最尾端',
+			searchProviderLabel: '搜尋引擎',
+			addSearchProvider: '新增搜尋引擎',
+			saveOptions: '保存選項',
+			restoreDefaultSearchProvider: '還原預設引擎',
+			atLeastOneSearchProviders: '請至少保留一搜尋引擎',
+			existEdittingSearchProviders: '還有編輯中搜尋引擎，請按下 ✓ 完成編輯',
+			successSaveOptions: '成功保存！',
+		},
+		providers: [...getDefaultSearchProviders()],
+		errorMessages: [],
+		successMessage: '',
+	},
+	methods: {
+		addSearchProvider() {
+			this.providers.push({
+				abbr: '',
+				icon: '../icons/other.png',
+				url: '',
+				checked: true,
+				mode: 'edit',
+			});
+		},
+		removeSearchProvider(index) {
+			if (this.providers.length > 1) {
+				this.providers.splice(index, 1);
+			} else {
+				this.validationAlert(this.i18n.atLeastOneSearchProviders);
+			}
+		},
+		restoreDefaultSearchProvider() {
+			this.providers = [...getDefaultSearchProviders()];
+		},
+		validationAlert(msg) {
+			this.errorMessages.push(msg);
+			setTimeout(() => {
+				this.errorMessages.splice(this.errorMessages.indexOf(msg), 1);
+			}, 5000);
+		},
+		validateAll() {
+			let selectedSP = 0;
+			for (let sp of this.providers) {
+				if (sp.mode === 'edit') {
+					// Any provider in edit mode, invalid.
+					this.validationAlert(this.i18n.existEdittingSearchProviders);
+					return false;
+				}
+				if (sp.checked) {
+					selectedSP += 1;
+				}
+			}
+			if (selectedSP < 1) {
+				this.validationAlert(this.i18n.atLeastOneSearchProviders);
+				return false;
+			}
+			return true;
+		},
+		saveOptions() {
+			if (this.validateAll()) {
+				this.errorMessages = [];
+				this.successMessage = this.i18n.successSaveOptions;
+				setTimeout(() => {
+					this.successMessage = '';
+				}, 5000);
+			}
+		},
+	},
+});
