@@ -1,217 +1,267 @@
-/* Localization */
-// document.title = chrome.i18n.getMessage('extensionName') + ' | ' + chrome.i18n.getMessage('optionsPageTitle');
-// document.getElementById('navbarTitle').textContent = chrome.i18n.getMessage('extensionName');
+/* Utility Functions */
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+const $el = document.createElement.bind(document);
 
-/* Abbreviation */
-// sp / SP: search provider
-
-/* Extension default search providers */
-
-/* provider : {
-		abbr: string, // as provider id
-		icon: string | base64, // todo
-		url: url,
-		checked: bool, // from storage
-		mode: 'default' | 'edit', // for view state
-	}
-*/
-
-const spGoogle = {
-	abbr: 'google',
-	icon: '../icons/google.png',
-	url: 'https://www.google.com/searchbyimage?image_url=%s',
-	checked: true,
-};
-const spBing = {
-	abbr: 'bing',
-	icon: '../icons/bing.png',
-	url: 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=%s',
-};
-const spYandex = {
-	abbr: 'yandex',
-	icon: '../icons/yandex.png',
-	url: 'https://yandex.com/images/search?url=%s&rpt=imageview',
-};
-const spYandexru = {
-	abbr: 'yandexru',
-	icon: '../icons/yandexru.png',
-	url: 'https://yandex.ru/images/search?url=%s&rpt=imageview',
-};
-const spTineye = {
-	abbr: 'tineye',
-	icon: '../icons/tineye.png',
-	url: 'https://www.tineye.com/parse?url=%s',
-};
-const spBaidu = {
-	abbr: 'baidu',
-	icon: '../icons/baidu.png',
-	url: 'https://image.baidu.com/n/pc_search?queryImageUrl=%s',
-};
-const spSaucenao = {
-	abbr: 'saucenao',
-	icon: '../icons/saucenao.png',
-	url: 'https://saucenao.com/search.php?db=999&url=%s',
-};
-const spIqdb = {
-	abbr: 'iqdb',
-	icon: '../icons/iqdb.png',
-	url: 'https://iqdb.org/?url=%s',
-};
-
-function getDefaultSearchProviders() {
-	const DSPs = JSON.parse(
-		JSON.stringify([spGoogle, spBing, spYandex, spYandexru, spTineye, spBaidu, spSaucenao, spIqdb]),
-	);
-	for (let sp of DSPs) {
-		sp.checked = sp.checked || false;
-		sp.mode = 'default';
-	}
-	return DSPs;
+function alertErrorMsg(text) {
+	const msg = createErrorMsgElement(text);
+	$('#alertMessages').appendChild(msg);
+	setTimeout(() => {
+		msg.remove();
+	}, 1800);
 }
 
-/* View */
-const providerTemplate = `
-<div class="input-group">
-	<span class="sp-check input-group-addon form-check">
-		<label class="form-check-label custom-control custom-checkbox">
-			<input type="checkbox" class="custom-control-input" v-model="sp.checked"/>
-			<span class="custom-control-indicator"></span>
-		</label>
-	</span>
-	<span class="sp-icon input-group-addon">
-		<img :src="sp.icon">
-	</span>
-	<input type="text" class="sp-abbr form-control col-sm-3" pattern="\\w{2,9}"
-		v-model="sp.abbr" :class="{'default': sp.mode !== 'edit'}" :placeholder="abbrPlaceholder"
-		@click="sp.mode = 'edit'"/>
-	<input type="url" class="sp-url form-control" pattern="https?:\/\/.*%s.*"
-		v-model="sp.url" :style="urlStyle" :placeholder="urlPlaceholder"/>
-	<a class="sp-status curser-ptr input-group-addon" :style="urlStyle" @click="validate">
-		<i class="fa fa-check text-success" aria-hidden="true" v-show="valid"></i>
-		<i class="fa fa-times text-danger" aria-hidden="true" v-show="!valid"></i>
-	</a>
-	<a class="sp-remove curser-ptr input-group-addon" @click="$emit('remove')">
-		<i class="fa fa-trash" aria-hidden="true"></i>
-	</a>
+function createErrorMsgElement(text) {
+	const div = $el('div');
+	div.classList.add('alert', 'alert-danger', 'col-sm-12');
+	div.setAttribute('role', 'alert');
+	div.textContent = text;
+	return div;
+}
 
-</div>`;
+function validateSpName(name, index) {
+	if (!/^\S{2,9}$/.test(name)) {
+		const msg = chrome.i18n.getMessage('providerNamePlaceholderError', index);
+		alertErrorMsg(msg);
+		return false;
+	}
+	return true;
+}
 
-Vue.component('provider', {
-	props: ['sp', 'index'],
-	data() {
-		return {
-			abbrPlaceholder: '2 ~ 9 個英文 / 數字',
-			urlPlaceholder: '需以 http(s):// 開頭且包含 %s',
-		};
-	},
-	methods: {
-		validate() {
-			if (!/^\w{2,9}$/.test(this.sp.abbr)) {
-				const msg = '第 $index$ 個搜尋引擎的縮寫不符合格式，請使用 $abbrPlaceholder$'
-					.replace('$index$', this.index + 1)
-					.replace('$abbrPlaceholder$', this.abbrPlaceholder);
-				this.$emit('alert', msg);
-			}
-			if (!/^https?:\/\/.*%s.*$/.test(this.sp.url)) {
-				const msg = '第 $index$ 個搜尋引擎的網址不符合格式，請使用 $urlPlaceholder$'
-					.replace('$index$', this.index + 1)
-					.replace('$urlPlaceholder$', this.urlPlaceholder);
-				this.$emit('alert', msg);
-			}
-			if (this.valid) {
-				this.sp.mode = 'default';
-			}
+function validateSpUrl(url, index) {
+	if (!/^https?:\/\/.*%s.*$/.test(url)) {
+		const msg = chrome.i18n.getMessage('providerURLPlaceholderError', index);
+		alertErrorMsg(msg);
+		return false;
+	}
+	return true;
+}
+
+function createSpRemoveElement() {
+	// <a class="sp-remove input-group-addon">
+	// 	<i class="fa fa-trash" aria-hidden="true"></i>
+	// </a>
+	const a = $el('a');
+	a.classList.add('sp-remove', 'input-group-addon');
+	a.innerHTML = `<i class="fa fa-trash" aria-hidden="true"></i>`;
+	return a;
+}
+
+function createSpStatusElement() {
+	// <a class="sp-status input-group-addon">
+	// 	<i class="fa fa-check text-success" aria-hidden="true"></i>
+	// 	<i class="fa fa-times text-danger" aria-hidden="true"></i>
+	// </a>
+	const a = $el('a');
+	a.classList.add('sp-status', 'input-group-addon');
+	a.innerHTML = `
+	<i class="fa fa-check text-success" aria-hidden="true"></i>
+	<i class="fa fa-times text-danger" aria-hidden="true"></i>`;
+	return a;
+}
+
+function createSpUrlElement(text) {
+	const input = $el('input');
+	input.type = 'url';
+	input.value = text;
+	input.classList.add('sp-url', 'form-control');
+	input.pattern = 'https?:\\/\\/.*%s.*';
+	input.placeholder = chrome.i18n.getMessage('providerURLPlaceholder');
+	return input;
+}
+
+function createSpNameElement(text) {
+	const input = $el('input');
+	input.value = text;
+	input.classList.add('sp-name', 'form-control', 'col-sm-3', 'sp-edit');
+	input.pattern = '\\S{2,9}';
+	input.placeholder = chrome.i18n.getMessage('providerNamePlaceholder');
+	input.onclick = event => {
+		input.classList.add('sp-edit');
+	};
+	return input;
+}
+
+function createSpIconElement(src) {
+	// 	<span class="sp-icon input-group-addon">
+	// 		<img src=""/>
+	// 	</span>
+	const span = $el('span');
+	span.innerHTML = `<img src="${src}"/>`;
+	span.classList.add('sp-icon', 'input-group-addon');
+	return span;
+}
+
+function createSpCheckboxElement(selected) {
+	// 	<span class="sp-selected input-group-addon form-check">
+	// 		<label class="form-check-label custom-control custom-checkbox">
+	// 			<input class="form-check-input custom-control-input" type="checkbox" />
+	// 			<span class="custom-control-indicator" />
+	// 		</label>
+	// 	</span>
+	const span = $el('span');
+	span.innerHTML = `
+	<label class="form-check-label custom-control custom-checkbox">
+		<input class="form-check-input custom-control-input" type="checkbox" ${selected ? 'checked' : ''}/>
+		<span class="custom-control-indicator"/>
+	</label>`;
+	span.classList.add('sp-selected', 'input-group-addon', 'form-check');
+	return span;
+}
+
+function createSearchProviderElement(name = '', icon = '../icons/other.png', url = '', selected = false, edit = true) {
+	const root = $el('div');
+	root.classList.add('searchProviderListItem', 'input-group');
+
+	const spName = createSpNameElement(name);
+	const spUrl = createSpUrlElement(url);
+	const spStatus = createSpStatusElement();
+	const spRemove = createSpRemoveElement();
+
+	spStatus.onclick = () => {
+		const index = Array.from(root.parentElement.children).indexOf(root) + 1;
+		let valid = true;
+
+		if (!validateSpName(spName.value, index)) {
+			valid = false;
+		}
+
+		if (!validateSpUrl(spUrl.value, index)) {
+			valid = false;
+		}
+
+		if (valid) {
+			spName.classList.remove('sp-edit');
+		}
+	};
+
+	spRemove.onclick = () => {
+		root.remove();
+	};
+
+	root.appendChild(createSpCheckboxElement(selected));
+	root.appendChild(createSpIconElement(icon));
+	root.appendChild(spName);
+	root.appendChild(spUrl);
+	root.appendChild(spStatus);
+	root.appendChild(spRemove);
+
+	if (!edit) {
+		spName.classList.remove('sp-edit');
+	}
+
+	return root;
+}
+
+/* View Binding */
+
+document.title = `${chrome.i18n.getMessage('extensionName')} | ${chrome.i18n.getMessage('optionsPageTitle')}`;
+
+$('#navbarTitle').textContent = chrome.i18n.getMessage('extensionName');
+$('#openInBackgroundLabel').textContent = chrome.i18n.getMessage('openInBackgroundLabel');
+
+$('#openTabAtLabel').textContent = chrome.i18n.getMessage('openTabAtLabel');
+$('#openTabAtRight').textContent = chrome.i18n.getMessage('openTabAtRight');
+$('#openTabAtLeft').textContent = chrome.i18n.getMessage('openTabAtLeft');
+$('#openTabAtEnd').textContent = chrome.i18n.getMessage('openTabAtEnd');
+
+const searchProviderList = $('#searchProviderList');
+
+$('#searchProviderLabel').textContent = chrome.i18n.getMessage('searchProviderLabel');
+const addSearchProvider = $('#addSearchProvider');
+addSearchProvider.textContent = chrome.i18n.getMessage('addSearchProvider');
+addSearchProvider.onclick = () => {
+	searchProviderList.appendChild(createSearchProviderElement());
+};
+
+const restoreDefaultSearchProviders = $('#restoreDefaultSearchProviders');
+restoreDefaultSearchProviders.textContent = chrome.i18n.getMessage('restoreDefaultSearchProviders');
+restoreDefaultSearchProviders.onclick = () => {
+	while (searchProviderList.firstChild) {
+		searchProviderList.removeChild(searchProviderList.firstChild);
+	}
+	for (let p of chrome.extension.getBackgroundPage().getCloneDefaultProviders()) {
+		searchProviderList.appendChild(createSearchProviderElement(p.name, p.icon, p.url, p.selected, false));
+	}
+};
+
+const saveOptions = $('#saveOptions');
+saveOptions.textContent = chrome.i18n.getMessage('saveOptions');
+$('.alert-success').textContent = chrome.i18n.getMessage('msgSuccessSaveOptions');
+
+saveOptions.onclick = () => {
+	let selectedCount = 0;
+	const nameSet = new Set();
+	const storedSettings = {
+		openInBackground: $('#openInBackground').checked,
+		openTabAt: $('#openTabAt')[$('#openTabAt').selectedIndex].value,
+		storageProviders: [],
+	};
+
+	for (let li of searchProviderList.children) {
+		const index = Array.from(searchProviderList.children).indexOf(li) + 1;
+		console.log(li, index);
+		const selected = li.children[0].firstElementChild.firstElementChild.checked;
+		const icon = li.children[1].firstElementChild.src;
+		const name = li.children[2].value;
+		const url = li.children[3].value;
+
+		if (selected) {
+			selectedCount += 1;
+		}
+
+		if (!validateSpName(name, index)) {
 			return;
-		},
-	},
-	computed: {
-		urlStyle() {
-			return {
-				display: this.sp.mode !== 'edit' ? 'none' : '',
-			};
-		},
-		valid() {
-			return (
-				this.sp.abbr && /^\w{2,9}$/.test(this.sp.abbr) && this.sp.url && /^https?:\/\/.*%s.*$/.test(this.sp.url)
-			);
-		},
-	},
-	template: providerTemplate,
-});
+		}
 
-const vm = new Vue({
-	el: '#container',
-	data: {
-		i18n: {
-			openInBackgroundLabel: '在背景打開結果',
-			openTabAtLabel: '打開搜尋結果',
-			openTabAtRight: '當前分頁右側',
-			openTabAtLeft: '當前分頁左側',
-			openTabAtEnd: '分頁欄最尾端',
-			searchProviderLabel: '搜尋引擎',
-			addSearchProvider: '新增搜尋引擎',
-			saveOptions: '保存選項',
-			restoreDefaultSearchProvider: '還原預設引擎',
-			atLeastOneSearchProviders: '請至少保留一搜尋引擎',
-			existEdittingSearchProviders: '還有編輯中搜尋引擎，請按下 ✓ 完成編輯',
-			successSaveOptions: '成功保存！',
-		},
-		providers: [...getDefaultSearchProviders()],
-		errorMessages: [],
-		successMessage: '',
-	},
-	methods: {
-		addSearchProvider() {
-			this.providers.push({
-				abbr: '',
-				icon: '../icons/other.png',
-				url: '',
-				checked: true,
-				mode: 'edit',
-			});
-		},
-		removeSearchProvider(index) {
-			if (this.providers.length > 1) {
-				this.providers.splice(index, 1);
-			} else {
-				this.validationAlert(this.i18n.atLeastOneSearchProviders);
-			}
-		},
-		restoreDefaultSearchProvider() {
-			this.providers = [...getDefaultSearchProviders()];
-		},
-		validationAlert(msg) {
-			this.errorMessages.push(msg);
-			setTimeout(() => {
-				this.errorMessages.splice(this.errorMessages.indexOf(msg), 1);
-			}, 5000);
-		},
-		validateAll() {
-			let selectedSP = 0;
-			for (let sp of this.providers) {
-				if (sp.mode === 'edit') {
-					// Any provider in edit mode, invalid.
-					this.validationAlert(this.i18n.existEdittingSearchProviders);
-					return false;
-				}
-				if (sp.checked) {
-					selectedSP += 1;
-				}
-			}
-			if (selectedSP < 1) {
-				this.validationAlert(this.i18n.atLeastOneSearchProviders);
-				return false;
-			}
-			return true;
-		},
-		saveOptions() {
-			if (this.validateAll()) {
-				this.errorMessages = [];
-				this.successMessage = this.i18n.successSaveOptions;
-				setTimeout(() => {
-					this.successMessage = '';
-				}, 5000);
-			}
-		},
-	},
-});
+		if (!validateSpUrl(url, index)) {
+			return;
+		}
+
+		if (li.children[2].classList.contains('sp-edit')) {
+			alertErrorMsg(chrome.i18n.getMessage('msgExistEdittingSearchProviders'));
+			return;
+		}
+
+		storedSettings.storageProviders.push({ name, url, icon, selected });
+		nameSet.add(name);
+	}
+
+	if (selectedCount < 1) {
+		alertErrorMsg(chrome.i18n.getMessage('msgAtLeastOneSearchProvider'));
+		return;
+	}
+
+	if (nameSet.size < storedSettings.storageProviders.length) {
+		/* send an error that name dulplicated */
+		alertErrorMsg(chrome.i18n.getMessage('msgDuplicatedProviderName'));
+		return;
+	}
+
+	chrome.contextMenus.removeAll();
+	chrome.extension.getBackgroundPage().createContextMenu(storedSettings.storageProviders);
+	chrome.storage.sync.set(storedSettings, () => {
+		for (let msg of Array.from($$('.alert-danger'))) {
+			msg.classList.add('hidden');
+		}
+		$('.alert-success').classList.remove('hidden');
+		setTimeout(() => {
+			$('.alert-success').classList.add('hidden');
+		}, 1800);
+	});
+};
+
+function updateUI(storedSettings) {
+	const openTabAt = $('#openTabAt');
+	openTabAt.selectedIndex = Array.from(openTabAt.options)
+		.map(opt => opt.value)
+		.indexOf(storedSettings.openTabAt);
+	$('#openInBackground').checked = storedSettings.openInBackground;
+
+	for (let p of storedSettings.storageProviders) {
+		$('#searchProviderList').appendChild(createSearchProviderElement(p.name, p.icon, p.url, p.selected, false));
+	}
+}
+
+/* On opening the options page, fetch stored settings and update the UI with them. */
+chrome.storage.sync.get(null, updateUI);

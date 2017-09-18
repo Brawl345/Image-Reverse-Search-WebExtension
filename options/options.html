@@ -7,59 +7,15 @@
 	    crossorigin="anonymous">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	    crossorigin="anonymous">
-	<script src="vue.min.js"></script>
-	<style>
-		#status,
-		.hidden {
-			display: none;
-		}
-
-		body {
-			padding-top: 60px;
-		}
-
-		.custom-control-indicator {
-			background-color: #fff;
-		}
-
-		#searchProviderContainer>div {
-			margin-bottom: 0.4rem;
-		}
-
-		#searchProviderContainer .sp-check label {
-			margin-right: 0;
-		}
-
-		#searchProviderContainer .sp-icon img {
-			max-width: 24px;
-		}
-
-		#searchProviderContainer .sp-abbr {
-			text-align: center;
-		}
-
-		#searchProviderContainer .sp-abbr.default {
-			background-color: #e9ecef;
-			cursor: pointer;
-		}
-
-		#searchProviderContainer .curser-ptr {
-			cursor: pointer;
-		}
-
-		.jumbotron {
-			padding: 2rem 2rem;
-		}
-	</style>
+	<link href="options.css" rel="stylesheet" />
 </head>
 
 <body>
+
 	<!-- Navigation bar -->
 	<nav class="navbar navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" id="navbarTitle" href="#">Image Reverse Search</a>
-			</div>
+			<a class="navbar-brand" id="navbarTitle" href="#">{{i18n.navbarTitle}}</a>
 		</div>
 	</nav>
 
@@ -69,7 +25,7 @@
 			<label for="openInBackground" class="col-sm-3" id="openInBackgroundLabel">{{i18n.openInBackgroundLabel}}</label>
 			<div class="col-sm-9">
 				<label class="form-check-label custom-control custom-checkbox">
-					<input class="form-check-input custom-control-input" type="checkbox" id="openInBackground" value="openInBackground" />
+					<input class="form-check-input custom-control-input" type="checkbox" id="openInBackground" />
 					<span class="custom-control-indicator"></span>
 				</label>
 			</div>
@@ -90,13 +46,13 @@
 		<!-- Search provider list -->
 		<div class="form-group row">
 			<label class="col-sm-3 col-form-label" id="searchProviderLabel">{{i18n.searchProviderLabel}}</label>
-			<div id="searchProviderContainer" class="col-sm-9">
-				<provider v-for="(provider, index) in providers" :sp="provider" :index="index" :key="index" @remove="removeSearchProvider(index)"
-				    @alert="validationAlert"></provider>
-				<button type="button" class="btn btn-primary" @click="addSearchProvider">
+			<div class="col-sm-9">
+				<div id="searchProviderList"></div>
+
+				<button id="addSearchProvider" type="button" class="btn btn-primary">
 					{{i18n.addSearchProvider}}
 				</button>
-				<button type="button" class="btn btn-secondary" @click="restoreDefaultSearchProvider">
+				<button id="restoreDefaultSearchProviders" type="button" class="btn btn-secondary">
 					{{i18n.restoreDefaultSearchProvider}}
 				</button>
 			</div>
@@ -104,16 +60,13 @@
 
 		<!-- Save button -->
 		<div class="form-group row">
-			<button type="button" class="btn btn-success" @click="saveOptions">{{i18n.saveOptions}}</button>
+			<button id="saveOptions" type="button" class="btn btn-success">{{i18n.saveOptions}}</button>
 		</div>
 
 		<!-- Alert messages -->
-		<div class="row">
-			<div class="alert alert-success col-sm-12" v-show="successMessage" role="alert">
-				{{successMessage}}
-			</div>
-			<div v-for="msg of errorMessages" class="alert alert-danger col-sm-12" role="alert">
-				{{msg}}
+		<div id="alertMessages" class="row">
+			<div class="alert alert-success col-sm-12 hidden" role="alert">
+				{{i18n.msgSuccessSaveOptions}}
 			</div>
 		</div>
 	</div>
