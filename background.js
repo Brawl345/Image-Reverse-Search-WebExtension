@@ -1,4 +1,4 @@
-class Provider {
+var Provider = class Provider {
 	constructor(name = '', icon = '../icons/other.png', url = '', selected = false) {
 		this.name = name;
 		this.icon = icon;
@@ -8,7 +8,7 @@ class Provider {
 	clone() {
 		return new Provider(this.name, this.icon, this.url, this.selected);
 	}
-}
+};
 
 const defaultProviders = [
 	new Provider('Google', '../icons/google.png', 'https://www.google.com/searchbyimage?image_url=%s', true),

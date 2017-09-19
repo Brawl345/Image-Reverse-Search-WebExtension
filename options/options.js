@@ -194,8 +194,8 @@ addSearchProvider.onclick = () => {
 const restoreDefaultSearchProviders = $('#restoreDefaultSearchProviders');
 restoreDefaultSearchProviders.textContent = chrome.i18n.getMessage('restoreDefaultSearchProviders');
 restoreDefaultSearchProviders.onclick = () => {
-	for (const p of searchProviderList.children) {
-		p.remove();
+	while (searchProviderList.firstElementChild) {
+		searchProviderList.firstElementChild.remove();
 	}
 	for (const p of backgroundPage.getDefaultProvidersClone()) {
 		searchProviderList.appendChild(createSearchProviderElement(p.name, p.icon, p.url, p.selected, false));
@@ -241,7 +241,7 @@ saveOptions.onclick = () => {
 			return;
 		}
 
-		storedSettings.storageProviders.push(new Provider(name, url, icon, selected));
+		storedSettings.storageProviders.push(new Provider(name, icon, url, selected));
 		nameSet.add(name);
 	}
 
