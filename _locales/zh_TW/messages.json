@@ -1,69 +1,97 @@
 {
-  "extensionName": {
-    "message": "Image Reverse Search"
-  },
+	"extensionName": {
+		"message": "Reverse Image Search"
+	},
 
-  "extensionDescription": {
-    "message": "增加右鍵選項支持多種逆向圖片搜索"
-  },
+	"extensionDescription": {
+		"message": "增加右鍵選項，支持多種逆向圖片搜尋"
+	},
 
-  "contextMenuTitle": {
-    "message": "逆向圖片搜索"
-  },
+	"contextMenuTitle": {
+		"message": "逆向圖片搜尋"
+	},
 
-  "optionsPageTitle": {
-    "message": "選項"
-  },
+	"openInBackgroundLabel": {
+		"message": "在背景開啟結果"
+	},
 
-  "openTabAtLabel": {
-    "message": "打開搜索頁面"
-  },
+	"optionsPageTitle": {
+		"message": "選項"
+	},
 
-  "openAtRight": {
-    "message": "當前分頁右側"
-  },
+	"openTabAtLabel": {
+		"message": "打開搜尋頁面"
+	},
 
-  "openAtLeft": {
-    "message": "當前分頁左側"
-  },
+	"openTabAtRight": {
+		"message": "當前分頁右側"
+	},
 
-  "openAtEnd": {
-    "message": "分頁欄最尾端"
-  },
+	"openTabAtLeft": {
+		"message": "當前分頁左側"
+	},
 
-  "openInBackground": {
-    "message": "在背景開啟結果"
-  },
+	"openTabAtEnd": {
+		"message": "分頁欄最尾端"
+	},
 
-  "searchProviderLabel": {
-    "message": "搜索引擎"
-  },
+	"searchProviderLabel": {
+		"message": "搜尋引擎"
+	},
 
-  "customSearchProviderLabel": {
-    "message": "自定義搜索引擎"
-  },
+	"providerNamePlaceholder": {
+		"message": "2 ~ 15 個非空白的字"
+	},
 
-  "searchProvidersError": {
-    "message": "請至少選擇一搜索引擎！"
-  },
+	"providerURLPlaceholder": {
+		"message": "請輸入網址，需以 http(s):// 開頭且包含 %s 作為圖片網址的參數…"
+	},
 
-  "customSearchProviderPlaceholder": {
-    "message": "請輸入一網址，使用 %s 作為圖片網址的位置..."
-  },
+	"addSearchProvider": {
+		"message": "新增搜尋引擎"
+	},
 
-  "cseError": {
-    "message": "無效網址。請以 http(s):// 開頭，包含 %s 且不包含引號和空格。"
-  },
+	"restoreDefaultSearchProviders": {
+		"message": "還原預設引擎"
+	},
 
-  "saveOptions": {
-    "message": "保存選項"
-  },
+	"providerNamePlaceholderError": {
+		"message": "第 $index$ 個搜尋引擎的名字不符合格式，請使用 2 ~ 15 個非空白的字",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
 
-  "saved": {
-    "message": "已保存！"
-  },
+	"providerURLPlaceholderError": {
+		"message": "第 $index$ 個搜尋引擎的網址不符合格式，請以 http(s):// 開頭且包含 %s",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
 
-  "error": {
-    "message": "錯誤！選項未保存！"
-  }
+	"saveOptions": {
+		"message": "保存選項"
+	},
+
+	"msgAtLeastOneSearchProvider": {
+		"message": "請至少選擇一個搜尋引擎！"
+	},
+
+	"msgExistEdittingSearchProviders": {
+		"message": "還有編輯中的搜尋引擎，請按下 ✓ 完成編輯！"
+	},
+
+	"msgDuplicatedProviderName": {
+		"message": "搜尋引擎名字重複"
+	},
+
+	"msgSuccessSaveOptions": {
+		"message": "已保存！"
+	}
 }

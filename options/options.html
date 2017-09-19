@@ -1,143 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    
-    <style>
-      #status, .hidden {
-        display: none;
-      }
-      
-      body {
-        padding-top: 60px;
-     }
-     
-     .custom-control-indicator {
-        background-color: #fff;
-     }
-     
-     .jumbotron {
-        padding: 2rem 2rem;
-     }
-    </style>
-  </head>
-  <body>
-    <!-- Navigation bar -->
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" id="navbarTitle" href="#"></a>
-        </div>
-      </div>
-    </nav>
-    
-    <div class="container">
-      <div class="jumbotron">
 
-        <!-- Search provider list -->
-        <div class="form-group row">
-          <label for="searchProvider" class="col-sm-3 col-form-label" id="searchProviderLabel"></label>
-          <div class="col-sm-9">
-            <div class="form-check form-check-inline">
-              <label class="form-check-label custom-control custom-checkbox">
-                <input class="form-check-input custom-control-input" type="checkbox" id="google" value="google">
-                <span class="custom-control-indicator"></span> Google
-              </label>
-            </div><br>
-            <div class="form-check form-check-inline">
-              <label class="form-check-label custom-control custom-checkbox">
-                <input class="form-check-input custom-control-input" type="checkbox" id="bing" value="bing">
-                <span class="custom-control-indicator"></span> Bing
-              </label>
-            </div><br>
-            <div class="form-check form-check-inline">
-              <label class="form-check-label custom-control custom-checkbox">
-                <input class="form-check-input custom-control-input" type="checkbox" id="yandex" value="yandex">
-                <span class="custom-control-indicator"></span> Yandex
-              </label>
-            </div><br>
-            <div class="form-check form-check-inline">
-              <label class="form-check-label custom-control custom-checkbox">
-                <input class="form-check-input custom-control-input" type="checkbox" id="yandexru" value="yandexru">
-                <span class="custom-control-indicator"></span> Яндекс
-              </label>
-            </div><br>
-            <div class="form-check form-check-inline">
-              <label class="form-check-label custom-control custom-checkbox">
-                <input class="form-check-input custom-control-input" type="checkbox" id="baidu" value="baidu">
-                <span class="custom-control-indicator"></span> Baidu
-              </label>
-            </div><br>
-            <div class="form-check form-check-inline">
-              <label class="form-check-label custom-control custom-checkbox">
-                <input class="form-check-input custom-control-input" type="checkbox" id="tineye" value="tineye">
-                <span class="custom-control-indicator"></span> TinEye
-              </label>
-            </div><br>
-            <div class="form-check form-check-inline">
-              <label class="form-check-label custom-control custom-checkbox">
-                <input class="form-check-input custom-control-input" type="checkbox" id="saucenao" value="saucenao">
-                <span class="custom-control-indicator"></span> SauceNAO
-              </label>
-            </div><br>
-            <div class="form-check form-check-inline">
-              <label class="form-check-label custom-control custom-checkbox">
-                <input class="form-check-input custom-control-input" type="checkbox" id="iqdb" value="iqdb">
-                <span class="custom-control-indicator"></span> IQDB
-              </label>
-            </div><br>
-            <div class="form-check form-check-inline">
-              <label class="form-check-label custom-control custom-checkbox">
-                <input class="form-check-input custom-control-input" type="checkbox" id="other" value="other">
-                <span class="custom-control-indicator"></span> <span id="otherCSE"></span>
-              </label>
-            </div>
-          </div>
-          <div class="alert alert-danger col-sm-12 hidden" role="alert" id="searchProvidersError"></div>
-        </div>
-        
-        <!-- Custom search provider  -->
-        <div id="customSearchProviderForm" class="form-group row hidden">
-          <label for="customSearchProvider" class="col-sm-3 col-form-label" id="customSearchProviderLabel"></label>
-          <div class="col-sm-9">
-            <input type="url" pattern="https?://.+" class="form-control" id="customSearchProvider" name="customSearchProvider">
-            <div id="cseError" class="form-control-feedback hidden"></div>
-          </div>
-        </div>
-        
-        <!-- "Open tab at" select dropdown -->
-        <div class="form-group row">
-          <label for="openTabAt" class="col-sm-3 col-form-label" id="openTabAtLabel"></label>
-          <div class="col-sm-9">
-            <select id="openTabAt" class="custom-select">
-              <option id="right" value="right" selected></option> 
-              <option id="left" value="left"></option>
-              <option id="end" value="end"></option>
-            </select>
-          </div>
-        </div>
-          
-        <!-- "Open in background tab" checkbox -->
-        <div class="form-group row">
-          <label for="openInBackground" class="col-sm-3" id="openInBackgroundLabel"></label>
-          <div class="col-sm-9">
-            <div class="form-check">
-              <label class="form-check-label custom-control custom-checkbox">
-                <input class="form-check-input custom-control-input" type="checkbox" id="openInBackground" value="openInBackground">
-                <span class="custom-control-indicator"></span>
-              </label>
-            </div>
-          </div>
-        </div>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+	    crossorigin="anonymous">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+	    crossorigin="anonymous">
+	<link href="options.css" rel="stylesheet" />
+</head>
 
-        <!-- "Save options" button -->
-        <button type="button" id="save-button" class="btn btn-success"></button><br><br>
-        <div class="alert" role="alert" id="status"></div>
-    
-      </div> <!-- ./jumbotron -->
-    </div> <!-- ./container -->
-    
-    <script src="options.js"></script>
-  </body>
+<body>
+
+	<!-- Navigation bar -->
+	<nav class="navbar navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" id="navbarTitle" href="#">{{i18n.navbarTitle}}</a>
+		</div>
+	</nav>
+
+	<div id="container" class="container jumbotron">
+		<!-- "Open in background tab" checkbox -->
+		<div class="form-group row">
+			<label for="openInBackground" class="col-sm-3" id="openInBackgroundLabel">{{i18n.openInBackgroundLabel}}</label>
+			<div class="col-sm-9">
+				<label class="form-check-label custom-control custom-checkbox">
+					<input class="form-check-input custom-control-input" type="checkbox" id="openInBackground" />
+					<span class="custom-control-indicator"></span>
+				</label>
+			</div>
+		</div>
+
+		<!-- "Open tab at" select dropdown -->
+		<div class="form-group row">
+			<label for="openTabAt" class="col-sm-3 col-form-label" id="openTabAtLabel">{{i18n.openTabAtLabel}}</label>
+			<div class="col-sm-9">
+				<select id="openTabAt" class="custom-select">
+					<option id="openTabAtRight" value="right" selected>{{i18n.openTabAtRight}}</option>
+					<option id="openTabAtLeft" value="left">{{i18n.openTabAtLeft}}</option>
+					<option id="openTabAtEnd" value="end">{{i18n.openTabAtEnd}}</option>
+				</select>
+			</div>
+		</div>
+
+		<!-- Search provider list -->
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" id="searchProviderLabel">{{i18n.searchProviderLabel}}</label>
+			<div class="col-sm-9">
+				<div id="searchProviderList"></div>
+
+				<button id="addSearchProvider" type="button" class="btn btn-primary">{{i18n.addSearchProvider}}</button>
+				<button id="restoreDefaultSearchProviders" type="button" class="btn btn-secondary">{{i18n.restoreDefaultSearchProvider}}</button>
+			</div>
+		</div>
+
+		<!-- Save button -->
+		<div class="form-group row">
+			<button id="saveOptions" type="button" class="btn btn-success">{{i18n.saveOptions}}</button>
+		</div>
+
+		<!-- Alert messages -->
+		<div id="alertMessages" class="row">
+			<div class="alert alert-success col-sm-12 hidden" role="alert">{{i18n.msgSuccessSaveOptions}}</div>
+		</div>
+	</div>
+	<script src="options.js"></script>
+</body>
+
 </html>

@@ -1,69 +1,97 @@
 {
-  "extensionName": {
-    "message": "Bilder-Rückwärtssuche"
-  },
+	"extensionName": {
+		"message": "Bilder-Rückwärtssuche"
+	},
 
-  "extensionDescription": {
-    "message": "Fügt eine Option zum Kontextmenü hinzu, um mit einem Bild auf verschiedenen Diensten zu suchen"
-  },
-  
-  "contextMenuTitle": {
-    "message": "Bildersuche"
-  },
-  
-  "optionsPageTitle": {
-    "message": "Optionen"
-  },
-  
-  "openTabAtLabel": {
-    "message": "Suchseite öffnen"
-  },
-  
-  "openAtRight": {
-    "message": "Rechts neben dem aktuellen Tab"
-  },
-  
-  "openAtLeft": {
-    "message": "Links nebem dem aktuellen Tab"
-  },
-  
-  "openAtEnd": {
-    "message": "Am Ende"
-  },
-  
-  "openInBackground": {
-    "message": "Im Hintergrund öffnen"
-  },
-  
-  "searchProviderLabel": {
-    "message": "Suchanbieter"
-  },
+	"extensionDescription": {
+		"message": "Fügt eine Option zum Kontextmenü hinzu, um mit einem Bild auf verschiedenen Diensten zu suchen"
+	},
 
-  "customSearchProviderLabel": {
-    "message": "Eigener Suchanbieter"
-  },
-  
-  "searchProvidersError": {
-    "message": "Bitte wähle mindestens eine Suchmaschine!"
-  },
-  
-  "customSearchProviderPlaceholder": {
-    "message": "Gib eine URL ein und nutze %s als Platzhalter für die Bilder-URL..."
-  },
-  
-  "cseError": {
-    "message": "Dies ist keine gültige URL. Enthält sie %s, beginnt mit http(s):// und enthält keine Anführungs- und Leerzeichen?"
-  },
-  
-  "saveOptions": {
-    "message": "Optionen speichern"
-  },
-  
-  "saved": {
-    "message": "Gespeichert!"
-  },
-  
-  "error": {
-    "message": "Fehler, Einstellungen wurden nicht gespeichert!"
-  }
+	"contextMenuTitle": {
+		"message": "Bildersuche"
+	},
+
+	"openInBackgroundLabel": {
+		"message": "Im Hintergrund öffnen"
+	},
+
+	"optionsPageTitle": {
+		"message": "Optionen"
+	},
+
+	"openTabAtLabel": {
+		"message": "Suchseite öffnen"
+	},
+
+	"openTabAtRight": {
+		"message": "Rechts neben dem aktuellen Tab"
+	},
+
+	"openTabAtLeft": {
+		"message": "Links nebem dem aktuellen Tab"
+	},
+
+	"openTabAtEnd": {
+		"message": "Am Ende"
+	},
+
+	"searchProviderLabel": {
+		"message": "Suchanbieter"
+	},
+
+	"providerNamePlaceholder": {
+		"message": "2-15 Zeichen ohne Leerzeichen"
+	},
+
+	"providerURLPlaceholder": {
+		"message": "http(s):// am Anfang und %s für die Bilder-URL..."
+	},
+
+	"addSearchProvider": {
+		"message": "Anbieter hinzufügen"
+	},
+
+	"restoreDefaultSearchProviders": {
+		"message": "Standard wiederherstellen"
+	},
+
+	"providerNamePlaceholderError": {
+		"message": "Der Name des $index$. Anbieters ist ungültig. Bitte nur 2-15 Buchstaben ohne Leerzeichen",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
+	"providerURLPlaceholderError": {
+		"message": "Die URL des $index$. Anbieters ist ungültig. Nutze http(s):// am Anfang und %s als Platzhalter für die Bilder-URL.",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
+	"saveOptions": {
+		"message": "Optionen speichern"
+	},
+
+	"msgAtLeastOneSearchProvider": {
+		"message": "Bitte wähle mindestens einen Suchanbieter!"
+	},
+
+	"msgExistEdittingSearchProviders": {
+		"message": "Ein Suchanbieter wird bearbeitet! Klicke ✓, um das Editieren zu beenden."
+	},
+
+	"msgDuplicatedProviderName": {
+		"message": "Ein Suchanbieter-Name ist doppelt!"
+	},
+
+	"msgSuccessSaveOptions": {
+		"message": "Gespeichert!"
+	}
 }

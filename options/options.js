@@ -1,171 +1,285 @@
-/* Localization */
-document.title = chrome.i18n.getMessage("extensionName") + " | " + chrome.i18n.getMessage("optionsPageTitle");
-document.getElementById("navbarTitle").textContent = chrome.i18n.getMessage("extensionName");
-document.getElementById("openTabAtLabel").textContent = chrome.i18n.getMessage("openTabAtLabel");
-document.getElementById("right").textContent = chrome.i18n.getMessage("openAtRight");
-document.getElementById("left").textContent = chrome.i18n.getMessage("openAtLeft");
-document.getElementById("end").textContent = chrome.i18n.getMessage("openAtEnd");
-document.getElementById("openInBackgroundLabel").textContent = chrome.i18n.getMessage("openInBackground");
-document.getElementById("searchProviderLabel").textContent = chrome.i18n.getMessage("searchProviderLabel");
-document.getElementById("otherCSE").textContent = chrome.i18n.getMessage("customSearchProviderLabel");
-document.getElementById("customSearchProviderLabel").textContent = chrome.i18n.getMessage("customSearchProviderLabel");
-document.getElementById("searchProvidersError").textContent = chrome.i18n.getMessage("searchProvidersError");
-document.getElementById("customSearchProvider").placeholder = chrome.i18n.getMessage("customSearchProviderPlaceholder");
-document.getElementById("cseError").textContent = chrome.i18n.getMessage("cseError");
-document.getElementById("save-button").textContent = chrome.i18n.getMessage("saveOptions");
-
-/* Store the currently selected settings using chrome.storage.sync. */
-function storeSettings() {
-    
-  function getOpenTabAt() {
-    const openTabAt = document.querySelector("#openTabAt");
-    return openTabAt.value
-  }
-  
-  /* Returns an array with all checked search providers */
-  function getSearchProviders() {
-    const chosenSearchProviders = new Array()
-    for (let searchProvider of allSearchProviders) { 
-      if (document.getElementById(searchProvider).checked) {
-          chosenSearchProviders.push(searchProvider)
-      }
-    }
-    return chosenSearchProviders
-  }
-  
-  /* Toggles the CSE form error warning */
-  function toggleCSEform(tovalid) {
-      const cseForm = document.getElementById("customSearchProvider");
-      if (tovalid) {
-        cseForm.classList.remove("form-control-danger");
-        document.getElementById("customSearchProviderForm").classList.remove("has-danger");
-        document.getElementById("cseError").classList.add("hidden");
-      } else {
-        cseForm.classList.add("form-control-danger");
-        document.getElementById("customSearchProviderForm").classList.add("has-danger");
-        document.getElementById("cseError").classList.remove("hidden");
-      }
-  }
-
-  const searchProviders = getSearchProviders();
-
-  // if no checkbox is selected
-  const searchProvidersError = document.getElementById("searchProvidersError");
-  if (searchProviders.length == 0) {
-      searchProvidersError.classList.remove("hidden")
-      const status = document.getElementById("status");
-      status.classList.add("alert-danger");
-      status.textContent = chrome.i18n.getMessage("error");
-      status.style.display = "block";
-      status.style.fontWeight = "bold";
-      setTimeout(function() {
-        status.style.display = "none";
-        status.classList.remove("alert-danger");
-      }, 1800);
-      return
-  }
-
-  // If above error was shown to user before, hide it
-  if (! searchProvidersError.classList.contains("hidden")) {
-      searchProvidersError.classList.add("hidden")
-  }
-  
-  /* Check if custom search provider is valid */
-  let cseProvider = "";
-  if (searchProviders.includes("other")) {
-      const cseForm = document.getElementById("customSearchProvider");
-      if (cseForm.checkValidity() == false || cseForm.value == null || cseForm.value == "") {
-          toggleCSEform(false);
-      } else {
-          toggleCSEform(true);
-          if (cseForm.value.indexOf("%s") == "-1") { // no %s in URL!
-              toggleCSEform(false);
-          } else {
-              cseProvider = cseForm.value;
-          }
-      }
-  }
-
-  /* If custom search provider is not valid, but checked */
-  if (cseProvider === "" && searchProviders.includes("other")) {
-      const status = document.getElementById("status");
-      status.classList.add("alert-danger");
-      status.textContent = chrome.i18n.getMessage("error");
-      status.style.display = "block";
-      status.style.fontWeight = "bold";
-      setTimeout(function() {
-        status.style.display = "none";
-        status.classList.remove("alert-danger");
-      }, 1800);
-      return
-  }
-
-  const openInBackground = document.getElementById("openInBackground").checked;
-  const openTabAt = getOpenTabAt();
-
-  /* Create contextMenu */
-  chrome.contextMenus.removeAll();
-  backgroundPage.createContextMenu({searchProviders}); // Pass searchProviders as object
-
-  chrome.storage.sync.set({
-    openInBackground,
-    openTabAt,
-    searchProviders,
-    cseProvider
-  }, function() {
-    // Update status to let user know options were saved.
-    const status = document.getElementById("status");
-    status.classList.add("alert-success");
-    status.textContent = chrome.i18n.getMessage("saved");
-    status.style.display = "block";
-    status.style.fontWeight = "bold";
-    setTimeout(function() {
-      status.style.display = "none";
-      status.classList.remove("alert-success");
-    }, 1800);
-  });
-}
-
-/* Update the options UI with the settings values retrieved from storage,
-   or the default settings if the stored settings are empty. */
-function updateUI(restoredSettings) {
-  document.getElementById("openInBackground").checked = restoredSettings.openInBackground;
-
-  const tabAtSelectList = document.querySelector("#openTabAt");
-  tabAtSelectList.value = restoredSettings.openTabAt;
-  
-  for (let searchProvider of allSearchProviders) { 
-    if (restoredSettings.searchProviders.includes(searchProvider)) {
-      document.getElementById(searchProvider).checked = true;
-    }
-  }
-
-  if (otherCSECheckbox.checked) {
-    document.getElementById("customSearchProviderForm").classList.remove("hidden");
-    const cseProviderInput = document.querySelector("#customSearchProvider")
-    cseProviderInput.value = restoredSettings.cseProvider;
-  }
-}
-
-function showOtherField(name) {
-  if (name.target.checked) {
-    document.getElementById("customSearchProviderForm").classList.remove("hidden");
-  } else {
-    document.getElementById("customSearchProviderForm").classList.add("hidden");
-  }
-}
-
-/* We need those here */
 const backgroundPage = chrome.extension.getBackgroundPage();
-const allSearchProviders = ["google", "bing", "yandex", "yandexru", "baidu", "tineye", "saucenao", "iqdb", "other"];
+const Provider = backgroundPage.Provider; // class Provider
+const msgTimeout = 1800;
 
-/* On checking "other", show the text field */
-const otherCSECheckbox = document.getElementById("other");
-otherCSECheckbox.addEventListener("change", showOtherField)
+/** Utility Functions **/
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+const $el = document.createElement.bind(document);
+
+function i18nOrdinal(n) {
+	const [prefix, suffix] = chrome.i18n.getUILanguage().split('-', 2);
+	if (prefix === 'en') {
+		if (n == 1) return '1st';
+		if (n == 2) return '2nd';
+		if (n == 3) return '3rd';
+		return `${n}th`;
+	}
+	return `${n}`;
+}
+
+function alertErrorMsgElement(text) {
+	const msg = createErrorMsgElement(text);
+	$('#alertMessages').appendChild(msg);
+	setTimeout(() => {
+		msg.remove();
+	}, msgTimeout);
+}
+
+function createErrorMsgElement(text) {
+	const div = $el('div');
+	div.classList.add('alert', 'alert-danger', 'col-sm-12');
+	div.setAttribute('role', 'alert');
+	div.textContent = text;
+	return div;
+}
+
+function validateSpName(name, index) {
+	if (!/^\S{2,15}$/.test(name)) {
+		const msg = chrome.i18n.getMessage('providerNamePlaceholderError', i18nOrdinal(index));
+		alertErrorMsgElement(msg);
+		return false;
+	}
+	return true;
+}
+
+function validateSpUrl(url, index) {
+	if (!/^https?:\/\/.*%s.*$/.test(url)) {
+		const msg = chrome.i18n.getMessage('providerURLPlaceholderError', i18nOrdinal(index));
+		alertErrorMsgElement(msg);
+		return false;
+	}
+	return true;
+}
+
+function createSpRemoveElement() {
+	// <a class="sp-remove input-group-addon">
+	//   <i class="fa fa-trash" aria-hidden="true"></i>
+	// </a>
+	const a = $el('a');
+	a.classList.add('sp-remove', 'input-group-addon');
+	a.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+	return a;
+}
+
+function createSpStatusElement() {
+	// <a class="sp-status input-group-addon">
+	//   <i class="fa fa-check text-success" aria-hidden="true"></i>
+	//   <i class="fa fa-times text-danger" aria-hidden="true"></i>
+	// </a>
+	const a = $el('a');
+	a.classList.add('sp-status', 'input-group-addon');
+	a.innerHTML = `
+	<i class="fa fa-check text-success" aria-hidden="true"></i>
+	<i class="fa fa-times text-danger" aria-hidden="true"></i>`;
+	return a;
+}
+
+function createSpUrlElement(text) {
+	const input = $el('input');
+	input.type = 'url';
+	input.value = text;
+	input.classList.add('sp-url', 'form-control');
+	input.pattern = 'https?:\\/\\/.*%s.*';
+	input.placeholder = chrome.i18n.getMessage('providerURLPlaceholder');
+	return input;
+}
+
+function createSpNameElement(text) {
+	const input = $el('input');
+	input.value = text;
+	input.classList.add('sp-name', 'form-control', 'col-sm-3', 'sp-edit');
+	input.pattern = '\\S{2,15}';
+	input.placeholder = chrome.i18n.getMessage('providerNamePlaceholder');
+	input.onclick = () => {
+		input.classList.add('sp-edit');
+	};
+	return input;
+}
+
+function createSpIconElement(src) {
+	// <span class="sp-icon input-group-addon">
+	//   <img src=""/>
+	// </span>
+	const span = $el('span');
+	span.innerHTML = `<img src="${src}"/>`;
+	span.classList.add('sp-icon', 'input-group-addon');
+	return span;
+}
+
+function createSpCheckboxElement(selected) {
+	// <span class="sp-selected input-group-addon form-check">
+	//   <label class="form-check-label custom-control custom-checkbox">
+	//     <input class="form-check-input custom-control-input" type="checkbox" />
+	//     <span class="custom-control-indicator" />
+	//   </label>
+	// </span>
+	const span = $el('span');
+	span.innerHTML = `
+	<label class="form-check-label custom-control custom-checkbox">
+		<input class="form-check-input custom-control-input" type="checkbox" ${selected ? 'checked' : ''}/>
+		<span class="custom-control-indicator"/>
+	</label>`;
+	span.classList.add('sp-selected', 'input-group-addon', 'form-check');
+	return span;
+}
+
+function createSearchProviderElement(name = '', icon = '../icons/other.png', url = '', selected = false, edit = true) {
+	const root = $el('div');
+	root.classList.add('searchProviderListItem', 'input-group');
+
+	const spName = createSpNameElement(name);
+	const spUrl = createSpUrlElement(url);
+	const spStatus = createSpStatusElement();
+	const spRemove = createSpRemoveElement();
+
+	spStatus.onclick = () => {
+		const index = Array.from(root.parentElement.children).indexOf(root) + 1;
+		let valid = true;
+
+		if (!validateSpName(spName.value, index)) {
+			valid = false;
+		}
+
+		if (!validateSpUrl(spUrl.value, index)) {
+			valid = false;
+		}
+
+		if (valid) {
+			spName.classList.remove('sp-edit');
+		}
+	};
+
+	spRemove.onclick = () => {
+		root.remove();
+	};
+
+	root.appendChild(createSpCheckboxElement(selected));
+	root.appendChild(createSpIconElement(icon));
+	root.appendChild(spName);
+	root.appendChild(spUrl);
+	root.appendChild(spStatus);
+	root.appendChild(spRemove);
+
+	if (!edit) {
+		spName.classList.remove('sp-edit');
+	}
+
+	return root;
+}
+
+/** View binding **/
+
+document.title = `${chrome.i18n.getMessage('extensionName')} | ${chrome.i18n.getMessage('optionsPageTitle')}`;
+
+$('#navbarTitle').textContent = chrome.i18n.getMessage('extensionName');
+$('#openInBackgroundLabel').textContent = chrome.i18n.getMessage('openInBackgroundLabel');
+
+$('#openTabAtLabel').textContent = chrome.i18n.getMessage('openTabAtLabel');
+$('#openTabAtRight').textContent = chrome.i18n.getMessage('openTabAtRight');
+$('#openTabAtLeft').textContent = chrome.i18n.getMessage('openTabAtLeft');
+$('#openTabAtEnd').textContent = chrome.i18n.getMessage('openTabAtEnd');
+
+/* Search Provider List */
+const searchProviderList = $('#searchProviderList');
+
+$('#searchProviderLabel').textContent = chrome.i18n.getMessage('searchProviderLabel');
+const addSearchProvider = $('#addSearchProvider');
+addSearchProvider.textContent = chrome.i18n.getMessage('addSearchProvider');
+addSearchProvider.onclick = () => {
+	searchProviderList.appendChild(createSearchProviderElement());
+};
+
+/* Restore default */
+const restoreDefaultSearchProviders = $('#restoreDefaultSearchProviders');
+restoreDefaultSearchProviders.textContent = chrome.i18n.getMessage('restoreDefaultSearchProviders');
+restoreDefaultSearchProviders.onclick = () => {
+	while (searchProviderList.firstElementChild) {
+		searchProviderList.firstElementChild.remove();
+	}
+	for (const p of backgroundPage.getDefaultProvidersClone()) {
+		searchProviderList.appendChild(createSearchProviderElement(p.name, p.icon, p.url, p.selected, false));
+	}
+};
+
+/* Save button */
+const saveOptions = $('#saveOptions');
+saveOptions.textContent = chrome.i18n.getMessage('saveOptions');
+$('.alert-success').textContent = chrome.i18n.getMessage('msgSuccessSaveOptions');
+
+saveOptions.onclick = () => {
+	/* Make sure all input valid */
+	let selectedCount = 0;
+	const nameSet = new Set();
+	const storedSettings = {
+		openInBackground: $('#openInBackground').checked,
+		openTabAt: $('#openTabAt')[$('#openTabAt').selectedIndex].value,
+		storageProviders: [],
+	};
+
+	for (const li of searchProviderList.children) {
+		const index = Array.from(searchProviderList.children).indexOf(li) + 1;
+		const selected = li.children[0].firstElementChild.firstElementChild.checked;
+		const icon = li.children[1].firstElementChild.src;
+		const name = li.children[2].value;
+		const url = li.children[3].value;
+
+		if (selected) {
+			selectedCount += 1;
+		}
+
+		if (!validateSpName(name, index)) {
+			return;
+		}
+
+		if (!validateSpUrl(url, index)) {
+			return;
+		}
+
+		if (li.children[2].classList.contains('sp-edit')) {
+			alertErrorMsgElement(chrome.i18n.getMessage('msgExistEdittingSearchProviders'));
+			return;
+		}
+
+		storedSettings.storageProviders.push(new Provider(name, icon, url, selected));
+		nameSet.add(name);
+	}
+
+	if (selectedCount < 1) {
+		alertErrorMsgElement(chrome.i18n.getMessage('msgAtLeastOneSearchProvider'));
+		return;
+	}
+
+	if (nameSet.size < storedSettings.storageProviders.length) {
+		alertErrorMsgElement(chrome.i18n.getMessage('msgDuplicatedProviderName'));
+		return;
+	}
+
+	/* All input valid */
+	chrome.contextMenus.removeAll();
+	backgroundPage.createContextMenu(storedSettings.storageProviders);
+	chrome.storage.sync.set(storedSettings, () => {
+		for (const msg of $$('.alert-danger')) {
+			msg.classList.add('hidden');
+		}
+		$('.alert-success').classList.remove('hidden');
+		setTimeout(() => {
+			$('.alert-success').classList.add('hidden');
+		}, msgTimeout);
+	});
+};
+
+function updateUI(storedSettings) {
+	const openTabAt = $('#openTabAt');
+	openTabAt.selectedIndex = Array.from(openTabAt.options)
+		.map(opt => opt.value)
+		.indexOf(storedSettings.openTabAt);
+	$('#openInBackground').checked = storedSettings.openInBackground;
+
+	for (const p of storedSettings.storageProviders) {
+		$('#searchProviderList').appendChild(createSearchProviderElement(p.name, p.icon, p.url, p.selected, false));
+	}
+}
 
 /* On opening the options page, fetch stored settings and update the UI with them. */
 chrome.storage.sync.get(null, updateUI);
-
-/* On clicking the save button, save the currently selected settings. */
-const saveButton = document.querySelector("#save-button");
-saveButton.addEventListener("click", storeSettings);
