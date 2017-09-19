@@ -1,69 +1,97 @@
 {
-  "extensionName": {
-    "message": "Reverse Image Search"
-  },
+	"extensionName": {
+		"message": "Reverse Image Search"
+	},
 
-  "extensionDescription": {
-    "message": "Adds an option to the context menu to reverse search an image on various services"
-  },
-  
-  "contextMenuTitle": {
-    "message": "Reverse Image Search"
-  },
-  
-  "optionsPageTitle": {
-    "message": "Options"
-  },
-  
-  "openTabAtLabel": {
-    "message": "Open the search page"
-  },
-  
-  "openAtRight": {
-    "message": "Right to the current tab"
-  },
-  
-  "openAtLeft": {
-    "message": "Left to the current tab"
-  },
-  
-  "openAtEnd": {
-    "message": "At the end"
-  },
-  
-  "openInBackground": {
-    "message": "Open in background"
-  },
-  
-  "searchProviderLabel": {
-    "message": "Search provider"
-  },
+	"extensionDescription": {
+		"message": "Adds an option to the context menu to reverse search an image on various services"
+	},
 
-  "customSearchProviderLabel": {
-    "message": "Custom search provider"
-  },
-  
-  "searchProvidersError": {
-    "message": "Please choose at least one search engine!"
-  },
-  
-  "customSearchProviderPlaceholder": {
-    "message": "Type a URL and use %s as placeholder for the image URL..."
-  },
-  
-  "cseError": {
-    "message": "This is not a valid URL. Does it contain %s, begins with http(s):// and doesn't contain any quotes or spaces?"
-  },
-  
-  "saveOptions": {
-    "message": "Save options"
-  },
-  
-  "saved": {
-    "message": "Saved!"
-  },
-  
-  "error": {
-    "message": "Error, settings were not saved!"
-  }
+	"contextMenuTitle": {
+		"message": "Reverse Image Search"
+	},
+
+	"openInBackgroundLabel": {
+		"message": "Open in background"
+	},
+
+	"optionsPageTitle": {
+		"message": "Options"
+	},
+
+	"openTabAtLabel": {
+		"message": "Open the Search page"
+	},
+
+	"openTabAtRight": {
+		"message": "Right to the current tab"
+	},
+
+	"openTabAtLeft": {
+		"message": "Left to the current tab"
+	},
+
+	"openTabAtEnd": {
+		"message": "At the end"
+	},
+
+	"searchProviderLabel": {
+		"message": "Search provider"
+	},
+
+	"providerNamePlaceholder": {
+		"message": "2-9 letters without space"
+	},
+
+	"providerURLPlaceholder": {
+		"message": "http(s):// at begin and %s for image url..."
+	},
+
+	"addSearchProvider": {
+		"message": "Add Provider"
+	},
+
+	"restoreDefaultSearchProviders": {
+		"message": "Restore Default"
+	},
+
+	"providerNamePlaceholderError": {
+		"message": "The name of $index$ provider is invalid. Please use 2-9 letters without space",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
+	"providerURLPlaceholderError": {
+		"message": "The url of $index$ provider is invalid. Use http(s):// at begin and %s as placeholder for image url.",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
+	"saveOptions": {
+		"message": "Save Options"
+	},
+
+	"msgAtLeastOneSearchProvider": {
+		"message": "Please choose at least one search provider!"
+	},
+
+	"msgExistEdittingSearchProviders": {
+		"message": "Some search provider is editting! Click ✓ to finish editting."
+	},
+
+	"msgDuplicatedProviderName": {
+		"message": "Some search provider name duplicated!"
+	},
+
+	"msgSuccessSaveOptions": {
+		"message": "Saved!"
+	}
 }

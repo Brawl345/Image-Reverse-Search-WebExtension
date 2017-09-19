@@ -1,6 +1,6 @@
 {
 	"extensionName": {
-		"message": "Image Reverse Search"
+		"message": "Reverse Image Search"
 	},
 
 	"extensionDescription": {
@@ -59,7 +59,8 @@
 		"message": "第 $index$ 個搜尋引擎的名字不符合格式，請使用 2 ~ 9 個非空白的字",
 		"placeholders": {
 			"index": {
-				"content": "$1"
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
 			}
 		}
 	},
@@ -68,7 +69,8 @@
 		"message": "第 $index$ 個搜尋引擎的網址不符合格式，請以 http(s):// 開頭且包含 %s",
 		"placeholders": {
 			"index": {
-				"content": "$1"
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
 			}
 		}
 	},

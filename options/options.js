@@ -1,9 +1,19 @@
-/* Utility Functions */
+/** Utility Functions **/
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const $el = document.createElement.bind(document);
+function i18nOrdinal(n) {
+	const [prefix, suffix] = chrome.i18n.getUILanguage().split('-', 2);
+	if (prefix === 'en') {
+		if (n == 1) return '1st';
+		if (n == 2) return '2nd';
+		if (n == 3) return '3rd';
+		return `${n}th`;
+	}
+	return `${n}`;
+}
 
-function alertErrorMsg(text) {
+function alertErrorMsgElement(text) {
 	const msg = createErrorMsgElement(text);
 	$('#alertMessages').appendChild(msg);
 	setTimeout(() => {
@@ -21,8 +31,8 @@ function createErrorMsgElement(text) {
 
 function validateSpName(name, index) {
 	if (!/^\S{2,9}$/.test(name)) {
-		const msg = chrome.i18n.getMessage('providerNamePlaceholderError', index);
-		alertErrorMsg(msg);
+		const msg = chrome.i18n.getMessage('providerNamePlaceholderError', i18nOrdinal(index));
+		alertErrorMsgElement(msg);
 		return false;
 	}
 	return true;
@@ -30,8 +40,8 @@ function validateSpName(name, index) {
 
 function validateSpUrl(url, index) {
 	if (!/^https?:\/\/.*%s.*$/.test(url)) {
-		const msg = chrome.i18n.getMessage('providerURLPlaceholderError', index);
-		alertErrorMsg(msg);
+		const msg = chrome.i18n.getMessage('providerURLPlaceholderError', i18nOrdinal(index));
+		alertErrorMsgElement(msg);
 		return false;
 	}
 	return true;
@@ -153,7 +163,7 @@ function createSearchProviderElement(name = '', icon = '../icons/other.png', url
 	return root;
 }
 
-/* View Binding */
+/** View binding **/
 
 document.title = `${chrome.i18n.getMessage('extensionName')} | ${chrome.i18n.getMessage('optionsPageTitle')}`;
 
@@ -165,6 +175,7 @@ $('#openTabAtRight').textContent = chrome.i18n.getMessage('openTabAtRight');
 $('#openTabAtLeft').textContent = chrome.i18n.getMessage('openTabAtLeft');
 $('#openTabAtEnd').textContent = chrome.i18n.getMessage('openTabAtEnd');
 
+/* Search Provider List */
 const searchProviderList = $('#searchProviderList');
 
 $('#searchProviderLabel').textContent = chrome.i18n.getMessage('searchProviderLabel');
@@ -174,22 +185,25 @@ addSearchProvider.onclick = () => {
 	searchProviderList.appendChild(createSearchProviderElement());
 };
 
+/* Restore default */
 const restoreDefaultSearchProviders = $('#restoreDefaultSearchProviders');
 restoreDefaultSearchProviders.textContent = chrome.i18n.getMessage('restoreDefaultSearchProviders');
 restoreDefaultSearchProviders.onclick = () => {
 	while (searchProviderList.firstChild) {
 		searchProviderList.removeChild(searchProviderList.firstChild);
 	}
-	for (let p of chrome.extension.getBackgroundPage().getCloneDefaultProviders()) {
+	for (let p of chrome.extension.getBackgroundPage().getDefaultProvidersClone()) {
 		searchProviderList.appendChild(createSearchProviderElement(p.name, p.icon, p.url, p.selected, false));
 	}
 };
 
+/* Save button */
 const saveOptions = $('#saveOptions');
 saveOptions.textContent = chrome.i18n.getMessage('saveOptions');
 $('.alert-success').textContent = chrome.i18n.getMessage('msgSuccessSaveOptions');
 
 saveOptions.onclick = () => {
+	/* Make sure all input valid */
 	let selectedCount = 0;
 	const nameSet = new Set();
 	const storedSettings = {
@@ -200,7 +214,6 @@ saveOptions.onclick = () => {
 
 	for (let li of searchProviderList.children) {
 		const index = Array.from(searchProviderList.children).indexOf(li) + 1;
-		console.log(li, index);
 		const selected = li.children[0].firstElementChild.firstElementChild.checked;
 		const icon = li.children[1].firstElementChild.src;
 		const name = li.children[2].value;
@@ -219,7 +232,7 @@ saveOptions.onclick = () => {
 		}
 
 		if (li.children[2].classList.contains('sp-edit')) {
-			alertErrorMsg(chrome.i18n.getMessage('msgExistEdittingSearchProviders'));
+			alertErrorMsgElement(chrome.i18n.getMessage('msgExistEdittingSearchProviders'));
 			return;
 		}
 
@@ -228,16 +241,16 @@ saveOptions.onclick = () => {
 	}
 
 	if (selectedCount < 1) {
-		alertErrorMsg(chrome.i18n.getMessage('msgAtLeastOneSearchProvider'));
+		alertErrorMsgElement(chrome.i18n.getMessage('msgAtLeastOneSearchProvider'));
 		return;
 	}
 
 	if (nameSet.size < storedSettings.storageProviders.length) {
-		/* send an error that name dulplicated */
-		alertErrorMsg(chrome.i18n.getMessage('msgDuplicatedProviderName'));
+		alertErrorMsgElement(chrome.i18n.getMessage('msgDuplicatedProviderName'));
 		return;
 	}
 
+	/* All input valid */
 	chrome.contextMenus.removeAll();
 	chrome.extension.getBackgroundPage().createContextMenu(storedSettings.storageProviders);
 	chrome.storage.sync.set(storedSettings, () => {

@@ -5,14 +5,6 @@ class Provider {
 		this.url = url;
 		this.selected = selected;
 	}
-	toStorage() {
-		return {
-			name: this.name,
-			icon: this.icon,
-			url: this.url,
-			selected: this.selected,
-		};
-	}
 	clone() {
 		return new Provider(this.name, this.icon, this.url, this.selected);
 	}
@@ -29,7 +21,7 @@ const defaultProviders = [
 	new Provider('SauceNAO', '../icons/saucenao.png', 'https://saucenao.com/search.php?db=999&url=%s'),
 ];
 
-function getCloneDefaultProviders() {
+function getDefaultProvidersClone() {
 	const DPs = [];
 	for (let p of defaultProviders) {
 		DPs.push(p.clone());
@@ -84,7 +76,7 @@ function createContextMenu(storageProviders) {
 const defaultSettings = {
 	openInBackground: false,
 	openTabAt: 'right',
-	storageProviders: getCloneDefaultProviders(),
+	storageProviders: getDefaultProvidersClone(),
 };
 
 /**
@@ -107,8 +99,6 @@ function checkStoredSettings(storedSettings) {
 }
 
 function reverseSearch(info, storedSettings) {
-	console.log('reverseSearch', info, storedSettings);
-
 	function getTabIndex(openTabAt, tabs) {
 		if (openTabAt == 'right') {
 			return tabs[0].index + 1;
@@ -149,6 +139,5 @@ chrome.storage.sync.get(null, checkStoredSettings);
 
 /* On click, fetch stored settings and reverse search. */
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-	console.log('onclick', info, tab);
 	chrome.storage.sync.get(null, reverseSearch.bind(null, info));
 });
