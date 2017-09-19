@@ -1,7 +1,12 @@
+const backgroundPage = chrome.extension.getBackgroundPage();
+const Provider = backgroundPage.Provider; // class Provider
+const msgTimeout = 1800;
+
 /** Utility Functions **/
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const $el = document.createElement.bind(document);
+
 function i18nOrdinal(n) {
 	const [prefix, suffix] = chrome.i18n.getUILanguage().split('-', 2);
 	if (prefix === 'en') {
@@ -18,7 +23,7 @@ function alertErrorMsgElement(text) {
 	$('#alertMessages').appendChild(msg);
 	setTimeout(() => {
 		msg.remove();
-	}, 1800);
+	}, msgTimeout);
 }
 
 function createErrorMsgElement(text) {
@@ -49,18 +54,18 @@ function validateSpUrl(url, index) {
 
 function createSpRemoveElement() {
 	// <a class="sp-remove input-group-addon">
-	// 	<i class="fa fa-trash" aria-hidden="true"></i>
+	//   <i class="fa fa-trash" aria-hidden="true"></i>
 	// </a>
 	const a = $el('a');
 	a.classList.add('sp-remove', 'input-group-addon');
-	a.innerHTML = `<i class="fa fa-trash" aria-hidden="true"></i>`;
+	a.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
 	return a;
 }
 
 function createSpStatusElement() {
 	// <a class="sp-status input-group-addon">
-	// 	<i class="fa fa-check text-success" aria-hidden="true"></i>
-	// 	<i class="fa fa-times text-danger" aria-hidden="true"></i>
+	//   <i class="fa fa-check text-success" aria-hidden="true"></i>
+	//   <i class="fa fa-times text-danger" aria-hidden="true"></i>
 	// </a>
 	const a = $el('a');
 	a.classList.add('sp-status', 'input-group-addon');
@@ -86,16 +91,16 @@ function createSpNameElement(text) {
 	input.classList.add('sp-name', 'form-control', 'col-sm-3', 'sp-edit');
 	input.pattern = '\\S{2,9}';
 	input.placeholder = chrome.i18n.getMessage('providerNamePlaceholder');
-	input.onclick = event => {
+	input.onclick = () => {
 		input.classList.add('sp-edit');
 	};
 	return input;
 }
 
 function createSpIconElement(src) {
-	// 	<span class="sp-icon input-group-addon">
-	// 		<img src=""/>
-	// 	</span>
+	// <span class="sp-icon input-group-addon">
+	//   <img src=""/>
+	// </span>
 	const span = $el('span');
 	span.innerHTML = `<img src="${src}"/>`;
 	span.classList.add('sp-icon', 'input-group-addon');
@@ -103,12 +108,12 @@ function createSpIconElement(src) {
 }
 
 function createSpCheckboxElement(selected) {
-	// 	<span class="sp-selected input-group-addon form-check">
-	// 		<label class="form-check-label custom-control custom-checkbox">
-	// 			<input class="form-check-input custom-control-input" type="checkbox" />
-	// 			<span class="custom-control-indicator" />
-	// 		</label>
-	// 	</span>
+	// <span class="sp-selected input-group-addon form-check">
+	//   <label class="form-check-label custom-control custom-checkbox">
+	//     <input class="form-check-input custom-control-input" type="checkbox" />
+	//     <span class="custom-control-indicator" />
+	//   </label>
+	// </span>
 	const span = $el('span');
 	span.innerHTML = `
 	<label class="form-check-label custom-control custom-checkbox">
@@ -189,10 +194,10 @@ addSearchProvider.onclick = () => {
 const restoreDefaultSearchProviders = $('#restoreDefaultSearchProviders');
 restoreDefaultSearchProviders.textContent = chrome.i18n.getMessage('restoreDefaultSearchProviders');
 restoreDefaultSearchProviders.onclick = () => {
-	while (searchProviderList.firstChild) {
-		searchProviderList.removeChild(searchProviderList.firstChild);
+	for (const p of searchProviderList.children) {
+		p.remove();
 	}
-	for (let p of chrome.extension.getBackgroundPage().getDefaultProvidersClone()) {
+	for (const p of backgroundPage.getDefaultProvidersClone()) {
 		searchProviderList.appendChild(createSearchProviderElement(p.name, p.icon, p.url, p.selected, false));
 	}
 };
@@ -212,7 +217,7 @@ saveOptions.onclick = () => {
 		storageProviders: [],
 	};
 
-	for (let li of searchProviderList.children) {
+	for (const li of searchProviderList.children) {
 		const index = Array.from(searchProviderList.children).indexOf(li) + 1;
 		const selected = li.children[0].firstElementChild.firstElementChild.checked;
 		const icon = li.children[1].firstElementChild.src;
@@ -236,7 +241,7 @@ saveOptions.onclick = () => {
 			return;
 		}
 
-		storedSettings.storageProviders.push({ name, url, icon, selected });
+		storedSettings.storageProviders.push(new Provider(name, url, icon, selected));
 		nameSet.add(name);
 	}
 
@@ -252,15 +257,15 @@ saveOptions.onclick = () => {
 
 	/* All input valid */
 	chrome.contextMenus.removeAll();
-	chrome.extension.getBackgroundPage().createContextMenu(storedSettings.storageProviders);
+	backgroundPage.createContextMenu(storedSettings.storageProviders);
 	chrome.storage.sync.set(storedSettings, () => {
-		for (let msg of Array.from($$('.alert-danger'))) {
+		for (const msg of $$('.alert-danger')) {
 			msg.classList.add('hidden');
 		}
 		$('.alert-success').classList.remove('hidden');
 		setTimeout(() => {
 			$('.alert-success').classList.add('hidden');
-		}, 1800);
+		}, msgTimeout);
 	});
 };
 
@@ -271,7 +276,7 @@ function updateUI(storedSettings) {
 		.indexOf(storedSettings.openTabAt);
 	$('#openInBackground').checked = storedSettings.openInBackground;
 
-	for (let p of storedSettings.storageProviders) {
+	for (const p of storedSettings.storageProviders) {
 		$('#searchProviderList').appendChild(createSearchProviderElement(p.name, p.icon, p.url, p.selected, false));
 	}
 }

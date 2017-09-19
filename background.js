@@ -22,11 +22,7 @@ const defaultProviders = [
 ];
 
 function getDefaultProvidersClone() {
-	const DPs = [];
-	for (let p of defaultProviders) {
-		DPs.push(p.clone());
-	}
-	return DPs;
+	return defaultProviders.map(p => p.clone());
 }
 
 // Set up context menu for images
@@ -36,10 +32,10 @@ function createContextMenu(storageProviders) {
 	const selectedProviders = storageProviders.filter(p => p.selected);
 
 	/* If there is only one search provider, do not create a submenu */
-	if (selectedProviders.length == 1) {
+	if (selectedProviders.length === 1) {
 		chrome.contextMenus.create({
 			id: selectedProviders[0].name,
-			title: title,
+			title,
 			contexts: ['image'],
 		});
 		return;
@@ -48,12 +44,12 @@ function createContextMenu(storageProviders) {
 	/* Create menu and submenu entries */
 	chrome.contextMenus.create({
 		id: 'Image-Reverse-Search',
-		title: title,
+		title,
 		contexts: ['image'],
 	});
 
-	for (let p of selectedProviders) {
-		let contextMenuOptions = {
+	for (const p of selectedProviders) {
+		const contextMenuOptions = {
 			parentId: 'Image-Reverse-Search',
 			id: p.name,
 			icons: {
@@ -110,7 +106,7 @@ function reverseSearch(info, storedSettings) {
 	}
 
 	function getProviderURL(targetProviderName) {
-		for (let p of storedSettings.storageProviders) {
+		for (const p of storedSettings.storageProviders) {
 			if (p.name === targetProviderName) {
 				return p.url;
 			}
@@ -131,7 +127,13 @@ function reverseSearch(info, storedSettings) {
 		});
 	}
 
-	chrome.tabs.query({ currentWindow: true, active: true }, openImageSearch);
+	chrome.tabs.query(
+		{
+			currentWindow: true,
+			active: true,
+		},
+		openImageSearch,
+	);
 }
 
 /* Setup context menu */
