@@ -25,11 +25,11 @@ function getDefaultProvidersClone() {
 	return defaultProviders.map(p => p.clone());
 }
 
-// Set up context menu for images
-function createContextMenu(storageProviders) {
+// Set up context menu for images, always get whole storage
+function createContextMenu(storedSettings) {
 	const title = chrome.i18n.getMessage('contextMenuTitle');
 
-	const selectedProviders = storageProviders.storageProviders.filter(p => p.selected);
+	const selectedProviders = storedSettings.storageProviders.filter(p => p.selected);
 
 	/* If there is only one search provider, do not create a submenu */
 	if (selectedProviders.length === 1) {
@@ -87,7 +87,7 @@ const defaultSettings = {
   If we don't, then store the default settings. */
 function checkStoredSettings(storedSettings) {
 	if (Object.getOwnPropertyNames(storedSettings).length) {
-		chrome.storage.sync.get('storageProviders', createContextMenu);
+		chrome.storage.sync.get(null, createContextMenu);
 	} else {
 		chrome.storage.sync.set(defaultSettings);
 		createContextMenu(defaultSettings);
