@@ -86,11 +86,11 @@ const defaultSettings = {
 /* On startup, check whether we have stored settings and set up the context menu.
   If we don't, then store the default settings. */
 function checkStoredSettings(storedSettings) {
-	if (storedSettings.openInBackground == null || !storedSettings.openTabAt || !storedSettings.storageProviders) {
+	if (Object.getOwnPropertyNames(storedSettings).length) {
+		chrome.storage.sync.get('storageProviders', createContextMenu);
+	} else {
 		chrome.storage.sync.set(defaultSettings);
 		createContextMenu(defaultSettings.storageProviders);
-	} else {
-		chrome.storage.sync.get('storageProviders', createContextMenu);
 	}
 }
 
