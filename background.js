@@ -13,7 +13,7 @@ var Provider = class Provider {
 const defaultProviders = [
 	new Provider('Google', '../icons/google.png', 'https://www.google.com/searchbyimage?image_url=%s', true),
 	new Provider('IQDB', '../icons/iqdb.png', 'https://iqdb.org/?url=%s'),
-	new Provider('TinEye', '../icons/tineye.png', 'https://www.tineye.com/parse?url=%s'),
+	new Provider('TinEye', '../icons/tineye.png', 'https://www.tineye.com/search?url=%s'),
 	new Provider('Bing', '../icons/bing.png', 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=%s'),
 	new Provider('Yandex', '../icons/yandex.png', 'https://yandex.com/images/search?url=%s&rpt=imageview'),
 	new Provider('Яндекс', '../icons/yandexru.png', 'https://yandex.ru/images/search?url=%s&rpt=imageview'),
