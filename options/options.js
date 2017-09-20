@@ -257,7 +257,7 @@ saveOptions.onclick = () => {
 
 	/* All input valid */
 	chrome.contextMenus.removeAll();
-	backgroundPage.createContextMenu(storedSettings.storageProviders);
+	backgroundPage.createContextMenu(storedSettings);
 	chrome.storage.sync.set(storedSettings, () => {
 		for (const msg of $$('.alert-danger')) {
 			msg.classList.add('hidden');
