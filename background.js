@@ -90,7 +90,7 @@ function checkStoredSettings(storedSettings) {
 		chrome.storage.sync.get('storageProviders', createContextMenu);
 	} else {
 		chrome.storage.sync.set(defaultSettings);
-        createContextMenu(defaultSettings);
+		createContextMenu(defaultSettings);
 	}
 }
 
