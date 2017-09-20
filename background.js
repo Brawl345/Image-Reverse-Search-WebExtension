@@ -29,7 +29,6 @@ function getDefaultProvidersClone() {
 function createContextMenu(storageProviders) {
 	const title = chrome.i18n.getMessage('contextMenuTitle');
 
-	console.log(storageProviders);
     const selectedProviders = storageProviders.storageProviders.filter(p => p.selected);
 
 	/* If there is only one search provider, do not create a submenu */
