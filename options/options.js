@@ -18,7 +18,7 @@ function i18nOrdinal(n) {
 	return `${n}`;
 }
 
-function alertErrorMsgElement(text) {
+function alertErrorMsg(text) {
 	const msg = createErrorMsgElement(text);
 	$('#alertMessages').appendChild(msg);
 	setTimeout(() => {
@@ -37,7 +37,7 @@ function createErrorMsgElement(text) {
 function validateSpName(name, index) {
 	if (!/^\S{2,15}$/.test(name)) {
 		const msg = chrome.i18n.getMessage('providerNamePlaceholderError', i18nOrdinal(index));
-		alertErrorMsgElement(msg);
+		alertErrorMsg(msg);
 		return false;
 	}
 	return true;
@@ -46,7 +46,7 @@ function validateSpName(name, index) {
 function validateSpUrl(url, index) {
 	if (!/^https?:\/\/.*%s.*$/.test(url)) {
 		const msg = chrome.i18n.getMessage('providerURLPlaceholderError', i18nOrdinal(index));
-		alertErrorMsgElement(msg);
+		alertErrorMsg(msg);
 		return false;
 	}
 	return true;
@@ -237,7 +237,7 @@ saveOptions.onclick = () => {
 		}
 
 		if (li.children[2].classList.contains('sp-edit')) {
-			alertErrorMsgElement(chrome.i18n.getMessage('msgExistEdittingSearchProviders'));
+			alertErrorMsg(chrome.i18n.getMessage('msgExistEdittingSearchProviders'));
 			return;
 		}
 
@@ -246,12 +246,12 @@ saveOptions.onclick = () => {
 	}
 
 	if (selectedCount < 1) {
-		alertErrorMsgElement(chrome.i18n.getMessage('msgAtLeastOneSearchProvider'));
+		alertErrorMsg(chrome.i18n.getMessage('msgAtLeastOneSearchProvider'));
 		return;
 	}
 
 	if (nameSet.size < storedSettings.storageProviders.length) {
-		alertErrorMsgElement(chrome.i18n.getMessage('msgDuplicatedProviderName'));
+		alertErrorMsg(chrome.i18n.getMessage('msgDuplicatedProviderName'));
 		return;
 	}
 
