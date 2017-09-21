@@ -101,5 +101,9 @@
 
 	"msgSuccessSaveOptions": {
 		"message": "已保存！"
+	},
+
+	"contextMenuOpenAll": {
+		"message": "全部打開"
 	}
 }

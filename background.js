@@ -66,6 +66,13 @@ function createContextMenu(storedSettings) {
 			chrome.contextMenus.create(contextMenuOptions);
 		}
 	}
+	chrome.contextMenus.create({ parentId: 'Image-Reverse-Search', type: 'separator' });
+	chrome.contextMenus.create({
+		parentId: 'Image-Reverse-Search',
+		id: 'openAll',
+		title: chrome.i18n.getMessage('contextMenuOpenAll'),
+		contexts: ['image'],
+	});
 }
 
 /* Default settings. If there is nothing in storage, use these values. */
@@ -96,19 +103,33 @@ function checkStoredSettings(storedSettings) {
 
 function reverseSearch(info, storedSettings) {
 	function getTabIndex(openTabAt, tabs) {
-		if (openTabAt == 'right') {
-			return tabs[0].index + 1;
-		} else if (openTabAt == 'left') {
-			return tabs[0].index;
-		} else if (openTabAt == 'end') {
-			return null;
+		const thisTab = tabs.filter(t => t.active)[0];
+		if (openTabAt === 'right') {
+			return thisTab.index + 1;
+		} else if (openTabAt === 'left') {
+			return thisTab.index;
+		} else {
+			/* openTabAt === 'end' */
+			return tabs.length;
 		}
 	}
 
-	function getProviderURL(targetProviderName) {
-		for (const p of storedSettings.storageProviders) {
-			if (p.name === targetProviderName) {
-				return p.url;
+	/* return array of url string */
+	function getProviderURLs(targetProviderName) {
+		if (targetProviderName === 'openAll') {
+			const urls = [];
+			for (const p of storedSettings.storageProviders) {
+				if (p.selected) {
+					urls.push(p.url);
+				}
+			}
+			/* Reverse for correct order because we insert by tabIndex */
+			return urls.reverse();
+		} else {
+			for (const p of storedSettings.storageProviders) {
+				if (p.name === targetProviderName) {
+					return [p.url];
+				}
 			}
 		}
 	}
@@ -116,24 +137,21 @@ function reverseSearch(info, storedSettings) {
 	const imageURL = info.srcUrl;
 	const openInBackground = storedSettings.openInBackground;
 	const openTabAt = storedSettings.openTabAt;
-	const searchProvider = getProviderURL(info.menuItemId);
+	const searchProviders = getProviderURLs(info.menuItemId);
 
 	function openImageSearch(tabs) {
-		tabIndex = getTabIndex(openTabAt, tabs);
-		chrome.tabs.create({
-			url: searchProvider.replace('%s', encodeURIComponent(imageURL)),
-			active: !openInBackground,
-			index: tabIndex,
-		});
+		const tabIndex = getTabIndex(openTabAt, tabs);
+
+		for (const p of searchProviders) {
+			chrome.tabs.create({
+				url: p.replace('%s', encodeURIComponent(imageURL)),
+				active: !openInBackground,
+				index: tabIndex,
+			});
+		}
 	}
 
-	chrome.tabs.query(
-		{
-			currentWindow: true,
-			active: true,
-		},
-		openImageSearch,
-	);
+	chrome.tabs.query({ currentWindow: true }, openImageSearch);
 }
 
 /* Setup context menu */
