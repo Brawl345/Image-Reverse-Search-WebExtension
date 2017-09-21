@@ -7,6 +7,13 @@ WebExtension which adds an option to the context menu to search with an image on
 * Available for Opera in the [Opera Add-Ons Store](https://addons.opera.com/extensions/details/image-reverse-search/)
 * Available for Chrome in the [Releases section](https://github.com/Brawl345/Image-Reverse-Search-with-Google/releases) (drag CRX into chrome://extensions)
 
+## Features
+* Add multiple custom search providers with your own URL
+* Name them and upload a custom icon
+* Show multiple search providers in a submenu
+* Open search page left, right or at the end
+* Open search page in background or foreground
+
 ## Thanks to
 * [FlandreDaisuki](https://github.com/Brawl345/Image-Reverse-Search-WebExtension/issues?q=is%3Apr+author%3AFlandreDaisuki)
 * [yfdyh000](https://github.com/Brawl345/Image-Reverse-Search-WebExtension/issues?q=is%3Apr+author%3Ayfdyh000)
