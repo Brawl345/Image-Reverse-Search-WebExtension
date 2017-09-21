@@ -1,9 +1,9 @@
- body {
-    padding-top: 60px;
+body {
+	padding-top: 60px;
 }
 
 .jumbotron {
-    padding: 2rem 2rem;
+	padding: 2rem 2rem;
 }
 
 .hidden {
@@ -27,6 +27,7 @@
 
 #searchProviderList .sp-icon img {
 	max-width: 24px;
+	cursor: pointer;
 }
 
 #searchProviderList .sp-name {

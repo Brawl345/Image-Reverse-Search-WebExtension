@@ -91,6 +91,14 @@
 		"message": "Some search provider name duplicated!"
 	},
 
+	"msgIconUploadNotImage": {
+		"message": "Please upload available image format! (png, jpg, ico)"
+	},
+
+	"msgIconUploadNotSquareImage": {
+		"message": "Please upload square image!"
+	},
+
 	"msgSuccessSaveOptions": {
 		"message": "Saved!"
 	}

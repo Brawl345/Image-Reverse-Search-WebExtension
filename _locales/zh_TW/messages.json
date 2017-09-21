@@ -88,7 +88,15 @@
 	},
 
 	"msgDuplicatedProviderName": {
-		"message": "搜尋引擎名字重複"
+		"message": "搜尋引擎名字重複！"
+	},
+
+	"msgIconUploadNotImage": {
+		"message": "請上傳合法的圖片檔案！ (png, jpg, ico)"
+	},
+
+	"msgIconUploadNotSquareImage": {
+		"message": "請上傳正方形圖片！"
 	},
 
 	"msgSuccessSaveOptions": {

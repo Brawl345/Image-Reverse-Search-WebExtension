@@ -18,7 +18,7 @@ function i18nOrdinal(n) {
 	return `${n}`;
 }
 
-function alertErrorMsgElement(text) {
+function alertErrorMsg(text) {
 	const msg = createErrorMsgElement(text);
 	$('#alertMessages').appendChild(msg);
 	setTimeout(() => {
@@ -37,7 +37,7 @@ function createErrorMsgElement(text) {
 function validateSpName(name, index) {
 	if (!/^\S{2,15}$/.test(name)) {
 		const msg = chrome.i18n.getMessage('providerNamePlaceholderError', i18nOrdinal(index));
-		alertErrorMsgElement(msg);
+		alertErrorMsg(msg);
 		return false;
 	}
 	return true;
@@ -46,7 +46,7 @@ function validateSpName(name, index) {
 function validateSpUrl(url, index) {
 	if (!/^https?:\/\/.*%s.*$/.test(url)) {
 		const msg = chrome.i18n.getMessage('providerURLPlaceholderError', i18nOrdinal(index));
-		alertErrorMsgElement(msg);
+		alertErrorMsg(msg);
 		return false;
 	}
 	return true;
@@ -102,8 +102,76 @@ function createSpIconElement(src) {
 	//   <img src=""/>
 	// </span>
 	const span = $el('span');
-	span.innerHTML = `<img src="${src}"/>`;
 	span.classList.add('sp-icon', 'input-group-addon');
+
+	const iconImg = new Image();
+	iconImg.src = src;
+
+	span.appendChild(iconImg);
+
+	const msgIconUploadNotImage = chrome.i18n.getMessage('msgIconUploadNotImage');
+	const msgIconUploadNotSquareImage = chrome.i18n.getMessage('msgIconUploadNotSquareImage');
+
+	/* custom icon by click icon image */
+	iconImg.onclick = () => {
+		const fileInput = document.createElement('input');
+		fileInput.type = 'file';
+		fileInput.onchange = () => {
+			const file = fileInput.files[0];
+			if (file.type.includes('image')) {
+				const tmpImg = new Image();
+
+				/* input img load failed */
+				tmpImg.onerror = () => {
+					alertErrorMsg(msgIconUploadNotImage);
+				};
+
+				/* input img load successfully */
+				tmpImg.onload = () => {
+					if (tmpImg.naturalHeight !== tmpImg.naturalWidth) {
+						alertErrorMsg(msgIconUploadNotSquareImage);
+						return;
+					}
+
+					const canvas = document.createElement('canvas');
+					/* we use 24 * 24 resolution in options.html and less resolution in contextMenu */
+					canvas.width = 24;
+					canvas.height = 24;
+
+					const ctx = canvas.getContext('2d');
+					ctx.drawImage(tmpImg, 0, 0, 24, 24);
+
+					/* Do some strategy to minimize base64 */
+					function iconEncodeURL(ctx) {
+						const pixels = ctx.getImageData(0, 0, 24, 24).data;
+						for (const i in pixels) {
+							if (i % 4 === 3 && pixels[i] !== 255) {
+								/* using alpha channel */
+								return ctx.canvas.toDataURL();
+							}
+						}
+
+						const pngBase64 = ctx.canvas.toDataURL();
+						/* jpeg quality 0.8 is magic number 😅 */
+						const jpegBase64 = ctx.canvas.toDataURL('image/jpeg', 0.8);
+						if (pngBase64.length < jpegBase64.length) {
+							return pngBase64;
+						} else {
+							return jpegBase64;
+						}
+					}
+
+					iconImg.src = iconEncodeURL(ctx);
+				};
+
+				tmpImg.src = URL.createObjectURL(file);
+			} else {
+				alertErrorMsg(msgIconUploadNotImage);
+			}
+		};
+		fileInput.click();
+	};
+
 	return span;
 }
 
@@ -237,7 +305,7 @@ saveOptions.onclick = () => {
 		}
 
 		if (li.children[2].classList.contains('sp-edit')) {
-			alertErrorMsgElement(chrome.i18n.getMessage('msgExistEdittingSearchProviders'));
+			alertErrorMsg(chrome.i18n.getMessage('msgExistEdittingSearchProviders'));
 			return;
 		}
 
@@ -246,12 +314,12 @@ saveOptions.onclick = () => {
 	}
 
 	if (selectedCount < 1) {
-		alertErrorMsgElement(chrome.i18n.getMessage('msgAtLeastOneSearchProvider'));
+		alertErrorMsg(chrome.i18n.getMessage('msgAtLeastOneSearchProvider'));
 		return;
 	}
 
 	if (nameSet.size < storedSettings.storageProviders.length) {
-		alertErrorMsgElement(chrome.i18n.getMessage('msgDuplicatedProviderName'));
+		alertErrorMsg(chrome.i18n.getMessage('msgDuplicatedProviderName'));
 		return;
 	}
 
