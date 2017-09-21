@@ -101,5 +101,9 @@
 
 	"msgSuccessSaveOptions": {
 		"message": "Gespeichert!"
+	},
+
+ 	"contextMenuOpenAll": {
+		"message": "Alle öffnen"
 	}
 }
