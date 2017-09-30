@@ -15,6 +15,10 @@
 		"message": "Open in background"
 	},
 
+	"searchingOfLinksLabel": {
+		"message": "Enable searching of links"
+	},
+
 	"optionsPageTitle": {
 		"message": "Options"
 	},

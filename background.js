@@ -27,6 +27,10 @@ function getDefaultProvidersClone() {
 
 // Set up context menu for images, always get whole storage
 function createContextMenu(storedSettings) {
+	const contexts = storedSettings.searchingOfLinks ?
+		['image', 'link'] :
+		['image'];
+
 	const title = chrome.i18n.getMessage('contextMenuTitle');
 
 	const selectedProviders = storedSettings.storageProviders.filter(p => p.selected);
@@ -36,7 +40,7 @@ function createContextMenu(storedSettings) {
 		chrome.contextMenus.create({
 			id: selectedProviders[0].name,
 			title,
-			contexts: ['image'],
+			contexts: contexts,
 		});
 		return;
 	}
@@ -45,7 +49,7 @@ function createContextMenu(storedSettings) {
 	chrome.contextMenus.create({
 		id: 'Image-Reverse-Search',
 		title,
-		contexts: ['image'],
+		contexts: contexts,
 	});
 
 	for (const p of selectedProviders) {
@@ -56,7 +60,7 @@ function createContextMenu(storedSettings) {
 				64: p.icon,
 			},
 			title: p.name,
-			contexts: ['image'],
+			contexts: contexts,
 		};
 		try {
 			chrome.contextMenus.create(contextMenuOptions);
@@ -71,7 +75,7 @@ function createContextMenu(storedSettings) {
 		parentId: 'Image-Reverse-Search',
 		id: 'openAll',
 		title: chrome.i18n.getMessage('contextMenuOpenAll'),
-		contexts: ['image'],
+		contexts: contexts,
 	});
 }
 
@@ -134,10 +138,17 @@ function reverseSearch(info, storedSettings) {
 		}
 	}
 
-	const imageURL = info.srcUrl;
 	const openInBackground = storedSettings.openInBackground;
+	const searchingOfLinks = storedSettings.searchingOfLinks;
 	const openTabAt = storedSettings.openTabAt;
 	const searchProviders = getProviderURLs(info.menuItemId);
+
+	var imageURL;
+	if (searchingOfLinks && info.mediaType !== "image") {
+		imageURL = info.linkUrl;
+	} else {
+		imageURL = info.srcUrl;
+	}
 
 	function openImageSearch(tabs) {
 		const tabIndex = getTabIndex(openTabAt, tabs);
