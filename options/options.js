@@ -305,7 +305,7 @@ saveOptions.onclick = () => {
 		}
 
 		if (li.children[2].classList.contains('sp-edit')) {
-			alertErrorMsg(chrome.i18n.getMessage('msgExistEdittingSearchProviders'));
+			alertErrorMsg(chrome.i18n.getMessage('msgExistEditingSearchProviders'));
 			return;
 		}
 

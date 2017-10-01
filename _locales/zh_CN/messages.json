@@ -81,7 +81,7 @@
   "msgAtLeastOneSearchProvider": {
     "message": "请选择至少一个搜索提供商！"
   },
-  "msgExistEdittingSearchProviders": {
+  "msgExistEditingSearchProviders": {
     "message": "部分搜索提供商正被编辑！点击 ✓ 完成编辑。"
   },
   "msgDuplicatedProviderName": {
