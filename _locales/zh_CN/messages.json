@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Image Reverse Search"
+    "message": "Reverse Image Search"
   },
 
   "extensionDescription": {
@@ -10,7 +10,11 @@
   "contextMenuTitle": {
     "message": "反向搜索图像"
   },
-  
+
+	"openInBackgroundLabel": {
+		"message": "标签页打开在后台"
+	},
+
   "optionsPageTitle": {
     "message": "选项"
   },
@@ -19,51 +23,81 @@
     "message": "打开搜索页面"
   },
   
-  "openAtRight": {
+  "openTabAtRight": {
     "message": "当前标签页右侧"
   },
   
-  "openAtLeft": {
+  "openTabAtLeft": {
     "message": "当前标签页左侧"
   },
   
-  "openAtEnd": {
+  "openTabAtEnd": {
     "message": "标签栏末尾"
-  },
-  
-  "openInBackground": {
-    "message": "在后台打开"
   },
   
   "searchProviderLabel": {
     "message": "搜索提供商"
   },
 
-  "customSearchProviderLabel": {
-    "message": "自定义搜索提供商"
-  },
-  
-  "searchProvidersError": {
-    "message": "请选择至少一个搜索引擎！"
-  },
-  
-  "customSearchProviderPlaceholder": {
-    "message": "输入一个网址，使用 %s 作为图像网址的占位符..."
-  },
-  
-  "cseError": {
-    "message": "不是有效的网址。它需要包含 %s，以http(s):// 开头，不包含任何引号或空格。"
-  },
-  
+  	"providerNamePlaceholder": {
+		"message": "2-15 个字母，无空格"
+	},
+
+	"providerURLPlaceholder": {
+		"message": "应以 http(s):// 开头，并用 %s 表示图像网址位置..."
+	},
+
+	"addSearchProvider": {
+		"message": "添加提供商"
+	},
+
+	"restoreDefaultSearchProviders": {
+		"message": "恢复默认设置"
+	},
+
+	"providerNamePlaceholderError": {
+		"message": "第 $index$ 个提供商的名称无效。请使用 2-15 个字母，无空格",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
+	"providerURLPlaceholderError": {
+		"message": "第 $index$ 个提供商的网址无效。请以 http(s):// 开头，并用 %s 表示图像网址位置。",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
   "saveOptions": {
     "message": "保存选项"
   },
-  
-  "saved": {
+  "msgAtLeastOneSearchProvider": {
+    "message": "请选择至少一个搜索提供商！"
+  },
+  "msgExistEdittingSearchProviders": {
+    "message": "部分搜索提供商正被编辑！点击 ✓ 完成编辑。"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "部分搜索提供商的名称重复！"
+  },
+  "msgIconUploadNotImage": {
+    "message": "请上传可用的图像格式 (png, jpg, ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "请上传正方形图像！"
+  },
+  "msgSuccessSaveOptions": {
     "message": "已保存！"
   },
-  
-  "error": {
-    "message": "出错，设置未能保存！"
+
+  "contextMenuOpenAll": {
+    "message": "全部打开"
   }
 }
