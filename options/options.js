@@ -1,6 +1,7 @@
 const backgroundPage = chrome.extension.getBackgroundPage();
 const Provider = backgroundPage.Provider; // class Provider
 const msgTimeout = 1800;
+const extensionUUID = chrome.extension.getURL('');
 
 /** Utility Functions **/
 const $ = document.querySelector.bind(document);
@@ -105,7 +106,7 @@ function createSpIconElement(src) {
 	span.classList.add('sp-icon', 'input-group-addon');
 
 	const iconImg = new Image();
-	iconImg.src = src;
+	iconImg.src = chrome.extension.getURL(src);
 
 	span.appendChild(iconImg);
 
@@ -192,7 +193,7 @@ function createSpCheckboxElement(selected) {
 	return span;
 }
 
-function createSearchProviderElement(name = '', icon = '../icons/other.png', url = '', selected = false, edit = true) {
+function createSearchProviderElement(name = '', icon = 'icons/other.png', url = '', selected = false, edit = true) {
 	const root = $el('div');
 	root.classList.add('searchProviderListItem', 'input-group');
 
@@ -288,7 +289,7 @@ saveOptions.onclick = () => {
 	for (const li of searchProviderList.children) {
 		const index = Array.from(searchProviderList.children).indexOf(li) + 1;
 		const selected = li.children[0].firstElementChild.firstElementChild.checked;
-		const icon = li.children[1].firstElementChild.src;
+		const icon = li.children[1].firstElementChild.src.replace(extensionUUID, '');
 		const name = li.children[2].value;
 		const url = li.children[3].value;
 
