@@ -83,8 +83,8 @@
 		"message": "Please choose at least one search provider!"
 	},
 
-	"msgExistEdittingSearchProviders": {
-		"message": "Some search provider is editing! Click ✓ to finish editting."
+	"msgExistEditingSearchProviders": {
+		"message": "Some search provider is editing! Click ✓ to finish editing."
 	},
 
 	"msgDuplicatedProviderName": {
