@@ -19,6 +19,7 @@ const defaultProviders = [
 	new Provider('Яндекс', 'icons/yandexru.png', 'https://yandex.ru/images/search?url=%s&rpt=imageview'),
 	new Provider('Baidu', 'icons/baidu.png', 'https://image.baidu.com/n/pc_search?queryImageUrl=%s'),
 	new Provider('SauceNAO', 'icons/saucenao.png', 'https://saucenao.com/search.php?db=999&url=%s'),
+	new Provider('Sogou', 'icons/sogou.ico', 'https://pic.sogou.com/ris?query=%s&flag=1'),
 ];
 
 function getDefaultProvidersClone() {
