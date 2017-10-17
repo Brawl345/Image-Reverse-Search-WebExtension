@@ -1,6 +1,6 @@
 {
 	"extensionName": {
-		"message": "Tersinden görsel arama"
+		"message": "Reverse Image Search"
 	},
 
 	"extensionDescription": {
@@ -8,7 +8,7 @@
 	},
 
 	"contextMenuTitle": {
-		"message": "Tersinden görsel arama"
+		"message": "Görselle Ara"
 	},
 
 	"openInBackgroundLabel": {
