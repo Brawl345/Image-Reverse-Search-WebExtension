@@ -56,7 +56,7 @@
 	},
 
 	"providerNamePlaceholderError": {
-		"message": "$index$ sağlayıcısının adı geçersiz. Lütfen boşluk olmadan 2-15 harf kullanın",
+		"message": "$index$ numaralı sağlayıcının adı geçersiz. Lütfen boşluk olmadan 2-15 harf kullanın",
 		"placeholders": {
 			"index": {
 				"content": "$1",
