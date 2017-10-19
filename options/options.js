@@ -59,7 +59,10 @@ function createSpRemoveElement() {
 	// </a>
 	const a = $el('a');
 	a.classList.add('sp-remove', 'input-group-addon');
-	a.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+    i = document.createElement('i');
+    i.classList.add('fa', 'fa-trash');
+    i.setAttribute('aria-hidden', 'true');
+    a.appendChild(i);
 	return a;
 }
 
@@ -70,9 +73,14 @@ function createSpStatusElement() {
 	// </a>
 	const a = $el('a');
 	a.classList.add('sp-status', 'input-group-addon');
-	a.innerHTML = `
-	<i class="fa fa-check text-success" aria-hidden="true"></i>
-	<i class="fa fa-times text-danger" aria-hidden="true"></i>`;
+    i = document.createElement('i');
+    i.classList.add('fa', 'fa-check', 'text-success');
+    i.setAttribute('aria-hidden', 'true');
+    a.appendChild(i);
+    i = document.createElement('i');
+    i.classList.add('fa', 'fa-times', 'text-danger');
+    i.setAttribute('aria-hidden', 'true');
+    a.appendChild(i);
 	return a;
 }
 
@@ -184,12 +192,21 @@ function createSpCheckboxElement(selected) {
 	//   </label>
 	// </span>
 	const span = $el('span');
-	span.innerHTML = `
-	<label class="form-check-label custom-control custom-checkbox">
-		<input class="form-check-input custom-control-input" type="checkbox" ${selected ? 'checked' : ''}/>
-		<span class="custom-control-indicator"/>
-	</label>`;
-	span.classList.add('sp-selected', 'input-group-addon', 'form-check');
+    span.classList.add('sp-selected', 'input-group-addon', 'form-check');
+
+    label = document.createElement('label');
+    label.classList.add('form-check-label', 'custom-control', 'custom-checkbox');
+    span.appendChild(label);
+
+    input = document.createElement('input');
+    input.classList.add('form-check-input', 'custom-control-input');
+    input.setAttribute('type', 'checkbox');
+    if (selected) {input.checked = true;} else {input.checked = false;}
+    label.appendChild(input);
+
+    spancci = document.createElement('span');
+    spancci.classList.add('custom-control-indicator');
+    label.appendChild(spancci);
 	return span;
 }
 
