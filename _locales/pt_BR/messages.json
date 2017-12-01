@@ -1,0 +1,109 @@
+{
+	"extensionName": {
+		"message": "Pesquisa Reversa de Imagens"
+	},
+
+	"extensionDescription": {
+		"message": "Adicionar uma opção ao menu de contexto para fazer uma busca reversa de uma imagem em vários serviços"
+	},
+
+	"contextMenuTitle": {
+		"message": "Pesquisa Reversa de Imagens"
+	},
+
+	"openInBackgroundLabel": {
+		"message": "Abrir em Segundo Plano"
+	},
+
+	"optionsPageTitle": {
+		"message": "Opções"
+	},
+
+	"openTabAtLabel": {
+		"message": "Abrir a página de busca"
+	},
+
+	"openTabAtRight": {
+		"message": "A direita da guia atual"
+	},
+
+	"openTabAtLeft": {
+		"message": "A esquerda da guia atual"
+	},
+
+	"openTabAtEnd": {
+		"message": "No fim"
+	},
+
+	"searchProviderLabel": {
+		"message": "Provedor de Busca"
+	},
+
+	"providerNamePlaceholder": {
+		"message": "2-15 letras sem espaço"
+	},
+
+	"providerURLPlaceholder": {
+		"message": "http(s):// no início e %s para a url da imagem..."
+	},
+
+	"addSearchProvider": {
+		"message": "Adicionar Provedor"
+	},
+
+	"restoreDefaultSearchProviders": {
+		"message": "Restaurar Padrão"
+	},
+
+	"providerNamePlaceholderError": {
+		"message": "O nome do provedor $index$ é inválido. Por favor use de 2-15 letras sem espaço",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
+	"providerURLPlaceholderError": {
+		"message": "A url do provedor $index$ é invalido. Use http(s):// no inicio e %s como espaço reservado para a url da imagem.",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
+	"saveOptions": {
+		"message": "Salvar Opções"
+	},
+
+	"msgAtLeastOneSearchProvider": {
+		"message": "Por favor escolha pelo menos um provedor de busca!"
+	},
+
+	"msgExistEditingSearchProviders": {
+		"message": "Algum provedor de busca está sendo editado! Clique em ✓ para finalizar a edição."
+	},
+
+	"msgDuplicatedProviderName": {
+		"message": "Algum provedor de busca está com o nome duplicado!"
+	},
+
+	"msgIconUploadNotImage": {
+		"message": "Por favor envie um formato de imagem válido! (png, jpg,ico)"
+	},
+
+	"msgIconUploadNotSquareImage": {
+		"message": "Por favor envie uma imagem quadrada!"
+	},
+
+	"msgSuccessSaveOptions": {
+		"message": "Salvo!"
+	},
+
+	"contextMenuOpenAll": {
+		"message": "Abrir todos"
+	}
+}
