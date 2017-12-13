@@ -1,0 +1,109 @@
+{
+	"extensionName": {
+		"message": "Reverse Image Search"
+	},
+
+	"extensionDescription": {
+		"message": "コンテキストメニューにオプションを追加することで、さまざまなサービスで類似した画像の検索ができます"
+	},
+
+	"contextMenuTitle": {
+		"message": "Reverse Image Search"
+	},
+
+	"openInBackgroundLabel": {
+		"message": "バックグラウンドで開く"
+	},
+
+	"optionsPageTitle": {
+		"message": "オプション"
+	},
+
+	"openTabAtLabel": {
+		"message": "検索ページを開く"
+	},
+
+	"openTabAtRight": {
+		"message": "現在のタブの右"
+	},
+
+	"openTabAtLeft": {
+		"message": "現在のタブの左"
+	},
+
+	"openTabAtEnd": {
+		"message": "At the end"
+	},
+
+	"searchProviderLabel": {
+		"message": "検索エンジン"
+	},
+
+	"providerNamePlaceholder": {
+		"message": "空白を含まない2～15文字"
+	},
+
+	"providerURLPlaceholder": {
+		"message": "http(s):// at begin and %s for image url..."
+	},
+
+	"addSearchProvider": {
+		"message": "検索エンジンを追加"
+	},
+
+	"restoreDefaultSearchProviders": {
+		"message": "デフォルトを復元"
+	},
+
+	"providerNamePlaceholderError": {
+		"message": "検索エンジン $index$ の名前が無効です。空白を含まない2～15文字を使用してください",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
+	"providerURLPlaceholderError": {
+		"message": "The url of $index$ provider is invalid. Use http(s):// at begin and %s as placeholder for image url.",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
+	"saveOptions": {
+		"message": "オプションを保存"
+	},
+
+	"msgAtLeastOneSearchProvider": {
+		"message": "少なくとも1つの検索エンジンを選択してください！"
+	},
+
+	"msgExistEditingSearchProviders": {
+		"message": "一部の検索エンジンが編集されています！✓ をクリックして編集を終了します。"
+	},
+
+	"msgDuplicatedProviderName": {
+		"message": "一部の検索エンジン名が重複しています！"
+	},
+
+	"msgIconUploadNotImage": {
+		"message": "利用可能な画像フォーマットでアップロードしてください！ (png, jpg, ico)"
+	},
+
+	"msgIconUploadNotSquareImage": {
+		"message": "正方形の画像をアップロードしてください！"
+	},
+
+	"msgSuccessSaveOptions": {
+		"message": "保存しました！"
+	},
+
+	"contextMenuOpenAll": {
+		"message": "すべて開く"
+	}
+}
