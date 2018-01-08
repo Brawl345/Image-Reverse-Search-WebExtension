@@ -15,6 +15,10 @@
 		"message": "Open in background"
 	},
 
+	"openAllByDefaultLabel": {
+		"message": "Open all by default"
+	},
+
 	"optionsPageTitle": {
 		"message": "Options"
 	},
