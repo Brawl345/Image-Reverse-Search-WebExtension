@@ -1,0 +1,109 @@
+{
+	"extensionName": {
+		"message": "Sök med bild"
+	},
+
+	"extensionDescription": {
+		"message": "Lägger till ett alternativ i kontextmenyn för att söka med bild på olika söktjänster"
+	},
+
+	"contextMenuTitle": {
+		"message": "Sök med bild"
+	},
+
+	"openInBackgroundLabel": {
+		"message": "Öppna i bakgrunden"
+	},
+
+	"optionsPageTitle": {
+		"message": "Alternativ"
+	},
+
+	"openTabAtLabel": {
+		"message": "Öppna söksidan"
+	},
+
+	"openTabAtRight": {
+		"message": "Till höger om nuvarande flik"
+	},
+
+	"openTabAtLeft": {
+		"message": "Till vänster om nuvarande flik"
+	},
+
+	"openTabAtEnd": {
+		"message": "I slutet"
+	},
+
+	"searchProviderLabel": {
+		"message": "Söktjänst"
+	},
+
+	"providerNamePlaceholder": {
+		"message": "2-15 tecken utan mellanslag"
+	},
+
+	"providerURLPlaceholder": {
+		"message": "http(s):// i början och %s för bild-url..."
+	},
+
+	"addSearchProvider": {
+		"message": "Lägg till söktjänst"
+	},
+
+	"restoreDefaultSearchProviders": {
+		"message": "Återställ standard"
+	},
+
+	"providerNamePlaceholderError": {
+		"message": "Namnet för söktjänsten $index$ är ogiltigt. Var god använd 2-15 tecken utan mellanslag",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
+	"providerURLPlaceholderError": {
+		"message": "Url:en för söktjänsten $index$ är ogiltig. Ange http(s):// i början och %s som platshållare för bildens url.",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modified options/options.js#i18nOrdinal if need"
+			}
+		}
+	},
+
+	"saveOptions": {
+		"message": "Spara ändringar"
+	},
+
+	"msgAtLeastOneSearchProvider": {
+		"message": "Välj minst en söktjänst!"
+	},
+
+	"msgExistEditingSearchProviders": {
+		"message": "En söktjänst redigeras! Klicka på ✓ för att slutföra redigeringen."
+	},
+
+	"msgDuplicatedProviderName": {
+		"message": "En söktjänsts namn är dubblett!"
+	},
+
+	"msgIconUploadNotImage": {
+		"message": "Formatet stöds inte! (png, jpg, ico)"
+	},
+
+	"msgIconUploadNotSquareImage": {
+		"message": "Bilden måste vara kvadratisk!"
+	},
+
+	"msgSuccessSaveOptions": {
+		"message": "Sparat!"
+	},
+
+	"contextMenuOpenAll": {
+		"message": "Öppna alla"
+	}
+}
