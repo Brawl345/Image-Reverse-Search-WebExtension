@@ -1,0 +1,109 @@
+{
+	"extensionName": {
+		"message": "Reverse Image Search"
+	},
+
+	"extensionDescription": {
+		"message": "Ajoute une option au menu contextuel pour éffectuer une recherche inversée d'une image sur une variété de services"
+	},
+
+	"contextMenuTitle": {
+		"message": "Recherche inversée d'image"
+	},
+
+	"openInBackgroundLabel": {
+		"message": "Ouvrir en arrière-plan"
+	},
+
+	"optionsPageTitle": {
+		"message": "Réglages"
+	},
+
+	"openTabAtLabel": {
+		"message": "Ouvrir la page de recherche"
+	},
+
+	"openTabAtRight": {
+		"message": "A droite de l'onglet actuel"
+	},
+
+	"openTabAtLeft": {
+		"message": "A gauche de l'onglet actuel"
+	},
+
+	"openTabAtEnd": {
+		"message": "A la fin"
+	},
+
+	"searchProviderLabel": {
+		"message": "Fournisseur de recherche"
+	},
+
+	"providerNamePlaceholder": {
+		"message": "2-15 lettres sans espace"
+	},
+
+	"providerURLPlaceholder": {
+		"message": "http(s):// au début et %s pour l'url de l'image..."
+	},
+
+	"addSearchProvider": {
+		"message": "Ajouter fournisseur"
+	},
+
+	"restoreDefaultSearchProviders": {
+		"message": "Restaurer par défaut"
+	},
+
+	"providerNamePlaceholderError": {
+		"message": "Le nom du fournisseur $index$ est invalide. Merci d'utiliser 2-15 lettres sans espace",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "options/options.js modifié#i18nOrdinal si besoin"
+			}
+		}
+	},
+
+	"providerURLPlaceholderError": {
+		"message": "L'URL du fournisseur $index$ est invalide. Utiliser http(s):// au début et %s en tant qu'emplacement pour l'URL de l'image.",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "options/options.js modifié#i18nOrdinal si besoin"
+			}
+		}
+	},
+
+	"saveOptions": {
+		"message": "Enregistrer réglages"
+	},
+
+	"msgAtLeastOneSearchProvider": {
+		"message": "Merci de choisir au moins un fournisseur de recherche!"
+	},
+
+	"msgExistEditingSearchProviders": {
+		"message": "Un fournisseur de recherche est en train d'éditer ! Cliquez sur ✓ pour terminer l'édition."
+	},
+
+	"msgDuplicatedProviderName": {
+		"message": "Un nom de fournisseur de recherche dupliqué !"
+	},
+
+	"msgIconUploadNotImage": {
+		"message": "Veuillez télécharger un format d'image disponible ! (png, jpg, ico)"
+	},
+
+	"msgIconUploadNotSquareImage": {
+		"message": "Merci de télécharger une image carrée"
+	},
+
+	"msgSuccessSaveOptions": {
+		"message": "Enregistrée!"
+	},
+
+	"contextMenuOpenAll": {
+		"message": "Tout ouvrir"
+	}
+}
