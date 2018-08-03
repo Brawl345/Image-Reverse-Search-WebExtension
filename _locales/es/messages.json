@@ -1,0 +1,108 @@
+{
+	"extensionName": {
+		"message": "Búsqueda inversa de imagen"
+	},
+
+	"extensionDescription": {
+		"message": "Añade una opción al menú contextual para buscar inversamente una imagen en varios servicios"
+	},
+
+	"contextMenuTitle": {
+		"message": "Búsqueda inversa de imagen"
+	},
+
+	"openInBackgroundLabel": {
+		"message": "Abrir en segundo plano"
+	},
+
+	"optionsPageTitle": {
+		"message": "Opciones"
+	},
+
+	"openTabAtLabel": {
+		"message": "Abrir la página de búsquedas"
+	},
+
+	"openTabAtRight": {
+		"message": "A la derecha de la pestaña actual"
+	},
+
+	"openTabAtLeft": {
+		"message": "A la izquierda de la pestaña actual"
+	},
+
+	"openTabAtEnd": {
+		"message": "Al final"
+	},
+
+	"searchProviderLabel": {
+		"message": "Proveedor de búsquedas"
+	},
+
+	"providerNamePlaceholder": {
+		"message": "2-15 letras sin espacio"
+	},
+
+	"providerURLPlaceholder": {
+		"message": "http(s):// al comienzo y %s como ubicador para la url de la imagen..."
+	},
+
+	"addSearchProvider": {
+		"message": "Añadir proveedor"
+	},
+
+	"restoreDefaultSearchProviders": {
+		"message": "Restaurar predeterminados"
+	},
+
+	"providerNamePlaceholderError": {
+		"message": "El nombre del proveedor $index$ es inválido. Por favor use de 2-15 letras sin espacios",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modificar options/options.js#i18nOrdinal de ser necesario"
+			}
+		}
+	},
+
+	"providerURLPlaceholderError": {
+		"message": "El url del proveedor $index$ es inválido. Use http(s):// al inicio y %s como ubicador para el url de la imagen.",
+		"placeholders": {
+			"index": {
+				"content": "$1",
+				"description": "Modificar options/options.js#i18nOrdinal de ser necesario"
+			}
+		}
+	},
+
+	"saveOptions": {
+		"message": "Guardar opciones"
+	},
+
+	"msgAtLeastOneSearchProvider": {
+		"message": "Por favor escoja al menos un proveedor de búsquedas!"
+	},
+
+	"msgExistEditingSearchProviders": {
+		"message": "Algún proveedor está siendo editado! Click ✓ para finalizar la edición."
+	},
+
+	"msgDuplicatedProviderName": {
+		"message": "Algún nombre de proveedor está duplicado!"
+	},
+
+	"msgIconUploadNotImage": {
+		"message": "Por favor suba formatos admitidos! (png, jpg, ico)"
+	},
+
+	"msgIconUploadNotSquareImage": {
+		"message": "Por favor suba una imagen rectangular!"
+	},
+
+	"msgSuccessSaveOptions": {
+		"message": "Guardado!"
+	},
+
+	"contextMenuOpenAll": {
+		"message": "Abrir todos"
+	}
