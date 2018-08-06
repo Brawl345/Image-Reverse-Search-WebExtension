@@ -17,6 +17,7 @@ WebExtension which adds an option to the context menu to search with an image on
 ## Thanks to
 * [FlandreDaisuki](https://github.com/Brawl345/Image-Reverse-Search-WebExtension/issues?q=is%3Apr+author%3AFlandreDaisuki)
 * [yfdyh000](https://github.com/Brawl345/Image-Reverse-Search-WebExtension/issues?q=is%3Apr+author%3Ayfdyh000)
+* All translators and other contributors
 
 ## Screenshots
 ![Screenshot](https://raw.githubusercontent.com/Brawl345/Image-Reverse-Search-with-Google/master/screenshot.png)
