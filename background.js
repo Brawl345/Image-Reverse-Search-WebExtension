@@ -141,12 +141,14 @@ function reverseSearch(info, storedSettings) {
 
 	function openImageSearch(tabs) {
 		const tabIndex = getTabIndex(openTabAt, tabs);
-
+		const thisTab = tabs.filter(t => t.active)[0];
+		
 		for (const p of searchProviders) {
 			chrome.tabs.create({
 				url: p.replace('%s', encodeURIComponent(imageURL)),
 				active: !openInBackground,
 				index: tabIndex,
+				openerTabId: thisTab.id,				
 			});
 		}
 	}
