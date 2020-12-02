@@ -260,6 +260,7 @@ document.title = `${chrome.i18n.getMessage('extensionName')} | ${chrome.i18n.get
 
 $('#navbarTitle').textContent = chrome.i18n.getMessage('extensionName');
 $('#openInBackgroundLabel').textContent = chrome.i18n.getMessage('openInBackgroundLabel');
+$('#openAllByDefaultLabel').textContent = chrome.i18n.getMessage('openAllByDefaultLabel');
 
 $('#openTabAtLabel').textContent = chrome.i18n.getMessage('openTabAtLabel');
 $('#openTabAtRight').textContent = chrome.i18n.getMessage('openTabAtRight');
@@ -299,6 +300,7 @@ saveOptions.onclick = () => {
 	const nameSet = new Set();
 	const storedSettings = {
 		openInBackground: $('#openInBackground').checked,
+		openAllByDefault: $('#openAllByDefault').checked,
 		openTabAt: $('#openTabAt')[$('#openTabAt').selectedIndex].value,
 		storageProviders: [],
 	};
@@ -361,6 +363,7 @@ function updateUI(storedSettings) {
 		.map(opt => opt.value)
 		.indexOf(storedSettings.openTabAt);
 	$('#openInBackground').checked = storedSettings.openInBackground;
+	$('#openAllByDefault').checked = storedSettings.openAllByDefault;
 
 	for (const p of storedSettings.storageProviders) {
 		$('#searchProviderList').appendChild(createSearchProviderElement(p.name, p.icon, p.url, p.selected, false));

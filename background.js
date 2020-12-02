@@ -30,9 +30,10 @@ function createContextMenu(storedSettings) {
 	const title = chrome.i18n.getMessage('contextMenuTitle');
 
 	const selectedProviders = storedSettings.storageProviders.filter(p => p.selected);
+	const openAllByDefault = storedSettings.openAllByDefault;
 
 	/* If there is only one search provider, do not create a submenu */
-	if (selectedProviders.length === 1) {
+	if (selectedProviders.length === 1 || openAllByDefault) {
 		chrome.contextMenus.create({
 			id: selectedProviders[0].name,
 			title,
@@ -78,6 +79,7 @@ function createContextMenu(storedSettings) {
 /* Default settings. If there is nothing in storage, use these values. */
 const defaultSettings = {
 	openInBackground: false,
+	openAllByDefault: false,
 	openTabAt: 'right',
 	storageProviders: getDefaultProvidersClone(),
 };
@@ -116,7 +118,7 @@ function reverseSearch(info, storedSettings) {
 
 	/* return array of url string */
 	function getProviderURLs(targetProviderName) {
-		if (targetProviderName === 'openAll') {
+		if (targetProviderName === 'openAll' || storedSettings.openAllByDefault) {
 			const urls = [];
 			for (const p of storedSettings.storageProviders) {
 				if (p.selected) {
