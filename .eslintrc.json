@@ -1,0 +1,58 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "serviceworker": true,
+    "webextensions": true
+  },
+  "extends": ["eslint:recommended", "plugin:unicorn/recommended", "prettier"],
+  "plugins": ["svelte3", "unicorn"],
+  "overrides": [
+    {
+      "files": ["*.svelte"],
+      "processor": "svelte3/svelte3",
+      "rules": {
+        "import/extensions": "off",
+        "import/first": "off",
+        "import/no-duplicates": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/no-mutable-exports": "off",
+        "import/no-unresolved": "off",
+        "import/prefer-default-export": "off"
+      }
+    }
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "rules": {
+    "arrow-body-style": "error",
+    "consistent-return": "error",
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "linebreak-style": ["error", "unix"],
+    "no-console": [
+      "error",
+      {
+        "allow": ["error"]
+      }
+    ],
+    "no-var": "error",
+    "prefer-arrow-callback": "error",
+    "prefer-const": "error",
+    "prefer-template": "error",
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "unicorn/no-null": "off"
+  }
+}

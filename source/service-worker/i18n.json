@@ -1,0 +1,41 @@
+{
+  "de": {
+    "contextMenuTitle": "Bildersuche",
+    "contextMenuOpenAll": "Alle öffnen"
+  },
+  "en": {
+    "contextMenuTitle": "Reverse Image Search",
+    "contextMenuOpenAll": "Open All"
+  },
+  "es": {
+    "contextMenuTitle": "Búsqueda inversa de imagen",
+    "contextMenuOpenAll": "Abrir todos"
+  },
+  "fr": {
+    "contextMenuTitle": "Recherche inversée d'image",
+    "contextMenuOpenAll": "Tout ouvrir"
+  },
+  "ja": {
+    "contextMenuOpenAll": "すべて開く"
+  },
+  "pt-BR": {
+    "contextMenuTitle": "Pesquisa Reversa de Imagens",
+    "contextMenuOpenAll": "Abrir todos"
+  },
+  "sv": {
+    "contextMenuTitle": "Sök med bild",
+    "contextMenuOpenAll": "Öppna alla"
+  },
+  "tr": {
+    "contextMenuTitle": "Görselle Ara",
+    "contextMenuOpenAll": "Hepsini Aç"
+  },
+  "zh-CN": {
+    "contextMenuTitle": "反向搜索图像",
+    "contextMenuOpenAll": "全部打开"
+  },
+  "zh-TW": {
+    "contextMenuTitle": "逆向圖片搜尋",
+    "contextMenuOpenAll": "全部打開"
+  }
+}

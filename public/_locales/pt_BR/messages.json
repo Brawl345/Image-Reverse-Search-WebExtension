@@ -1,0 +1,78 @@
+{
+  "addSearchProvider": {
+    "message": "Adicionar Provedor"
+  },
+  "contextMenuOpenAll": {
+    "message": "Abrir todos"
+  },
+  "contextMenuTitle": {
+    "message": "Pesquisa Reversa de Imagens"
+  },
+  "extensionDescription": {
+    "message": "Adicionar uma opção ao menu de contexto para fazer uma busca reversa de uma imagem em vários serviços"
+  },
+  "extensionName": {
+    "message": "Pesquisa Reversa de Imagens"
+  },
+  "msgAtLeastOneSearchProvider": {
+    "message": "Por favor escolha pelo menos um provedor de busca!"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "Algum provedor de busca está com o nome duplicado!"
+  },
+  "msgIconUploadNotImage": {
+    "message": "Por favor envie um formato de imagem válido! (png, jpg,ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "Por favor envie uma imagem quadrada!"
+  },
+  "msgSuccessSaveOptions": {
+    "message": "Salvo!"
+  },
+  "openInBackgroundLabel": {
+    "message": "Abrir em Segundo Plano"
+  },
+  "openTabAtEnd": {
+    "message": "No fim"
+  },
+  "openTabAtLabel": {
+    "message": "Abrir a página de busca"
+  },
+  "openTabAtLeft": {
+    "message": "A esquerda da guia atual"
+  },
+  "openTabAtRight": {
+    "message": "A direita da guia atual"
+  },
+  "optionsPageTitle": {
+    "message": "Opções"
+  },
+  "providerNamePlaceholder": {
+    "message": "2-15 letras"
+  },
+  "providerNamePlaceholderError": {
+    "message": "O nome do provedor $index$ é inválido. Por favor use de 2-15 letras.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholder": {
+    "message": "http(s):// no início e %s para a url da imagem..."
+  },
+  "providerURLPlaceholderError": {
+    "message": "A url do provedor $index$ é invalido. Use http(s):// no inicio e %s como espaço reservado para a url da imagem.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "Restaurar Padrão"
+  },
+  "saveOptions": {
+    "message": "Salvar Opções"
+  }
+}

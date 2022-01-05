@@ -1,0 +1,78 @@
+{
+  "addSearchProvider": {
+    "message": "新增搜尋引擎"
+  },
+  "contextMenuOpenAll": {
+    "message": "全部打開"
+  },
+  "contextMenuTitle": {
+    "message": "逆向圖片搜尋"
+  },
+  "extensionDescription": {
+    "message": "增加右鍵選項，支持多種逆向圖片搜尋"
+  },
+  "extensionName": {
+    "message": "Reverse Image Search"
+  },
+  "msgAtLeastOneSearchProvider": {
+    "message": "請至少選擇一個搜尋引擎！"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "搜尋引擎名字重複！"
+  },
+  "msgIconUploadNotImage": {
+    "message": "請上傳合法的圖片檔案！ (png, jpg, ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "請上傳正方形圖片！"
+  },
+  "msgSuccessSaveOptions": {
+    "message": "已保存！"
+  },
+  "openInBackgroundLabel": {
+    "message": "在背景開啟結果"
+  },
+  "openTabAtEnd": {
+    "message": "分頁欄最尾端"
+  },
+  "openTabAtLabel": {
+    "message": "打開搜尋頁面"
+  },
+  "openTabAtLeft": {
+    "message": "當前分頁左側"
+  },
+  "openTabAtRight": {
+    "message": "當前分頁右側"
+  },
+  "optionsPageTitle": {
+    "message": "選項"
+  },
+  "providerNamePlaceholder": {
+    "message": "2 ~ 15 字"
+  },
+  "providerNamePlaceholderError": {
+    "message": "第 $index$ 個搜尋引擎的名字不符合格式，請使用 2 ~ 15 字",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholder": {
+    "message": "請輸入網址，需以 http(s):// 開頭且包含 %s 作為圖片網址的參數…"
+  },
+  "providerURLPlaceholderError": {
+    "message": "第 $index$ 個搜尋引擎的網址不符合格式，請以 http(s):// 開頭且包含 %s",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "還原預設引擎"
+  },
+  "saveOptions": {
+    "message": "保存選項"
+  }
+}

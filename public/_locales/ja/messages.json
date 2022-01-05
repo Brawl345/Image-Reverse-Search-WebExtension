@@ -1,0 +1,69 @@
+{
+  "addSearchProvider": {
+    "message": "検索エンジンを追加"
+  },
+  "contextMenuOpenAll": {
+    "message": "すべて開く"
+  },
+  "extensionDescription": {
+    "message": "コンテキストメニューにオプションを追加することで、さまざまなサービスで類似した画像の検索ができます"
+  },
+  "msgAtLeastOneSearchProvider": {
+    "message": "少なくとも1つの検索エンジンを選択してください！"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "一部の検索エンジン名が重複しています！"
+  },
+  "msgIconUploadNotImage": {
+    "message": "利用可能な画像フォーマットでアップロードしてください！ (png, jpg, ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "正方形の画像をアップロードしてください！"
+  },
+  "msgSuccessSaveOptions": {
+    "message": "保存しました！"
+  },
+  "openInBackgroundLabel": {
+    "message": "バックグラウンドで開く"
+  },
+  "openTabAtLabel": {
+    "message": "検索ページを開く"
+  },
+  "openTabAtLeft": {
+    "message": "現在のタブの左"
+  },
+  "openTabAtRight": {
+    "message": "現在のタブの右"
+  },
+  "optionsPageTitle": {
+    "message": "オプション"
+  },
+  "providerNamePlaceholder": {
+    "message": "2～15文字"
+  },
+  "providerNamePlaceholderError": {
+    "message": "検索エンジン $index$ の名前が無効です。2～15文字を使用してください",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholder": {
+    "message": "http(s)://が始まり、画像のURLの代わりに%sが..."
+  },
+  "providerURLPlaceholderError": {
+    "message": "$index$番目の検索エンジンのURLは無効です。http(s)://が始まり、画像URLのプレースホルダーとして\"%s \"を使用してください",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "デフォルトを復元"
+  },
+  "saveOptions": {
+    "message": "オプションを保存"
+  }
+}

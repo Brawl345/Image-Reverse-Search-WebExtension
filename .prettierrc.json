@@ -1,0 +1,11 @@
+{
+  "quoteProps": "consistent",
+  "overrides": [
+    {
+      "files": ["*.js", "*.svelte"],
+      "options": {
+        "singleQuote": true
+      }
+    }
+  ]
+}

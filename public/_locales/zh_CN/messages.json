@@ -1,0 +1,78 @@
+{
+  "addSearchProvider": {
+    "message": "添加提供商"
+  },
+  "contextMenuOpenAll": {
+    "message": "全部打开"
+  },
+  "contextMenuTitle": {
+    "message": "反向搜索图像"
+  },
+  "extensionDescription": {
+    "message": "添加一组右键菜单，支持以多种服务反向搜索图像"
+  },
+  "extensionName": {
+    "message": "Reverse Image Search"
+  },
+  "msgAtLeastOneSearchProvider": {
+    "message": "请选择至少一个搜索提供商！"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "部分搜索提供商的名称重复！"
+  },
+  "msgIconUploadNotImage": {
+    "message": "请上传可用的图像格式 (png, jpg, ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "请上传正方形图像！"
+  },
+  "msgSuccessSaveOptions": {
+    "message": "已保存！"
+  },
+  "openInBackgroundLabel": {
+    "message": "标签页打开在后台"
+  },
+  "openTabAtEnd": {
+    "message": "标签栏末尾"
+  },
+  "openTabAtLabel": {
+    "message": "打开搜索页面"
+  },
+  "openTabAtLeft": {
+    "message": "当前标签页左侧"
+  },
+  "openTabAtRight": {
+    "message": "当前标签页右侧"
+  },
+  "optionsPageTitle": {
+    "message": "选项"
+  },
+  "providerNamePlaceholder": {
+    "message": "2-15 个字母"
+  },
+  "providerNamePlaceholderError": {
+    "message": "第 $index$ 个提供商的名称无效。请使用 2-15 个字母",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholder": {
+    "message": "应以 http(s):// 开头，并用 %s 表示图像网址位置..."
+  },
+  "providerURLPlaceholderError": {
+    "message": "第 $index$ 个提供商的网址无效。请以 http(s):// 开头，并用 %s 表示图像网址位置。",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "恢复默认设置"
+  },
+  "saveOptions": {
+    "message": "保存选项"
+  }
+}

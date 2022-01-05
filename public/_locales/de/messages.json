@@ -1,0 +1,90 @@
+{
+  "addSearchProvider": {
+    "message": "Anbieter hinzufügen"
+  },
+  "contextMenuOpenAll": {
+    "message": "Alle öffnen"
+  },
+  "contextMenuTitle": {
+    "message": "Bildersuche"
+  },
+  "errorWhileSaving": {
+    "message": "Beim Speichern ist ein unbekannter Fehler aufgetreten."
+  },
+  "extensionDescription": {
+    "message": "Fügt eine Option zum Kontextmenü hinzu, um mit einem Bild auf verschiedenen Diensten zu suchen"
+  },
+  "extensionName": {
+    "message": "Bilder-Rückwärtssuche"
+  },
+  "msgAtLeastOneSearchProvider": {
+    "message": "Bitte wähle mindestens einen Suchanbieter!"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "Ein Suchanbieter-Name ist doppelt!"
+  },
+  "msgIconUploadNotImage": {
+    "message": "Bitte lade ein unterstütztes Format hoch! (png, jpg, ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "Bitte lade ein quadratisches Bild hoch!"
+  },
+  "msgSuccessSaveOptions": {
+    "message": "Gespeichert!"
+  },
+  "openInBackgroundLabel": {
+    "message": "Im Hintergrund öffnen"
+  },
+  "openTabAtEnd": {
+    "message": "Am Ende"
+  },
+  "openTabAtLabel": {
+    "message": "Suchseite öffnen"
+  },
+  "openTabAtLeft": {
+    "message": "Links nebem dem aktuellen Tab"
+  },
+  "openTabAtRight": {
+    "message": "Rechts neben dem aktuellen Tab"
+  },
+  "optionsPageTitle": {
+    "message": "Optionen"
+  },
+  "providerNamePlaceholder": {
+    "message": "2-15 Zeichen"
+  },
+  "providerNamePlaceholderError": {
+    "message": "Der Name des $index$. Anbieters ist ungültig. Bitte nur 2-15 Zeichen.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholder": {
+    "message": "http(s):// am Anfang und %s für die Bilder-URL..."
+  },
+  "providerURLPlaceholderError": {
+    "message": "Die URL des $index$. Anbieters ist ungültig. Nutze http(s):// am Anfang und %s als Platzhalter für die Bilder-URL.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "Standard wiederherstellen"
+  },
+  "saveOptions": {
+    "message": "Optionen speichern"
+  },
+  "searchAllByDefault": {
+    "message": "Standardmäßig alle Suchanbieter durchsuchen"
+  },
+  "searchAllByDefault_info": {
+    "message": "Wenn diese Option aktiv ist, wird nur ein Menüeintrag angezeigt, der beim Anklicken alle Suchanbieter öffnet. Wenn diese Option deaktiviert ist, wird ein Untermenü erstellt."
+  },
+  "showOpenAll": {
+    "message": "'Alle öffnen' anzeigen"
+  }
+}
