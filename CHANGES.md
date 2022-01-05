@@ -45,6 +45,10 @@
 
 - Critical bug fixes
 
+## 3.1.3
+
+- Fix context menu not working
+
 ## 3.1.2
 
 - Fix empty storage check
@@ -110,3 +114,7 @@
 - Extension added to Opera Store
 - Removed redundant "if"
 - Added comments and gitignore
+
+## 1.0.0
+
+- Initial release
