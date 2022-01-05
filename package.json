@@ -22,12 +22,12 @@
     "sourceDir": "./public/"
   },
   "devDependencies": {
-    "chrome-types": "0.1.79",
+    "chrome-types": "0.1.80",
     "cross-env": "7.0.3",
     "esbuild": "0.14.10",
     "esbuild-sass-plugin": "2.0.1",
     "esbuild-svelte": "0.6.0",
-    "eslint": "7.32.0",
+    "eslint": "8.6.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-svelte3": "3.3.0",
     "eslint-plugin-unicorn": "40.0.0",
