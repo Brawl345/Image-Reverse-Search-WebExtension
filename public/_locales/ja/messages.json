@@ -8,6 +8,9 @@
   "extensionDescription": {
     "message": "コンテキストメニューにオプションを追加することで、さまざまなサービスで類似した画像の検索ができます"
   },
+  "extensionName": {
+    "message": "Reverse Image Search"
+  },
   "msgAtLeastOneSearchProvider": {
     "message": "少なくとも1つの検索エンジンを選択してください！"
   },
