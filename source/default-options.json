@@ -1,5 +1,5 @@
 {
-  "openInBackground": true,
+  "openInBackground": false,
   "openTabAt": "right",
   "showOpenAll": true,
   "searchAllByDefault": false,
