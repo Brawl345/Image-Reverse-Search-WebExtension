@@ -99,6 +99,24 @@
   <div class="row">
     <label
       class="col-sm-3 col-form-label form-check-label"
+      for="showOpenAllAtTop">{getMessage('showOpenAllAtTop')}</label
+    >
+    <div class="col-sm-9">
+      <input
+        id="showOpenAllAtTop"
+        class="form-check-input mt-2"
+        name="showOpenAllAtTop"
+        type="checkbox"
+        bind:checked={$options.showOpenAllAtTop}
+        disabled={$options.searchAllByDefault === true ||
+          $options.showOpenAll === false}
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <label
+      class="col-sm-3 col-form-label form-check-label"
       for="searchAllByDefault"
       >{getMessage('searchAllByDefault')}
       <button

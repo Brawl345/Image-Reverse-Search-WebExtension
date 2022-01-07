@@ -2,6 +2,7 @@
   "openInBackground": false,
   "openTabAt": "right",
   "showOpenAll": true,
+  "showOpenAllAtTop": false,
   "searchAllByDefault": false,
   "storageProviders": [
     {

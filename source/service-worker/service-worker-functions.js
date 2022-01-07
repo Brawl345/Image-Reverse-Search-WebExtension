@@ -7,6 +7,7 @@ const OPEN_ALL_ID = 'openAll';
 export const setupContextMenu = ({
   storageProviders,
   showOpenAll,
+  showOpenAllAtTop,
   searchAllByDefault,
 }) => {
   const selectedProviders = storageProviders.filter((p) => p.selected);
@@ -21,12 +22,30 @@ export const setupContextMenu = ({
     return;
   }
 
+  const separator = {
+    parentId: PARENT_ID,
+    id: 'image-reverse-search-separator',
+    type: 'separator',
+  };
+
+  const openAllEntry = {
+    parentId: PARENT_ID,
+    id: OPEN_ALL_ID,
+    title: getMessageForServiceWorker('contextMenuOpenAll'),
+    contexts: ['image'],
+  };
+
   /* Create menu and submenu entries */
   chrome.contextMenus.create({
     id: PARENT_ID,
     title: getMessageForServiceWorker('contextMenuTitle'),
     contexts: ['image'],
   });
+
+  if (showOpenAll && showOpenAllAtTop) {
+    chrome.contextMenus.create(openAllEntry);
+    chrome.contextMenus.create(separator);
+  }
 
   for (const provider of selectedProviders) {
     const contextMenuOptions = {
@@ -47,18 +66,9 @@ export const setupContextMenu = ({
     }
   }
 
-  if (showOpenAll) {
-    chrome.contextMenus.create({
-      parentId: PARENT_ID,
-      id: 'imag-ereverse-search-seperator',
-      type: 'separator',
-    });
-    chrome.contextMenus.create({
-      parentId: PARENT_ID,
-      id: OPEN_ALL_ID,
-      title: getMessageForServiceWorker('contextMenuOpenAll'),
-      contexts: ['image'],
-    });
+  if (showOpenAll && !showOpenAllAtTop) {
+    chrome.contextMenus.create(separator);
+    chrome.contextMenus.create(openAllEntry);
   }
 };
 

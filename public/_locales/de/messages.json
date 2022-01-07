@@ -86,5 +86,8 @@
   },
   "showOpenAll": {
     "message": "'Alle öffnen' anzeigen"
+  },
+  "showOpenAllAtTop": {
+    "message": "'Alle öffnen' als Erstes anzeigen"
   }
 }

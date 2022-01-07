@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.1.0
+
+- Add option to show 'Open All' as the first item
+
 ## 4.0.0
 
 - Complete rewrite with Manifest v3 and Svelte framework with a slightly updated UI
