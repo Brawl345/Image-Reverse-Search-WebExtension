@@ -19,7 +19,7 @@ const addProvider = () =>
         name: '',
         icon: 'icons/other.png',
         url: '',
-        selected: false,
+        selected: true,
       },
     ],
   }));

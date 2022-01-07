@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.1.1
+
+- Add Content-Security-Policy for options page
+- Select new search engine by default
+
 ## 4.1.0
 
 - Add option to show 'Open All' as the first item
