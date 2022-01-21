@@ -15,6 +15,10 @@
 		"message": "Im Hintergrund öffnen"
 	},
 
+	"openAllByDefaultLabel": {
+		"message": "Standardmäßig alle Suchanbieter durchsuchen"
+	},
+
 	"optionsPageTitle": {
 		"message": "Optionen"
 	},
