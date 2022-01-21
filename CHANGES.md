@@ -17,6 +17,10 @@
 - Option to not create a submenu, but always search in all engines
 - Dropped custom icons, will be re-integrated when Firefox supports Manifest v3
 
+## 3.4.0
+
+- Add an option to open all providers by default (thanks Delgan)
+
 ## 3.3.5
 
 - Support tab relationship for Tree Style Tab
