@@ -38,6 +38,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Reverse-Image-Search-${{github.sha}}
-          path: web-ext-artifacts/*.zip
+          name: Reverse-Image-Search-${{github.sha}}.zip
+          path: public/*
           if-no-files-found: error
