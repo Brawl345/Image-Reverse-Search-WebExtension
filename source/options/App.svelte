@@ -2,7 +2,7 @@
   import { options } from './stores/options-store.js';
   import { onMount } from 'svelte';
   import Form from './components/Form.svelte';
-  import { getMessage } from './utils.js';
+  import { getMessage } from '../utils.js';
 
   let doneLoading = false;
 

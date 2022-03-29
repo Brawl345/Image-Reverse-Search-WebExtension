@@ -1,7 +1,7 @@
 <script>
   import { fly } from 'svelte/transition';
   import { options } from '../stores/options-store.js';
-  import { getMessage } from '../utils.js';
+  import { getMessage } from '../../utils.js';
 
   export let index;
   export let provider;

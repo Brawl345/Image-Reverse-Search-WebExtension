@@ -4,7 +4,7 @@
   import { flip } from 'svelte/animate';
   import { fly } from 'svelte/transition';
   import Provider from './Provider.svelte';
-  import { getMessage } from '../utils.js';
+  import { getMessage } from '../../utils.js';
   import { onMount } from 'svelte';
   import Tooltip from 'bootstrap/js/dist/tooltip';
 

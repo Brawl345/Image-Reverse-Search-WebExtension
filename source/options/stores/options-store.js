@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 import defaultOptions from '../../default-options.json';
-import { arraymove, getLowerIndex, getUpperIndex } from '../utils.js';
+import { arraymove, getLowerIndex, getUpperIndex } from '../../utils.js';
 
 const cloneProviders = () =>
   defaultOptions.storageProviders.map((p) => ({ ...p }));

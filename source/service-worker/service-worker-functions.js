@@ -1,5 +1,5 @@
 import defaultOptions from '../default-options.json';
-import { getMessageForServiceWorker } from './i18n.js';
+import { getMessage } from '../utils.js';
 
 const PARENT_ID = 'Image-Reverse-Search';
 const OPEN_ALL_ID = 'openAll';
@@ -16,7 +16,7 @@ export const setupContextMenu = ({
   if (selectedProviders.length === 1 || searchAllByDefault) {
     chrome.contextMenus.create({
       id: searchAllByDefault ? OPEN_ALL_ID : selectedProviders[0].name,
-      title: getMessageForServiceWorker('contextMenuTitle'),
+      title: getMessage('contextMenuTitle'),
       contexts: ['image'],
     });
     return;
@@ -31,14 +31,14 @@ export const setupContextMenu = ({
   const openAllEntry = {
     parentId: PARENT_ID,
     id: OPEN_ALL_ID,
-    title: getMessageForServiceWorker('contextMenuOpenAll'),
+    title: getMessage('contextMenuOpenAll'),
     contexts: ['image'],
   };
 
   /* Create menu and submenu entries */
   chrome.contextMenus.create({
     id: PARENT_ID,
-    title: getMessageForServiceWorker('contextMenuTitle'),
+    title: getMessage('contextMenuTitle'),
     contexts: ['image'],
   });
 
