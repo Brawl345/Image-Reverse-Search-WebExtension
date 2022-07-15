@@ -39,6 +39,6 @@
   },
   "dependencies": {
     "bootstrap": "5.1.3",
-    "svelte": "3.46.4"
+    "svelte": "3.49.0"
   }
 }
