@@ -13,7 +13,8 @@
     "dev": "node esbuild.js",
     "start:chrome": "web-ext run --no-reload -t chromium",
     "build": "cross-env NODE_ENV=\"production\" node esbuild.js && web-ext build --overwrite-dest",
-    "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:format": "prettier --ignore-path .gitignore --check --plugin-search-dir=. .",
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
     "web-ext-lint": "cross-env NODE_ENV=\"production\" node esbuild.js && web-ext lint",
     "global:check-dependencies": "npm-check --skip-unused"
@@ -22,20 +23,20 @@
     "sourceDir": "./public/"
   },
   "devDependencies": {
-    "chrome-types": "0.1.95",
+    "chrome-types": "0.1.125",
     "cross-env": "7.0.3",
-    "esbuild": "0.14.28",
+    "esbuild": "0.14.49",
     "esbuild-sass-plugin": "2.2.6",
-    "esbuild-svelte": "0.6.3",
-    "eslint": "8.12.0",
+    "esbuild-svelte": "0.7.1",
+    "eslint": "8.19.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-svelte3": "3.4.1",
-    "eslint-plugin-unicorn": "41.0.1",
-    "prettier": "2.6.1",
-    "prettier-plugin-svelte": "2.6.0",
-    "svelte-preprocess": "4.10.4",
-    "sass": "1.49.9",
-    "web-ext": "6.8.0"
+    "eslint-plugin-svelte3": "4.0.0",
+    "eslint-plugin-unicorn": "43.0.1",
+    "prettier": "2.7.1",
+    "prettier-plugin-svelte": "2.7.0",
+    "svelte-preprocess": "4.10.7",
+    "sass": "1.53.0",
+    "web-ext": "7.1.1"
   },
   "dependencies": {
     "bootstrap": "5.1.3",

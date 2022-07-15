@@ -53,6 +53,7 @@
     "prefer-template": "error",
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
-    "unicorn/no-null": "off"
+    "unicorn/no-null": "off",
+    "unicorn/prefer-top-level-await": "off"
   }
 }
