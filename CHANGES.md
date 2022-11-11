@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.1.2
+
+- Replace Google Image Search with Google Lens because Google removed the old reverse search. This will also apply to current users.
+
 ## 4.1.1
 
 - Add Content-Security-Policy for options page

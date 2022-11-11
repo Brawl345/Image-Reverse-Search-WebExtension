@@ -1,11 +1,12 @@
 import defaultOptions from '../default-options.json';
 import {
+  migrate,
   onReverseSearch,
   setupContextMenu,
 } from './service-worker-functions.js';
 
 chrome.runtime.onInstalled.addListener(() =>
-  chrome.storage.sync.get(defaultOptions).then(setupContextMenu)
+  chrome.storage.sync.get(defaultOptions).then(migrate).then(setupContextMenu)
 );
 
 chrome.contextMenus.onClicked.addListener(onReverseSearch);

@@ -4,6 +4,21 @@ import { getMessage } from '../utils.js';
 const PARENT_ID = 'Image-Reverse-Search';
 const OPEN_ALL_ID = 'openAll';
 
+export const migrate = async (options) => {
+  // v4.1.2: Use new Google Image Search URL
+  for (const storageProvider of options.storageProviders) {
+    if (
+      storageProvider.url ===
+      'https://www.google.com/searchbyimage?image_url=%s'
+    ) {
+      storageProvider.url = 'https://lens.google.com/uploadbyurl?url=%s';
+    }
+  }
+
+  await chrome.storage.sync.set(options);
+  return options;
+};
+
 export const setupContextMenu = ({
   storageProviders,
   showOpenAll,

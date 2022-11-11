@@ -8,7 +8,7 @@
     {
       "name": "Google",
       "icon": "icons/google.png",
-      "url": "https://www.google.com/searchbyimage?image_url=%s",
+      "url": "https://lens.google.com/uploadbyurl?url=%s",
       "selected": true
     },
     {
