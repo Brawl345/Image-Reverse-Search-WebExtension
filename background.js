@@ -11,7 +11,7 @@ var Provider = class Provider {
 };
 
 const defaultProviders = [
-	new Provider('Google', 'icons/google.png', 'https://www.google.com/searchbyimage?image_url=%s', true),
+	new Provider('Google', 'icons/google.png', 'https://lens.google.com/uploadbyurl?url=%s', true),
 	new Provider('IQDB', 'icons/iqdb.png', 'https://iqdb.org/?url=%s'),
 	new Provider('TinEye', 'icons/tineye.png', 'https://www.tineye.com/search?url=%s'),
 	new Provider('Bing', 'icons/bing.png', 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=%s'),
@@ -96,7 +96,15 @@ const defaultSettings = {
   If we don't, then store the default settings. */
 function checkStoredSettings(storedSettings) {
 	if (Object.getOwnPropertyNames(storedSettings).length) {
-		chrome.storage.sync.get(null, createContextMenu);
+		chrome.storage.sync.get(null, (settings) => {
+			for (let provider of settings.storageProviders) {
+				if (provider.url === 'https://www.google.com/searchbyimage?image_url=%s') {
+					provider.url = 'https://lens.google.com/uploadbyurl?url=%s';
+				}
+			}
+			chrome.storage.sync.set(settings);
+			createContextMenu(settings);
+		});
 	} else {
 		chrome.storage.sync.set(defaultSettings);
 		createContextMenu(defaultSettings);
@@ -144,13 +152,13 @@ function reverseSearch(info, storedSettings) {
 	function openImageSearch(tabs) {
 		const tabIndex = getTabIndex(openTabAt, tabs);
 		const thisTab = tabs.filter(t => t.active)[0];
-		
+
 		for (const p of searchProviders) {
 			chrome.tabs.create({
 				url: p.replace('%s', encodeURIComponent(imageURL)),
 				active: !openInBackground,
 				index: tabIndex,
-				openerTabId: thisTab.id,				
+				openerTabId: thisTab.id,
 			});
 		}
 	}
