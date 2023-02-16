@@ -1,12 +1,12 @@
-<script>
-  import { alert } from '../stores/alert-store.js';
-  import { options } from '../stores/options-store.js';
+<script lang="ts">
+  import Tooltip from 'bootstrap/js/dist/tooltip';
+  import { onMount } from 'svelte';
   import { flip } from 'svelte/animate';
   import { fly } from 'svelte/transition';
-  import Provider from './Provider.svelte';
   import { getMessage } from '../../utils.js';
-  import { onMount } from 'svelte';
-  import Tooltip from 'bootstrap/js/dist/tooltip';
+  import { alert } from '../stores/alert-store';
+  import { options } from '../stores/options-store';
+  import Provider from "./Provider.svelte";
 
   const save = () => {
     if (

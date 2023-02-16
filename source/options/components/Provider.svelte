@@ -1,24 +1,26 @@
-<script>
+<script lang="ts">
   import { fly } from 'svelte/transition';
-  import { options } from '../stores/options-store.js';
-  import { getMessage } from '../../utils.js';
+  import type { StorageProvider } from "../../types";
+  import { getMessage } from '../../utils';
+  import { options } from '../stores/options-store';
 
-  export let index;
-  export let provider;
+  export let index: number;
+  export let provider: StorageProvider;
 </script>
+
 
 <fieldset class="input-group" name="storageProviders" transition:fly>
   <button
     class="btn btn-sm btn-secondary"
     type="button"
     on:click={() => options.moveProviderUp(index)}
-    >▲
+  >▲
   </button>
   <button
     class="btn btn-sm btn-secondary"
     type="button"
     on:click={() => options.moveProviderDown(index)}
-    >▼
+  >▼
   </button>
   <div class="input-group-text">
     <input
@@ -54,6 +56,6 @@
     class="btn btn-sm btn-outline-danger"
     type="button"
     on:click={() => options.removeProvider(index)}
-    >❌
+  >❌
   </button>
 </fieldset>

@@ -10,36 +10,39 @@
   "main": "source/service-worker/service-worker.js",
   "type": "module",
   "scripts": {
-    "dev": "node esbuild.js",
-    "start:chrome": "web-ext run --no-reload -t chromium",
-    "build": "cross-env NODE_ENV=\"production\" node esbuild.js && web-ext build --overwrite-dest",
-    "lint": "eslint --ignore-path .gitignore .",
-    "lint:format": "prettier --ignore-path .gitignore --check --plugin-search-dir=. .",
-    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
-    "web-ext-lint": "cross-env NODE_ENV=\"production\" node esbuild.js && web-ext lint",
-    "global:check-dependencies": "npm-check --skip-unused"
+    "dev": "tsx build.ts",
+    "build": "cross-env NODE_ENV=\"production\" tsx build.ts",
+    "start:chrome": "web-ext run -t chromium",
+    "start:firefox": "web-ext run -t firefox-desktop",
+    "lint:types": "tsc --project tsconfig.json",
+    "lint:code": "biome lint",
+    "lint:web-ext": "npm run build && web-ext lint",
+    "web-ext:build": "npm run build && web-ext build --overwrite-dest",
+    "web-ext:upload": "npm run web-ext:build && web-ext sign --channel=listed"
   },
   "webExt": {
-    "sourceDir": "./public/"
+    "sourceDir": "./public/",
+    "run": {
+      "startUrl": ["about:debugging#/runtime/this-firefox"]
+    }
   },
   "devDependencies": {
-    "chrome-types": "0.1.125",
+    "@biomejs/biome": "1.8.3",
+    "@types/bootstrap": "5.2.10",
+    "@types/chrome": "0.0.270",
     "cross-env": "7.0.3",
-    "esbuild": "0.14.49",
-    "esbuild-sass-plugin": "2.2.6",
-    "esbuild-svelte": "0.7.1",
-    "eslint": "8.19.0",
-    "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-svelte3": "4.0.0",
-    "eslint-plugin-unicorn": "43.0.1",
-    "prettier": "2.7.1",
-    "prettier-plugin-svelte": "2.7.0",
-    "svelte-preprocess": "4.10.7",
-    "sass": "1.53.0",
-    "web-ext": "7.1.1"
+    "esbuild": "0.23.0",
+    "esbuild-sass-plugin": "3.3.1",
+    "esbuild-svelte": "0.8.1",
+    "globals": "15.9.0",
+    "sass": "1.77.8",
+    "svelte-preprocess": "6.0.2",
+    "tsx": "4.17.0",
+    "typescript": "5.5.4",
+    "web-ext": "8.2.0"
   },
   "dependencies": {
-    "bootstrap": "5.1.3",
-    "svelte": "3.49.0"
+    "bootstrap": "5.3.3",
+    "svelte": "4.2.18"
   }
 }

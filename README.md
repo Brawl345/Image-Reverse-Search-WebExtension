@@ -23,13 +23,7 @@ WebExtension which adds an option to the context menu to search with an image on
 1. `git clone ...`
 2. `npm ci`
 3. `npm run dev`
-4. `npm run start:chrome`
-
-## Thanks to
-
-- [FlandreDaisuki](https://github.com/Brawl345/Image-Reverse-Search-WebExtension/issues?q=is%3Apr+author%3AFlandreDaisuki)
-- [yfdyh000](https://github.com/Brawl345/Image-Reverse-Search-WebExtension/issues?q=is%3Apr+author%3Ayfdyh000)
-- All translators and other contributors
+4. `npm run start:chrome` or `npm run start:firefox`
 
 ## Screenshots
 

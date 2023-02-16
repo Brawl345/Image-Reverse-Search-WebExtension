@@ -1,30 +1,19 @@
-import defaultOptions from '../default-options.json';
-import { getMessage } from '../utils.js';
+import { getOptions } from '../storage';
+import type { CreatePropertiesWithIcon, Options } from '../types';
+import { getMessage, isNullish } from '../utils';
 
 const PARENT_ID = 'Image-Reverse-Search';
 const OPEN_ALL_ID = 'openAll';
 
-export const migrate = async (options) => {
-  // v4.1.2: Use new Google Image Search URL
-  for (const storageProvider of options.storageProviders) {
-    if (
-      storageProvider.url ===
-      'https://www.google.com/searchbyimage?image_url=%s'
-    ) {
-      storageProvider.url = 'https://lens.google.com/uploadbyurl?url=%s';
-    }
-  }
+export const setupContextMenu = async () => {
+  const {
+    storageProviders,
+    showOpenAll,
+    showOpenAllAtTop,
+    searchAllByDefault,
+  } = await getOptions();
 
-  await chrome.storage.sync.set(options);
-  return options;
-};
-
-export const setupContextMenu = ({
-  storageProviders,
-  showOpenAll,
-  showOpenAllAtTop,
-  searchAllByDefault,
-}) => {
+  chrome.contextMenus.removeAll();
   const selectedProviders = storageProviders.filter((p) => p.selected);
 
   /* If there is only one search provider, do not create a submenu */
@@ -37,13 +26,13 @@ export const setupContextMenu = ({
     return;
   }
 
-  const separator = {
+  const separator: chrome.contextMenus.CreateProperties = {
     parentId: PARENT_ID,
     id: 'image-reverse-search-separator',
     type: 'separator',
   };
 
-  const openAllEntry = {
+  const openAllEntry: chrome.contextMenus.CreateProperties = {
     parentId: PARENT_ID,
     id: OPEN_ALL_ID,
     title: getMessage('contextMenuOpenAll'),
@@ -63,7 +52,7 @@ export const setupContextMenu = ({
   }
 
   for (const provider of selectedProviders) {
-    const contextMenuOptions = {
+    const contextMenuOptions: CreatePropertiesWithIcon = {
       parentId: PARENT_ID,
       id: provider.name,
       icons: {
@@ -76,6 +65,7 @@ export const setupContextMenu = ({
       chrome.contextMenus.create(contextMenuOptions);
     } catch {
       // when the browser doesn't support icons for submenus
+      // biome-ignore lint/performance/noDelete: is safe here
       delete contextMenuOptions.icons;
       chrome.contextMenus.create(contextMenuOptions);
     }
@@ -87,8 +77,15 @@ export const setupContextMenu = ({
   }
 };
 
-export const onReverseSearch = async ({ srcUrl, menuItemId }, tab) => {
-  const options = await chrome.storage.sync.get(defaultOptions);
+export const onReverseSearch: (
+  { srcUrl, menuItemId }: chrome.contextMenus.OnClickData,
+  tab: chrome.tabs.Tab | undefined,
+) => Promise<void> = async ({ srcUrl, menuItemId }, tab) => {
+  if (isNullish(srcUrl) || isNullish(tab)) {
+    return;
+  }
+
+  const options = await getOptions();
 
   const providerUrls = [];
 
@@ -108,7 +105,7 @@ export const onReverseSearch = async ({ srcUrl, menuItemId }, tab) => {
     }
   }
 
-  let newTabIndex;
+  let newTabIndex: number;
 
   if (options.openTabAt === 'right') {
     newTabIndex = tab.index + 1;
@@ -123,7 +120,7 @@ export const onReverseSearch = async ({ srcUrl, menuItemId }, tab) => {
   }
 
   for (const providerUrl of providerUrls) {
-    chrome.tabs.create({
+    void chrome.tabs.create({
       url: providerUrl.replace('%s', encodeURIComponent(srcUrl)),
       active: !options.openInBackground,
       index: newTabIndex,

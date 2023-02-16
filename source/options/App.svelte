@@ -1,18 +1,19 @@
-<script>
-  import { options } from './stores/options-store.js';
+<script lang="ts">
   import { onMount } from 'svelte';
+  import { getMessage } from '../utils';
   import Form from './components/Form.svelte';
-  import { getMessage } from '../utils.js';
+  import { options } from './stores/options-store';
 
   let doneLoading = false;
 
   onMount(async () => {
     document.title = `${getMessage('extensionName')} | ${getMessage(
-      'optionsPageTitle'
+      'optionsPageTitle',
     )}`;
     await options.loadFromStorage();
     doneLoading = true;
   });
+  let text = '';
 </script>
 
 <main class="container mt-3">
