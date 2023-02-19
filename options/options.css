@@ -13,10 +13,6 @@ body {
 	margin-right: 0;
 }
 
-.custom-control-indicator {
-	background-color: #fff;
-}
-
 #searchProviderList > div {
 	margin-bottom: 0.4rem;
 }
@@ -60,4 +56,8 @@ body {
 #searchProviderList .sp-edit:invalid ~ .sp-status .text-success,
 #searchProviderList .sp-url:invalid + .sp-status .text-success {
 	display: none;
+}
+
+.input-group-text input[type="checkbox"], .input-group-text input[type="radio"] {
+	margin-top: revert;
 }

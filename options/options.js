@@ -54,33 +54,46 @@ function validateSpUrl(url, index) {
 }
 
 function createSpRemoveElement() {
-	// <a class="sp-remove input-group-addon">
-	//   <i class="fa fa-trash" aria-hidden="true"></i>
+	// <a class="sp-remove input-group-append">
+	// 	<div class="input-group-text">
+	//  	<i class="fa fa-trash" aria-hidden="true"></i>
+	// 	</div>
 	// </a>
 	const a = $el('a');
-	a.classList.add('sp-remove', 'input-group-addon');
+	a.classList.add('sp-remove', 'input-group-append');
+	const div = $el('div');
+	div.classList.add('input-group-text');
+	a.appendChild(div);
+
     i = document.createElement('i');
     i.classList.add('fa', 'fa-trash');
     i.setAttribute('aria-hidden', 'true');
-    a.appendChild(i);
+    div.appendChild(i);
 	return a;
 }
 
 function createSpStatusElement() {
-	// <a class="sp-status input-group-addon">
+	// <a class="sp-status input-group-append">
+	// <div class="input-group-text">
 	//   <i class="fa fa-check text-success" aria-hidden="true"></i>
 	//   <i class="fa fa-times text-danger" aria-hidden="true"></i>
+	// </div>
 	// </a>
 	const a = $el('a');
 	a.classList.add('sp-status', 'input-group-addon');
+	const div = $el('div');
+	div.classList.add('input-group-text');
+
+	a.appendChild(div);
+
     i = document.createElement('i');
     i.classList.add('fa', 'fa-check', 'text-success');
     i.setAttribute('aria-hidden', 'true');
-    a.appendChild(i);
+		div.appendChild(i);
     i = document.createElement('i');
     i.classList.add('fa', 'fa-times', 'text-danger');
     i.setAttribute('aria-hidden', 'true');
-    a.appendChild(i);
+		div.appendChild(i);
 	return a;
 }
 
@@ -107,16 +120,22 @@ function createSpNameElement(text) {
 }
 
 function createSpIconElement(src) {
-	// <span class="sp-icon input-group-addon">
+	// <span class="sp-icon input-group-prepend">
+	// <div class="input-group-text">
 	//   <img src=""/>
+	// </div>
 	// </span>
 	const span = $el('span');
-	span.classList.add('sp-icon', 'input-group-addon');
+	span.classList.add('sp-icon', 'input-group-prepend');
+
+	const div = $el('div');
+	div.classList.add('input-group-text');
 
 	const iconImg = new Image();
 	iconImg.src = chrome.extension.getURL(src);
 
-	span.appendChild(iconImg);
+	div.appendChild(iconImg);
+	span.appendChild(div);
 
 	const msgIconUploadNotImage = chrome.i18n.getMessage('msgIconUploadNotImage');
 	const msgIconUploadNotSquareImage = chrome.i18n.getMessage('msgIconUploadNotSquareImage');
@@ -185,28 +204,30 @@ function createSpIconElement(src) {
 }
 
 function createSpCheckboxElement(selected) {
-	// <span class="sp-selected input-group-addon form-check">
-	//   <label class="form-check-label custom-control custom-checkbox">
-	//     <input class="form-check-input custom-control-input" type="checkbox" />
-	//     <span class="custom-control-indicator" />
+	// <span class="sp-selected input-group-prepend form-check">
+	// <div class="input-group-text">
+	//   <label class="form-check-label custom-control">
+	//     <input class="form-check-input" type="checkbox" />
 	//   </label>
+	// </div>
 	// </span>
 	const span = $el('span');
-    span.classList.add('sp-selected', 'input-group-addon', 'form-check');
+    span.classList.add('sp-selected', 'input-group-prepend', 'form-check');
+
+		const div = $el('div');
+		div.classList.add('input-group-text');
+
+		span.appendChild(div);
 
     label = document.createElement('label');
-    label.classList.add('form-check-label', 'custom-control', 'custom-checkbox');
-    span.appendChild(label);
+    label.classList.add('form-check-label', 'custom-control');
+    div.appendChild(label);
 
     input = document.createElement('input');
-    input.classList.add('form-check-input', 'custom-control-input');
+    input.classList.add('form-check-input');
     input.setAttribute('type', 'checkbox');
     if (selected) {input.checked = true;} else {input.checked = false;}
     label.appendChild(input);
-
-    spancci = document.createElement('span');
-    spancci.classList.add('custom-control-indicator');
-    label.appendChild(spancci);
 	return span;
 }
 
