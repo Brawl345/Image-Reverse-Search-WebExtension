@@ -2,7 +2,8 @@
 
 ## 4.1.2
 
-- Replace Google Image Search with Google Lens because Google removed the old reverse search. This will also apply to current users.
+- Replace Google Image Search with Google Lens because Google removed the old reverse search. This will also apply to
+  current users.
 
 ## 4.1.1
 
@@ -20,6 +21,19 @@
 - Option to hide "Open all"
 - Option to not create a submenu, but always search in all engines
 - Dropped custom icons, will be re-integrated when Firefox supports Manifest v3
+
+## 3.4.3
+
+- Fix checkboxes
+
+## 3.4.2
+
+- Update to Bootstrap v4.0.0 Stable to comply with Mozilla's AMO rules
+
+## 3.4.1
+
+- Replace Google Image Search with Google Lens because Google removed the old reverse search. This will also apply to
+  current users.
 
 ## 3.4.0
 
