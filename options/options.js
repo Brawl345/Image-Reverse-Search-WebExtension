@@ -122,7 +122,7 @@ function createSpNameElement(text) {
 function createSpIconElement(src) {
 	// <span class="sp-icon input-group-prepend">
 	// <div class="input-group-text">
-	//   <img src=""/>
+	//   <img class="icon" src=""/>
 	// </div>
 	// </span>
 	const span = $el('span');
@@ -132,6 +132,7 @@ function createSpIconElement(src) {
 	div.classList.add('input-group-text');
 
 	const iconImg = new Image();
+	iconImg.classList.add('icon');
 	iconImg.src = chrome.extension.getURL(src);
 
 	div.appendChild(iconImg);
@@ -207,7 +208,7 @@ function createSpCheckboxElement(selected) {
 	// <span class="sp-selected input-group-prepend form-check">
 	// <div class="input-group-text">
 	//   <label class="form-check-label custom-control">
-	//     <input class="form-check-input" type="checkbox" />
+	//     <input class="form-check-input active" type="checkbox" />
 	//   </label>
 	// </div>
 	// </span>
@@ -224,7 +225,7 @@ function createSpCheckboxElement(selected) {
     div.appendChild(label);
 
     input = document.createElement('input');
-    input.classList.add('form-check-input');
+    input.classList.add('form-check-input', 'active');
     input.setAttribute('type', 'checkbox');
     if (selected) {input.checked = true;} else {input.checked = false;}
     label.appendChild(input);
@@ -328,8 +329,8 @@ saveOptions.onclick = () => {
 
 	for (const li of searchProviderList.children) {
 		const index = Array.from(searchProviderList.children).indexOf(li) + 1;
-		const selected = li.children[0].firstElementChild.firstElementChild.checked;
-		const icon = li.children[1].firstElementChild.src.replace(extensionUUID, '');
+		const selected = li.children[0].getElementsByClassName('active')[0].checked;
+		const icon = li.children[1].getElementsByClassName('icon')[0].src.replace(extensionUUID, '');
 		const name = li.children[2].value;
 		const url = li.children[3].value;
 
