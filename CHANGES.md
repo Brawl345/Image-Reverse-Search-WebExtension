@@ -28,6 +28,10 @@
 - Option to not create a submenu, but always search in all engines
 - Dropped custom icons, will be re-integrated when Firefox supports Manifest v3
 
+## 3.4.4
+
+- Fix saving options
+
 ## 3.4.3
 
 - Fix checkboxes
