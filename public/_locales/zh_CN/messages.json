@@ -6,10 +6,10 @@
     "message": "全部打开"
   },
   "contextMenuTitle": {
-    "message": "反向搜索图像"
+    "message": "搜索该图片"
   },
   "extensionDescription": {
-    "message": "添加一组右键菜单，支持以多种服务反向搜索图像"
+    "message": "添加一组支持通过多个提供商搜索的右键菜单"
   },
   "extensionName": {
     "message": "Reverse Image Search"
@@ -21,10 +21,10 @@
     "message": "部分搜索提供商的名称重复！"
   },
   "msgIconUploadNotImage": {
-    "message": "请上传可用的图像格式 (png, jpg, ico)"
+    "message": "请上传可用的图片格式 (png, jpg, ico)"
   },
   "msgIconUploadNotSquareImage": {
-    "message": "请上传正方形图像！"
+    "message": "请上传矩形图片！"
   },
   "msgSuccessSaveOptions": {
     "message": "已保存！"
@@ -59,10 +59,10 @@
     }
   },
   "providerURLPlaceholder": {
-    "message": "应以 http(s):// 开头，并用 %s 表示图像网址位置..."
+    "message": "应以 http(s):// 开头，并用 %s 表示图片网址位置..."
   },
   "providerURLPlaceholderError": {
-    "message": "第 $index$ 个提供商的网址无效。请以 http(s):// 开头，并用 %s 表示图像网址位置。",
+    "message": "第 $index$ 个提供商的网址无效。请以 http(s):// 开头，并用 %s 表示图片网址位置。",
     "placeholders": {
       "index": {
         "content": "$1"
@@ -74,5 +74,16 @@
   },
   "saveOptions": {
     "message": "保存选项"
-  }
+  },
+  "searchAllByDefault": {
+    "message": "自动通过所有提供商搜索"
+  },
+  "searchAllByDefault_info": {
+    "message": "启用此选项后，只会显示一个上下文菜单条目，单击它将打开所有选定提供程商搜索页。 如果禁用该选项，将会创建一个子菜单来显示所有提供商。"
+  },
+  "showOpenAll": {
+    "message": "显示'全部打开'"
+  },
+  "showOpenAllAtTop": {
+    "message": "将'全部打开'选项置顶"
 }
