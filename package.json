@@ -36,7 +36,7 @@
     "prettier-plugin-svelte": "2.7.0",
     "svelte-preprocess": "4.10.7",
     "sass": "1.53.0",
-    "web-ext": "7.1.1"
+    "web-ext": "7.6.1"
   },
   "dependencies": {
     "bootstrap": "5.1.3",
