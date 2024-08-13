@@ -1,0 +1,96 @@
+{
+  "addSearchProvider": {
+    "message": "Add search provider"
+  },
+  "contextMenuOpenAll": {
+    "message": "Open All"
+  },
+  "contextMenuTitle": {
+    "message": "Reverse Image Search"
+  },
+  "errorWhileSaving": {
+    "message": "There was an unknown error while saving."
+  },
+  "extensionDescription": {
+    "message": "Adds an option to the context menu to reverse search an image on various services"
+  },
+  "extensionName": {
+    "message": "Reverse Image Search"
+  },
+  "msgAtLeastOneSearchProvider": {
+    "message": "Please choose at least one search provider!"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "Some search provider name is duplicated!"
+  },
+  "msgIconUploadNotImage": {
+    "message": "Please upload available image format! (png, jpg, ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "Please upload square image!"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "Using icons in context menus is not supported by this browser."
+  },
+  "msgSuccessSaveOptions": {
+    "message": "Saved!"
+  },
+  "openInBackgroundLabel": {
+    "message": "Open in background"
+  },
+  "openTabAtEnd": {
+    "message": "At the end"
+  },
+  "openTabAtLabel": {
+    "message": "Open the search page"
+  },
+  "openTabAtLeft": {
+    "message": "Left to the current tab"
+  },
+  "openTabAtRight": {
+    "message": "Right to the current tab"
+  },
+  "optionsPageTitle": {
+    "message": "Options"
+  },
+  "providerNamePlaceholder": {
+    "message": "2-15 letters"
+  },
+  "providerNamePlaceholderError": {
+    "message": "The name of provider $index$ is invalid. Please use 2-15 letters.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholder": {
+    "message": "http(s):// at the beginning and %s for the image url..."
+  },
+  "providerURLPlaceholderError": {
+    "message": "The url of provider $index$ is invalid. Use http(s):// at the beginning and %s as a placeholder for the image url.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "Restore default"
+  },
+  "saveOptions": {
+    "message": "Save Options"
+  },
+  "searchAllByDefault": {
+    "message": "Search all providers by default"
+  },
+  "searchAllByDefault_info": {
+    "message": "When this option is enabled, only one context menu entry is shown and clicking it will open all selected search providers. If this is disabled, a submenu will be created."
+  },
+  "showOpenAll": {
+    "message": "Show 'Open All'"
+  },
+  "showOpenAllAtTop": {
+    "message": "Show 'Open All' at the top"
+  }
+}

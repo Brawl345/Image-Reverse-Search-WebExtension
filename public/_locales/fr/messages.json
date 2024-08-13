@@ -1,0 +1,78 @@
+{
+  "addSearchProvider": {
+    "message": "Ajouter fournisseur"
+  },
+  "contextMenuOpenAll": {
+    "message": "Tout ouvrir"
+  },
+  "contextMenuTitle": {
+    "message": "Recherche inversée d'image"
+  },
+  "extensionDescription": {
+    "message": "Ajoute une option au menu contextuel pour éffectuer une recherche inversée d'une image sur une variété de services"
+  },
+  "extensionName": {
+    "message": "Reverse Image Search"
+  },
+  "msgAtLeastOneSearchProvider": {
+    "message": "Merci de choisir au moins un fournisseur de recherche!"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "Un nom de fournisseur de recherche dupliqué !"
+  },
+  "msgIconUploadNotImage": {
+    "message": "Veuillez télécharger un format d'image disponible ! (png, jpg, ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "Merci de télécharger une image carrée"
+  },
+  "msgSuccessSaveOptions": {
+    "message": "Enregistrée!"
+  },
+  "openInBackgroundLabel": {
+    "message": "Ouvrir en arrière-plan"
+  },
+  "openTabAtEnd": {
+    "message": "A la fin"
+  },
+  "openTabAtLabel": {
+    "message": "Ouvrir la page de recherche"
+  },
+  "openTabAtLeft": {
+    "message": "A gauche de l'onglet actuel"
+  },
+  "openTabAtRight": {
+    "message": "A droite de l'onglet actuel"
+  },
+  "optionsPageTitle": {
+    "message": "Réglages"
+  },
+  "providerNamePlaceholder": {
+    "message": "2-15 lettres"
+  },
+  "providerNamePlaceholderError": {
+    "message": "Le nom du fournisseur $index$ est invalide. Merci d'utiliser 2-15 lettres.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholder": {
+    "message": "http(s):// au début et %s pour l'url de l'image..."
+  },
+  "providerURLPlaceholderError": {
+    "message": "L'URL du fournisseur $index$ est invalide. Utiliser http(s):// au début et %s en tant qu'emplacement pour l'URL de l'image.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "Restaurer par défaut"
+  },
+  "saveOptions": {
+    "message": "Enregistrer réglages"
+  }
+}

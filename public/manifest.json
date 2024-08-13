@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "default_locale": "en",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "author": "Andreas Bielawski",
+  "version": "4.2.0",
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "64": "icons/64.png",
+    "128": "icons/128.png",
+    "256": "icons/256.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png",
+      "48": "icons/48.png",
+      "64": "icons/64.png",
+      "128": "icons/128.png",
+      "256": "icons/256.png"
+    }
+  },
+  "background": {
+    "scripts": ["build/service-worker/service-worker.js"],
+    "service_worker": "build/service-worker/service-worker.js",
+    "type": "module"
+  },
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "options/options.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:"
+  },
+  "permissions": ["contextMenus", "storage"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{0da2e603-21ba-4422-8049-b6d9e013ed84}",
+      "strict_min_version": "120.0"
+    }
+  }
+}

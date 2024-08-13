@@ -1,0 +1,78 @@
+{
+  "addSearchProvider": {
+    "message": "Añadir proveedor"
+  },
+  "contextMenuOpenAll": {
+    "message": "Abrir todos"
+  },
+  "contextMenuTitle": {
+    "message": "Búsqueda inversa de imagen"
+  },
+  "extensionDescription": {
+    "message": "Añade una opción al menú contextual para buscar inversamente una imagen en varios servicios"
+  },
+  "extensionName": {
+    "message": "Búsqueda inversa de imagen"
+  },
+  "msgAtLeastOneSearchProvider": {
+    "message": "Por favor escoja al menos un proveedor de búsquedas!"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "Algún nombre de proveedor está duplicado!"
+  },
+  "msgIconUploadNotImage": {
+    "message": "Por favor suba formatos admitidos! (png, jpg, ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "Por favor suba una imagen rectangular!"
+  },
+  "msgSuccessSaveOptions": {
+    "message": "Guardado!"
+  },
+  "openInBackgroundLabel": {
+    "message": "Abrir en segundo plano"
+  },
+  "openTabAtEnd": {
+    "message": "Al final"
+  },
+  "openTabAtLabel": {
+    "message": "Abrir la página de búsquedas"
+  },
+  "openTabAtLeft": {
+    "message": "A la izquierda de la pestaña actual"
+  },
+  "openTabAtRight": {
+    "message": "A la derecha de la pestaña actual"
+  },
+  "optionsPageTitle": {
+    "message": "Opciones"
+  },
+  "providerNamePlaceholder": {
+    "message": "2-15 letras"
+  },
+  "providerNamePlaceholderError": {
+    "message": "El nombre del proveedor $index$ es inválido. Por favor use de 2-15 letras.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholder": {
+    "message": "http(s):// al comienzo y %s como ubicador para la url de la imagen..."
+  },
+  "providerURLPlaceholderError": {
+    "message": "El url del proveedor $index$ es inválido. Use http(s):// al inicio y %s como ubicador para el url de la imagen.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "Restaurar predeterminados"
+  },
+  "saveOptions": {
+    "message": "Guardar opciones"
+  }
+}

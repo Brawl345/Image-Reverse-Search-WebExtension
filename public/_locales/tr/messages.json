@@ -1,0 +1,78 @@
+{
+  "addSearchProvider": {
+    "message": "Sağlayıcı Ekle"
+  },
+  "contextMenuOpenAll": {
+    "message": "Hepsini Aç"
+  },
+  "contextMenuTitle": {
+    "message": "Görselle Ara"
+  },
+  "extensionDescription": {
+    "message": "Çeşitli servisler aracılığıyla tersinden görsel arama için bağlam menüsüne bir seçenek ekler."
+  },
+  "extensionName": {
+    "message": "Reverse Image Search"
+  },
+  "msgAtLeastOneSearchProvider": {
+    "message": "Lütfen en az bir arama sağlayıcı seçin!"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "Bazı arama sağlayıcılarının adı aynı!"
+  },
+  "msgIconUploadNotImage": {
+    "message": "Lütfen geçerli bir resim formatı yükleyin! (png, jpg, ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "Yüklenen görsel kare olmalı!"
+  },
+  "msgSuccessSaveOptions": {
+    "message": "Kaydedildi!"
+  },
+  "openInBackgroundLabel": {
+    "message": "Arka planda aç"
+  },
+  "openTabAtEnd": {
+    "message": "En sonda"
+  },
+  "openTabAtLabel": {
+    "message": "Arama sayfasını aç"
+  },
+  "openTabAtLeft": {
+    "message": "Geçerli sekmenin solunda"
+  },
+  "openTabAtRight": {
+    "message": "Geçerli sekmenin sağında"
+  },
+  "optionsPageTitle": {
+    "message": "Seçenekler"
+  },
+  "providerNamePlaceholder": {
+    "message": "2-15 harf"
+  },
+  "providerNamePlaceholderError": {
+    "message": "$index$ numaralı sağlayıcının adı geçersiz. Lütfen 2-15 harf kullanın.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholder": {
+    "message": "http(s):// ile başlayın ve resim url'si için %s kullanın..."
+  },
+  "providerURLPlaceholderError": {
+    "message": "$index$ sağlayıcısının URL'si geçersiz. URL'ye http(s):// ile başlayın ve yer tutucu olarak %s kullanın.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "Varsayılana Dön"
+  },
+  "saveOptions": {
+    "message": "Kaydet"
+  }
+}

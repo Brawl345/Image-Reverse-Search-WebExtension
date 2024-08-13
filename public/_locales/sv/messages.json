@@ -1,0 +1,78 @@
+{
+  "addSearchProvider": {
+    "message": "Lägg till söktjänst"
+  },
+  "contextMenuOpenAll": {
+    "message": "Öppna alla"
+  },
+  "contextMenuTitle": {
+    "message": "Sök med bild"
+  },
+  "extensionDescription": {
+    "message": "Lägger till ett alternativ i kontextmenyn för att söka med bild på olika söktjänster"
+  },
+  "extensionName": {
+    "message": "Sök med bild"
+  },
+  "msgAtLeastOneSearchProvider": {
+    "message": "Välj minst en söktjänst!"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "En söktjänsts namn är dubblett!"
+  },
+  "msgIconUploadNotImage": {
+    "message": "Formatet stöds inte! (png, jpg, ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "Bilden måste vara kvadratisk!"
+  },
+  "msgSuccessSaveOptions": {
+    "message": "Sparat!"
+  },
+  "openInBackgroundLabel": {
+    "message": "Öppna i bakgrunden"
+  },
+  "openTabAtEnd": {
+    "message": "I slutet"
+  },
+  "openTabAtLabel": {
+    "message": "Öppna söksidan"
+  },
+  "openTabAtLeft": {
+    "message": "Till vänster om nuvarande flik"
+  },
+  "openTabAtRight": {
+    "message": "Till höger om nuvarande flik"
+  },
+  "optionsPageTitle": {
+    "message": "Alternativ"
+  },
+  "providerNamePlaceholder": {
+    "message": "2-15 tecken"
+  },
+  "providerNamePlaceholderError": {
+    "message": "Namnet för söktjänsten $index$ är ogiltigt. Var god använd 2-15 tecken.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholder": {
+    "message": "http(s):// i början och %s för bild-url..."
+  },
+  "providerURLPlaceholderError": {
+    "message": "Url:en för söktjänsten $index$ är ogiltig. Ange http(s):// i början och %s som platshållare för bildens url.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "Återställ standard"
+  },
+  "saveOptions": {
+    "message": "Spara ändringar"
+  }
+}

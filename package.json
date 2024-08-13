@@ -1,0 +1,48 @@
+{
+  "name": "reverse-image-search",
+  "description": "Reverse Image Search",
+  "version": "4.2.0",
+  "author": "Brawl345",
+  "license": "Unlicense",
+  "repository": {
+    "url": "https://github.com/Brawl345/Image-Reverse-Search-WebExtension"
+  },
+  "main": "source/service-worker/service-worker.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx build.ts",
+    "build": "cross-env NODE_ENV=\"production\" tsx build.ts",
+    "start:chrome": "web-ext run --no-reload -t chromium",
+    "start:firefox": "web-ext run --no-reload -t firefox-desktop",
+    "lint:types": "tsc --project tsconfig.json",
+    "lint:code": "biome lint",
+    "lint:web-ext": "npm run build && web-ext lint",
+    "web-ext:build": "npm run build && web-ext build --overwrite-dest",
+    "web-ext:upload": "npm run web-ext:build && web-ext sign --channel=listed"
+  },
+  "webExt": {
+    "sourceDir": "./public/",
+    "run": {
+      "startUrl": ["about:debugging#/runtime/this-firefox"]
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@types/bootstrap": "5.2.10",
+    "@types/chrome": "0.0.270",
+    "cross-env": "7.0.3",
+    "esbuild": "0.23.0",
+    "esbuild-sass-plugin": "3.3.1",
+    "esbuild-svelte": "0.8.1",
+    "globals": "15.9.0",
+    "sass": "1.77.8",
+    "svelte-preprocess": "6.0.2",
+    "tsx": "4.17.0",
+    "typescript": "5.5.4",
+    "web-ext": "8.2.0"
+  },
+  "dependencies": {
+    "bootstrap": "5.3.3",
+    "svelte": "4.2.18"
+  }
+}
