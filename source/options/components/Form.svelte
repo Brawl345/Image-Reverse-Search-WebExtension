@@ -187,14 +187,6 @@
 
   <hr />
 
-  <div class="row">
-    <div class="col">
-      <button class="btn btn-success" type="submit"
-        >{getMessage('saveOptions')}</button
-      >
-    </div>
-  </div>
-
   {#if $alert.variant !== null}
     <div class="row mt-3" transition:fly>
       <div class="col">
@@ -215,4 +207,12 @@
       </div>
     </div>
   {/if}
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-success" type="submit"
+        >{getMessage('saveOptions')}</button
+      >
+    </div>
+  </div>
 </form>

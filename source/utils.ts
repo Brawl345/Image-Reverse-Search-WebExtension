@@ -31,3 +31,24 @@ export const getLowerIndex = (length: number, index: number) => {
   }
   return index + 1;
 };
+
+export const base64EncodeIcon = (ctx: CanvasRenderingContext2D): string => {
+  const pngBase64 = ctx.canvas.toDataURL();
+  const { data: pixels } = ctx.getImageData(0, 0, 24, 24);
+
+  const isTransparent = pixels.some(
+    (value, index) => index % 4 === 3 && value !== 255,
+  );
+  if (isTransparent) {
+    return pngBase64;
+  }
+
+  const jpegBase64 = ctx.canvas.toDataURL('image/jpeg', 0.8);
+  if (pngBase64.length < jpegBase64.length) {
+    return pngBase64;
+  }
+  return jpegBase64;
+};
+
+// @ts-ignore
+export const isFirefox = window.browser && browser.runtime;

@@ -21,3 +21,7 @@ $enable-gradients: true;
 @import "bootstrap/scss/badge";
 @import "bootstrap/scss/close";
 @import "bootstrap/scss/tooltip";
+
+.pointer {
+  cursor: pointer;
+}

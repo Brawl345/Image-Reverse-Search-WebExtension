@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.2.0
+
+- Port to TypeScript
+- Make it work in Firefox again, including custom icons
+- Various bugfixes
+
 ## 4.1.2
 
 - Replace Google Image Search with Google Lens because Google removed the old reverse search. This will also apply to current users.

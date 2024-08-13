@@ -1,6 +1,5 @@
 import { onReverseSearch, setupContextMenu } from './service-worker-functions';
 
-chrome.runtime.onStartup.addListener(setupContextMenu);
 chrome.runtime.onInstalled.addListener(async (details) => {
   await setupContextMenu();
 

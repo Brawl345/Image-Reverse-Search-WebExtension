@@ -1,7 +1,7 @@
 {
   "name": "reverse-image-search",
   "description": "Reverse Image Search",
-  "version": "4.1.2",
+  "version": "4.2.0",
   "author": "Brawl345",
   "license": "Unlicense",
   "repository": {
@@ -12,8 +12,8 @@
   "scripts": {
     "dev": "tsx build.ts",
     "build": "cross-env NODE_ENV=\"production\" tsx build.ts",
-    "start:chrome": "web-ext run -t chromium",
-    "start:firefox": "web-ext run -t firefox-desktop",
+    "start:chrome": "web-ext run --no-reload -t chromium",
+    "start:firefox": "web-ext run --no-reload -t firefox-desktop",
     "lint:types": "tsc --project tsconfig.json",
     "lint:code": "biome lint",
     "lint:web-ext": "npm run build && web-ext lint",

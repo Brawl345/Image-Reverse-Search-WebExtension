@@ -29,6 +29,9 @@
   "msgIconUploadNotSquareImage": {
     "message": "Please upload square image!"
   },
+  "msgIconUploadNotSupported": {
+    "message": "Using icons in context menus is not supported by this browser."
+  },
   "msgSuccessSaveOptions": {
     "message": "Saved!"
   },

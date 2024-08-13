@@ -29,6 +29,9 @@
   "msgIconUploadNotSquareImage": {
     "message": "Bitte lade ein quadratisches Bild hoch!"
   },
+  "msgIconUploadNotSupported": {
+    "message": "Die Verwendung von Icons in Kontextmenüs wird von diesem Browser nicht unterstützt."
+  },
   "msgSuccessSaveOptions": {
     "message": "Gespeichert!"
   },
