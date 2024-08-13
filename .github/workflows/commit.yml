@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -19,25 +19,28 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version: "20"
 
       - name: Install dependencies
         run: npm ci
 
       - name: Lint
-        run: npm run lint
+        run: |
+          npm run lint:types
+          npm run lint:code
+          npm run lint:web-ext
 
       - name: Build
         run: npm run build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
-          name: Reverse-Image-Search-${{github.sha}}.zip
+          name: Reverse-Image-Search-${{github.sha}}
           path: public/*
           if-no-files-found: error
