@@ -23,7 +23,7 @@
   $: iconUrl = getIcon(provider.icon);
 
   const uploadIcon = () => {
-    if (isFirefox) {
+    if (!isFirefox) {
       errorMsg = getMessage("msgIconUploadNotSupported");
       return;
     }

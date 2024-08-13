@@ -1,5 +1,9 @@
 # Changelog
 
+## v4.2.1
+
+- Fix browser check
+
 ## 4.2.0
 
 - Port to TypeScript

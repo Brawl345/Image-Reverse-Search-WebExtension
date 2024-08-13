@@ -50,5 +50,6 @@ export const base64EncodeIcon = (ctx: CanvasRenderingContext2D): string => {
   return jpegBase64;
 };
 
-// @ts-ignore
-export const isFirefox = window.browser && browser.runtime;
+export const isFirefox =
+  // @ts-ignore
+  typeof window !== 'undefined' && window.browser && browser.runtime;
