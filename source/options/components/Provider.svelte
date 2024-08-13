@@ -101,6 +101,7 @@
     />
   </div>
   <div class="input-group-text">
+    <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
     <img class="pointer" alt="Icon" width="24" height="24" src={iconUrl} on:click={uploadIcon} />
   </div>
   <input
