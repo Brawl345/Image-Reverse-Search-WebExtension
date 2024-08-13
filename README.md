@@ -5,10 +5,9 @@ WebExtension which adds an option to the context menu to search with an image on
 ## Installation
 
 - Available for Firefox on [addons.mozilla.org](https://addons.mozilla.org/firefox/addon/image-reverse-search/)
-- Available for Chrome in the [Chrome Web Store](https://chrome.google.com/webstore/detail/reverse-image-search/cdgbjhkjjghbjjikgjkkpljlmnpcakco)
+- Available for Chrome and Edge in the [Chrome Web Store](https://chrome.google.com/webstore/detail/reverse-image-search/cdgbjhkjjghbjjikgjkkpljlmnpcakco)
 - Available for Opera in the [Opera Add-Ons Store](https://addons.opera.com/extensions/details/image-reverse-search/)
-- Available for Microsoft Edge (Chromium) on [Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/ibmfjngadieonblglgamabghhaimfldg)
-- Available for other Chromium-based browsers in the [Releases section](https://github.com/Brawl345/Image-Reverse-Search-with-Google/releases) (drag CRX into chrome://extensions)
+- Available for other Chromium-based browsers in the [Releases section](https://github.com/Brawl345/Image-Reverse-Search-with-Google/releases) (drag CRX into chrome://extensions, only for browser which do not enforce signing)
 
 ## Features
 
