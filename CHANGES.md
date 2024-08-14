@@ -1,5 +1,11 @@
 # Changelog
 
+## v4.3.0
+
+- Add advanced options per search engine:
+  - Do not encode image URL
+  - Strip protocol from image URL
+
 ## v4.2.1
 
 - Fix browser check

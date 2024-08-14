@@ -1,5 +1,5 @@
 import { getOptions } from '../storage';
-import type { CreatePropertiesWithIcon, Options } from '../types';
+import type { CreatePropertiesWithIcon } from '../types';
 import { getMessage, isNullish } from '../utils';
 
 const PARENT_ID = 'Image-Reverse-Search';
@@ -85,46 +85,53 @@ export const onReverseSearch: (
     return;
   }
 
-  const options = await getOptions();
+  const { openTabAt, openInBackground, storageProviders } = await getOptions();
 
-  const providerUrls = [];
+  const activeProviders = storageProviders.filter((provider) =>
+    menuItemId === OPEN_ALL_ID
+      ? provider.selected
+      : provider.name === menuItemId,
+  );
 
-  if (menuItemId === 'openAll') {
-    for (const provider of options.storageProviders) {
-      if (provider.selected) {
-        providerUrls.push(provider.url);
-      }
+  if (menuItemId === OPEN_ALL_ID) {
+    // Reverse because we open them by tab index
+    activeProviders.reverse();
+  }
+
+  const newTabIndex = await (async () => {
+    switch (openTabAt) {
+      case 'right':
+        return tab.index + 1;
+      case 'left':
+        return tab.index;
+      default:
+        return chrome.tabs
+          .query({ currentWindow: true })
+          .then((tabs) => tabs.length)
+          .catch(() => tab.index);
     }
-    /* Reverse because we open them by tab index */
-    providerUrls.reverse();
-  } else {
-    for (const providerId of options.storageProviders) {
-      if (providerId.name === menuItemId) {
-        providerUrls.push(providerId.url);
+  })();
+
+  await Promise.all(
+    activeProviders.map((provider) => {
+      let imgSrcUrl = srcUrl;
+      if (provider.stripProtocol) {
+        imgSrcUrl = imgSrcUrl.replace(/^https?:\/\//, '');
       }
-    }
-  }
 
-  let newTabIndex: number;
+      let providerUrl = provider.url;
+      if (!provider.doNotEncodeUrl) {
+        providerUrl = providerUrl.replace('%s', encodeURIComponent(imgSrcUrl));
+      } else {
+        providerUrl = providerUrl.replace('%s', imgSrcUrl);
+      }
 
-  if (options.openTabAt === 'right') {
-    newTabIndex = tab.index + 1;
-  } else if (options.openTabAt === 'left') {
-    newTabIndex = tab.index;
-  } else {
-    /* end */
-    newTabIndex = await chrome.tabs
-      .query({ currentWindow: true })
-      .then((tabs) => tabs.length)
-      .catch(() => tab.index);
-  }
-
-  for (const providerUrl of providerUrls) {
-    void chrome.tabs.create({
-      url: providerUrl.replace('%s', encodeURIComponent(srcUrl)),
-      active: !options.openInBackground,
-      index: newTabIndex,
-      openerTabId: tab.id,
-    });
-  }
+      return chrome.tabs.create({
+        url: providerUrl,
+        active: !openInBackground,
+        index: newTabIndex,
+        openerTabId: tab.id,
+      });
+    }),
+  );
 };

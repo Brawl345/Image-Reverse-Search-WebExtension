@@ -1,8 +1,10 @@
-interface StorageProvider {
+export interface StorageProvider {
   name: string;
   icon: string;
   url: string;
   selected: boolean;
+  stripProtocol: boolean;
+  doNotEncodeUrl: boolean;
 }
 
 export interface Options {

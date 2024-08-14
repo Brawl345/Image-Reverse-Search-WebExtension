@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { defaultOptions, getOptions } from '../../storage';
+import { defaultOptions, getOptions, newProvider } from '../../storage';
 import type { Options, StorageProvider } from '../../types';
 import { arraymove, getLowerIndex, getUpperIndex } from '../../utils.js';
 
@@ -16,16 +16,7 @@ const createStore = () => {
     addProvider: () =>
       update((previous) => ({
         ...previous,
-        storageProviders: [
-          ...previous.storageProviders,
-          {
-            i: previous.storageProviders.length,
-            name: '',
-            icon: 'icons/other.png',
-            url: '',
-            selected: true,
-          },
-        ],
+        storageProviders: [...previous.storageProviders, { ...newProvider }],
       })),
     removeProvider: (indexToRemove: number) =>
       update((previous) => ({

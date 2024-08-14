@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fly } from 'svelte/transition';
+  import { fly, slide } from 'svelte/transition';
   import type { StorageProvider } from '../../types';
   import { base64EncodeIcon, getMessage, isFirefox } from "../../utils";
   import { options } from '../stores/options-store';
@@ -7,6 +7,7 @@
   export let index: number;
   export let provider: StorageProvider;
 
+  let showAdvanced = false;
   let errorMsg: string | null = null;
 
   const hideAlert = () => {
@@ -124,12 +125,42 @@
     bind:value={provider.url}
   />
   <button
+    class="btn btn-sm"
+    class:btn-outline-secondary={!showAdvanced}
+    class:btn-secondary={showAdvanced}
+    type="button"
+    on:click={() => showAdvanced = !showAdvanced}
+  >⚙
+  </button>
+  <button
     class="btn btn-sm btn-outline-danger"
     type="button"
     on:click={() => options.removeProvider(index)}
   >❌
   </button>
 </fieldset>
+
+<div class:mt-2={showAdvanced}>
+  {#if showAdvanced}
+    <div class="row" transition:slide>
+      <div class="col">
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input bind:checked={provider.doNotEncodeUrl} class="form-check-input" type="checkbox" name="doNotEncodeUrl">
+            {getMessage('doNotEncodeUrlLabel')}
+          </label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input bind:checked={provider.stripProtocol} class="form-check-input" type="checkbox" name="stripProtocol">
+            {getMessage('stripProtocolLabel')}
+          </label>
+        </div>
+      </div>
+    </div>
+  {/if}
+</div>
 
 {#if errorMsg !== null}
   <div class="row mt-3" transition:fly>

@@ -75,6 +75,12 @@
       }
     }
   },
+  "doNotEncodeUrlLabel": {
+    "message": "URL nicht enkodieren"
+  },
+  "stripProtocolLabel": {
+    "message": "Protokoll aus Bilder-URL entfernen"
+  },
   "restoreDefaultSearchProviders": {
     "message": "Standard wiederherstellen"
   },
