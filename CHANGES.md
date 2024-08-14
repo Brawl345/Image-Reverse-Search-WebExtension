@@ -5,6 +5,7 @@
 - Add advanced options per search engine:
   - Do not encode image URL
   - Strip protocol from image URL
+- Fix dependent checkboxes not reacting to changes
 
 ## v4.2.1
 

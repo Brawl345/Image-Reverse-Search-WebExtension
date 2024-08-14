@@ -12,6 +12,7 @@ const createStore = () => {
   );
 
   return {
+    set,
     subscribe,
     addProvider: () =>
       update((previous) => ({
