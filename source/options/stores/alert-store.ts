@@ -1,11 +1,13 @@
 import type { Writable } from 'svelte/store';
 import { writable } from 'svelte/store';
 
+interface Alert {
+  variant: string | null;
+  message: string | null;
+}
+
 function createStore() {
-  const {
-    subscribe,
-    set,
-  }: Writable<{ variant: string | null; message: string | null }> = writable({
+  const { subscribe, set }: Writable<Alert> = writable({
     variant: null,
     message: null,
   });
