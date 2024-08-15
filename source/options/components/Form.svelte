@@ -46,7 +46,10 @@
 
     chrome.storage.sync
       .set($options)
-      .then(() => alert.success(getMessage('msgSuccessSaveOptions')))
+      .then(() => {
+        alert.success(getMessage("msgSuccessSaveOptions"));
+        setTimeout(() => alert.hide(), 3000);
+      })
       .catch(() => alert.error(getMessage('errorWhileSaving')));
   };
 
