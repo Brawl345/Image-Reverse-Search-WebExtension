@@ -7,7 +7,9 @@
   export let index: number;
   export let provider: StorageProvider;
 
-  let showAdvanced = false;
+  const advancedOptionsChanged = provider.stripProtocol || provider.doNotEncodeUrl
+
+  let showAdvanced = advancedOptionsChanged;
   let errorMsg: string | null = null;
 
   const hideAlert = () => {
