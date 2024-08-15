@@ -11,6 +11,7 @@ const createStore = () => {
   return {
     set,
     subscribe,
+    resetAll: () => set(structuredClone(defaultOptions)),
     addProvider: () =>
       update((previous) => ({
         ...previous,
