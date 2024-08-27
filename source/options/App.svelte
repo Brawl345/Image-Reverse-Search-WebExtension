@@ -13,7 +13,6 @@
     await options.loadFromStorage();
     doneLoading = true;
   });
-  let text = '';
 </script>
 
 <main class="container mt-3">

@@ -1,5 +1,9 @@
 # Changelog
 
+## v4.3.1
+
+- Add old Google image search as an option (might not work for everyone)
+
 ## v4.3.0
 
 - Add advanced options per search engine:

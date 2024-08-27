@@ -17,10 +17,18 @@ export const defaultOptions: Options = Object.freeze({
   searchAllByDefault: false,
   storageProviders: [
     {
-      name: 'Google',
+      name: 'Google Lens',
       icon: 'icons/google.png',
       url: 'https://lens.google.com/uploadbyurl?url=%s',
       selected: true,
+      doNotEncodeUrl: false,
+      stripProtocol: false,
+    },
+    {
+      name: 'Google',
+      icon: 'icons/google.png',
+      url: 'https://www.google.com/searchbyimage?sbisrc=google&image_url=%s',
+      selected: false,
       doNotEncodeUrl: false,
       stripProtocol: false,
     },
