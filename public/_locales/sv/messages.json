@@ -74,5 +74,55 @@
   },
   "saveOptions": {
     "message": "Spara ändringar"
+  },
+  "redirectingToSearchEngine": {
+    "message": "Omdirigerar till sökmotor..."
+  },
+  "contentTypeLabel": {
+    "message": "Innehållstyp"
+  },
+  "doNotEncodeUrlLabel": {
+    "message": "Koda inte URL"
+  },
+  "errorWhileSaving": {
+    "message": "Ett okänt fel uppstod vid sparande."
+  },
+  "httpMethodLabel": {
+    "message": "HTTP-metod"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "Användning av ikoner i kontextmenyer stöds inte av denna webbläsare."
+  },
+  "postFieldNameLabel": {
+    "message": "POST-fältnamn"
+  },
+  "postFieldNamePlaceholder": {
+    "message": "url"
+  },
+  "providerURLPlaceholderErrorPOST": {
+    "message": "URL:en för söktjänsten $index$ är ogiltig. Använd http(s):// i början.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholderPOST": {
+    "message": "http(s):// i början..."
+  },
+  "searchAllByDefault": {
+    "message": "Sök i alla söktjänster som standard"
+  },
+  "searchAllByDefault_info": {
+    "message": "När detta alternativ är aktiverat visas endast en kontextmenypost och att klicka på den öppnar alla valda söktjänster. Om detta är inaktiverat skapas en undermeny."
+  },
+  "showOpenAll": {
+    "message": "Visa 'Öppna Alla'"
+  },
+  "showOpenAllAtTop": {
+    "message": "Visa 'Öppna Alla' överst"
+  },
+  "stripProtocolLabel": {
+    "message": "Ta bort protokoll från bild-URL"
   }
 }

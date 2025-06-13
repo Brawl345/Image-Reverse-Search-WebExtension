@@ -1,7 +1,7 @@
 {
   "name": "reverse-image-search",
   "description": "Reverse Image Search",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "author": "Brawl345",
   "license": "Unlicense",
   "repository": {
@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "tsx build.ts",
     "build": "cross-env NODE_ENV=\"production\" tsx build.ts",
-    "test": "vitest",
+    "test": "vitest run",
     "start:chrome": "web-ext run --no-reload -t chromium",
     "start:firefox": "web-ext run --no-reload -t firefox-desktop",
     "lint:types": "tsc --project tsconfig.json",
@@ -40,8 +40,8 @@
     "svelte-preprocess": "6.0.2",
     "tsx": "4.17.0",
     "typescript": "5.5.4",
-    "vitest": "^2.0.5",
-    "web-ext": "8.2.0"
+    "vitest": "3.2.3",
+    "web-ext": "8.7.1"
   },
   "dependencies": {
     "bootstrap": "5.3.3",

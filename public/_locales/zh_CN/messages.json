@@ -86,5 +86,43 @@
   },
   "showOpenAllAtTop": {
     "message": "将'全部打开'选项置顶"
+  },
+  "redirectingToSearchEngine": {
+    "message": "正在重定向到搜索引擎..."
+  },
+  "contentTypeLabel": {
+    "message": "内容类型"
+  },
+  "doNotEncodeUrlLabel": {
+    "message": "不编码URL"
+  },
+  "errorWhileSaving": {
+    "message": "保存时发生未知错误。"
+  },
+  "httpMethodLabel": {
+    "message": "HTTP方法"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "此浏览器不支持在上下文菜单中使用图标。"
+  },
+  "postFieldNameLabel": {
+    "message": "POST字段名"
+  },
+  "postFieldNamePlaceholder": {
+    "message": "url"
+  },
+  "providerURLPlaceholderErrorPOST": {
+    "message": "提供商 $index$ 的URL无效。请在开头使用http(s)://。",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholderPOST": {
+    "message": "开头使用http(s)://..."
+  },
+  "stripProtocolLabel": {
+    "message": "从图片URL中移除协议"
   }
 }

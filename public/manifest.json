@@ -36,6 +36,12 @@
     "extension_pages": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:"
   },
   "permissions": ["contextMenus", "storage"],
+  "web_accessible_resources": [
+    {
+      "resources": ["post-form.html", "post-form.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "browser_specific_settings": {
     "gecko": {
       "id": "{0da2e603-21ba-4422-8049-b6d9e013ed84}",

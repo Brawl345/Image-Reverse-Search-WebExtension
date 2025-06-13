@@ -5,6 +5,9 @@
   "contextMenuOpenAll": {
     "message": "すべて開く"
   },
+  "contextMenuTitle": {
+    "message": "画像で検索"
+  },
   "extensionDescription": {
     "message": "コンテキストメニューにオプションを追加することで、さまざまなサービスで類似した画像の検索ができます"
   },
@@ -28,6 +31,9 @@
   },
   "openInBackgroundLabel": {
     "message": "バックグラウンドで開く"
+  },
+  "openTabAtEnd": {
+    "message": "最後に"
   },
   "openTabAtLabel": {
     "message": "検索ページを開く"
@@ -68,5 +74,55 @@
   },
   "saveOptions": {
     "message": "オプションを保存"
+  },
+  "redirectingToSearchEngine": {
+    "message": "検索エンジンにリダイレクト中..."
+  },
+  "contentTypeLabel": {
+    "message": "コンテンツタイプ"
+  },
+  "doNotEncodeUrlLabel": {
+    "message": "URLをエンコードしない"
+  },
+  "errorWhileSaving": {
+    "message": "保存中に不明なエラーが発生しました。"
+  },
+  "httpMethodLabel": {
+    "message": "HTTPメソッド"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "このブラウザではコンテキストメニューでのアイコンの使用はサポートされていません。"
+  },
+  "postFieldNameLabel": {
+    "message": "POSTフィールド名"
+  },
+  "postFieldNamePlaceholder": {
+    "message": "url"
+  },
+  "providerURLPlaceholderErrorPOST": {
+    "message": "検索エンジン $index$ のURLが無効です。http(s)://で始めてください。",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholderPOST": {
+    "message": "http(s)://で始める..."
+  },
+  "searchAllByDefault": {
+    "message": "デフォルトですべての検索エンジンを検索"
+  },
+  "searchAllByDefault_info": {
+    "message": "このオプションが有効な場合、コンテキストメニューには1つのエントリのみが表示され、クリックすると選択されたすべての検索エンジンが開きます。無効にすると、サブメニューが作成されます。"
+  },
+  "showOpenAll": {
+    "message": "'すべて開く'を表示"
+  },
+  "showOpenAllAtTop": {
+    "message": "'すべて開く'を上部に表示"
+  },
+  "stripProtocolLabel": {
+    "message": "画像URLからプロトコルを削除"
   }
 }

@@ -74,5 +74,55 @@
   },
   "saveOptions": {
     "message": "Salvar Opções"
+  },
+  "redirectingToSearchEngine": {
+    "message": "Redirecionando para o mecanismo de busca..."
+  },
+  "contentTypeLabel": {
+    "message": "Tipo de Conteúdo"
+  },
+  "doNotEncodeUrlLabel": {
+    "message": "Não codificar URL"
+  },
+  "errorWhileSaving": {
+    "message": "Houve um erro desconhecido ao salvar."
+  },
+  "httpMethodLabel": {
+    "message": "Método HTTP"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "O uso de ícones em menus contextuais não é suportado por este navegador."
+  },
+  "postFieldNameLabel": {
+    "message": "Nome do campo POST"
+  },
+  "postFieldNamePlaceholder": {
+    "message": "url"
+  },
+  "providerURLPlaceholderErrorPOST": {
+    "message": "A URL do provedor $index$ é inválida. Use http(s):// no início.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholderPOST": {
+    "message": "http(s):// no início..."
+  },
+  "searchAllByDefault": {
+    "message": "Pesquisar em todos os provedores por padrão"
+  },
+  "searchAllByDefault_info": {
+    "message": "Quando esta opção está habilitada, apenas uma entrada do menu contextual é mostrada e clicar nela abrirá todos os provedores de pesquisa selecionados. Se estiver desabilitada, um submenu será criado."
+  },
+  "showOpenAll": {
+    "message": "Mostrar 'Abrir Todos'"
+  },
+  "showOpenAllAtTop": {
+    "message": "Mostrar 'Abrir Todos' no topo"
+  },
+  "stripProtocolLabel": {
+    "message": "Remover protocolo da URL da imagem"
   }
 }

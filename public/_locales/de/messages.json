@@ -67,8 +67,19 @@
   "providerURLPlaceholder": {
     "message": "http(s):// am Anfang und %s für die Bilder-URL..."
   },
+  "providerURLPlaceholderPOST": {
+    "message": "http(s):// am Anfang..."
+  },
   "providerURLPlaceholderError": {
     "message": "Die URL des $index$. Anbieters ist ungültig. Nutze http(s):// am Anfang und %s als Platzhalter für die Bilder-URL.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholderErrorPOST": {
+    "message": "Die URL des $index$. Anbieters ist ungültig. Nutze http(s):// am Anfang.",
     "placeholders": {
       "index": {
         "content": "$1"
@@ -80,6 +91,18 @@
   },
   "stripProtocolLabel": {
     "message": "Protokoll aus Bilder-URL entfernen"
+  },
+  "httpMethodLabel": {
+    "message": "HTTP-Methode"
+  },
+  "postFieldNameLabel": {
+    "message": "POST-Feldname"
+  },
+  "postFieldNamePlaceholder": {
+    "message": "url"
+  },
+  "contentTypeLabel": {
+    "message": "Content-Type"
   },
   "restoreDefaultSearchProviders": {
     "message": "Standard wiederherstellen"
@@ -98,5 +121,8 @@
   },
   "showOpenAllAtTop": {
     "message": "'Alle öffnen' als Erstes anzeigen"
+  },
+  "redirectingToSearchEngine": {
+    "message": "Weiterleitung zur Suchmaschine..."
   }
 }

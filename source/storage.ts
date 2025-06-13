@@ -7,6 +7,9 @@ export const newProvider: StorageProvider = {
   selected: true,
   doNotEncodeUrl: false,
   stripProtocol: false,
+  method: 'GET' as const,
+  postFieldName: 'url',
+  contentType: 'application/x-www-form-urlencoded',
 };
 
 export const defaultOptions: Options = Object.freeze({
@@ -23,6 +26,9 @@ export const defaultOptions: Options = Object.freeze({
       selected: true,
       doNotEncodeUrl: false,
       stripProtocol: false,
+      method: 'GET' as const,
+      postFieldName: 'url',
+      contentType: 'application/x-www-form-urlencoded',
     },
     {
       name: 'Google',
@@ -31,6 +37,9 @@ export const defaultOptions: Options = Object.freeze({
       selected: false,
       doNotEncodeUrl: false,
       stripProtocol: false,
+      method: 'GET' as const,
+      postFieldName: 'url',
+      contentType: 'application/x-www-form-urlencoded',
     },
     {
       name: 'IQDB',
@@ -39,6 +48,9 @@ export const defaultOptions: Options = Object.freeze({
       selected: false,
       doNotEncodeUrl: false,
       stripProtocol: false,
+      method: 'GET' as const,
+      postFieldName: 'url',
+      contentType: 'application/x-www-form-urlencoded',
     },
     {
       name: 'TinEye',
@@ -47,6 +59,9 @@ export const defaultOptions: Options = Object.freeze({
       selected: false,
       doNotEncodeUrl: false,
       stripProtocol: false,
+      method: 'GET' as const,
+      postFieldName: 'url',
+      contentType: 'application/x-www-form-urlencoded',
     },
     {
       name: 'Bing',
@@ -55,6 +70,9 @@ export const defaultOptions: Options = Object.freeze({
       selected: false,
       doNotEncodeUrl: false,
       stripProtocol: false,
+      method: 'GET' as const,
+      postFieldName: 'url',
+      contentType: 'application/x-www-form-urlencoded',
     },
     {
       name: 'Yandex',
@@ -63,6 +81,9 @@ export const defaultOptions: Options = Object.freeze({
       selected: false,
       doNotEncodeUrl: false,
       stripProtocol: false,
+      method: 'GET' as const,
+      postFieldName: 'url',
+      contentType: 'application/x-www-form-urlencoded',
     },
     {
       name: 'Яндекс',
@@ -71,6 +92,9 @@ export const defaultOptions: Options = Object.freeze({
       selected: false,
       doNotEncodeUrl: false,
       stripProtocol: false,
+      method: 'GET' as const,
+      postFieldName: 'url',
+      contentType: 'application/x-www-form-urlencoded',
     },
     {
       name: 'Baidu',
@@ -79,6 +103,9 @@ export const defaultOptions: Options = Object.freeze({
       selected: false,
       doNotEncodeUrl: false,
       stripProtocol: false,
+      method: 'GET' as const,
+      postFieldName: 'url',
+      contentType: 'application/x-www-form-urlencoded',
     },
     {
       name: 'SauceNAO',
@@ -87,9 +114,34 @@ export const defaultOptions: Options = Object.freeze({
       selected: false,
       doNotEncodeUrl: false,
       stripProtocol: false,
+      method: 'GET' as const,
+      postFieldName: 'url',
+      contentType: 'application/x-www-form-urlencoded',
+    },
+    {
+      name: 'IQDB (POST)',
+      icon: 'icons/iqdb.png',
+      url: 'https://iqdb.org/',
+      selected: false,
+      doNotEncodeUrl: false,
+      stripProtocol: false,
+      method: 'POST' as const,
+      postFieldName: 'url',
+      contentType: 'application/x-www-form-urlencoded',
     },
   ],
 });
 
-export const getOptions: () => Promise<Options> = async () =>
-  chrome.storage.sync.get(defaultOptions) as Promise<Options>;
+export const getOptions: () => Promise<Options> = async () => {
+  const options = await chrome.storage.sync.get(defaultOptions) as Options;
+
+  // Ensure backward compatibility by adding default values for new properties
+  options.storageProviders = options.storageProviders.map(provider => ({
+    ...provider,
+    method: provider.method ?? 'GET',
+    postFieldName: provider.postFieldName ?? 'url',
+    contentType: provider.contentType ?? 'application/x-www-form-urlencoded',
+  }));
+
+  return options;
+};

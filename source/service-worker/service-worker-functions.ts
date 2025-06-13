@@ -1,5 +1,5 @@
 import { getOptions } from '../storage';
-import type { CreatePropertiesWithIcon } from '../types';
+import type { CreatePropertiesWithIcon, StorageProvider } from '../types';
 import { getMessage, isNullish } from '../utils';
 
 const PARENT_ID = 'Image-Reverse-Search';
@@ -77,6 +77,36 @@ export const setupContextMenu = async () => {
   }
 };
 
+const handlePostRequest = async (
+  provider: StorageProvider,
+  imgSrcUrl: string,
+  tabOptions: chrome.tabs.CreateProperties,
+): Promise<chrome.tabs.Tab> => {
+  const fieldName = provider.postFieldName ?? 'url';
+  const formAction = provider.url.includes('%s')
+    ? provider.url.replace('%s', imgSrcUrl)
+    : provider.url;
+
+  const fieldValue = provider.doNotEncodeUrl ? imgSrcUrl : encodeURIComponent(imgSrcUrl);
+  const contentType = provider.contentType ?? 'application/x-www-form-urlencoded';
+
+  // Create URL to our bundled HTML file with form parameters
+  const postFormUrl = chrome.runtime.getURL('post-form.html');
+  const params = new URLSearchParams({
+    action: formAction,
+    fieldName: fieldName,
+    fieldValue: fieldValue,
+    contentType: contentType,
+  });
+
+  const fullUrl = `${postFormUrl}?${params.toString()}`;
+
+  return chrome.tabs.create({
+    url: fullUrl,
+    ...tabOptions,
+  });
+};
+
 export const onReverseSearch: (
   { srcUrl, menuItemId }: chrome.contextMenus.OnClickData,
   tab: chrome.tabs.Tab | undefined,
@@ -113,25 +143,36 @@ export const onReverseSearch: (
   })();
 
   await Promise.all(
-    activeProviders.map((provider) => {
+    activeProviders.map(async (provider) => {
       let imgSrcUrl = srcUrl;
       if (provider.stripProtocol) {
         imgSrcUrl = imgSrcUrl.replace(/^https?:\/\//, '');
       }
 
-      let providerUrl = provider.url;
-      if (!provider.doNotEncodeUrl) {
-        providerUrl = providerUrl.replace('%s', encodeURIComponent(imgSrcUrl));
-      } else {
-        providerUrl = providerUrl.replace('%s', imgSrcUrl);
+      const encodedImgSrcUrl = provider.doNotEncodeUrl
+        ? imgSrcUrl
+        : encodeURIComponent(imgSrcUrl);
+
+      if (!provider.method || provider.method === 'GET') {
+        const providerUrl = provider.url.includes('%s')
+          ? provider.url.replace('%s', encodedImgSrcUrl)
+          : provider.url;
+        return chrome.tabs.create({
+          url: providerUrl,
+          active: !openInBackground,
+          index: newTabIndex,
+          openerTabId: tab.id,
+        });
       }
 
-      return chrome.tabs.create({
-        url: providerUrl,
-        active: !openInBackground,
-        index: newTabIndex,
-        openerTabId: tab.id,
-      });
+      // Handle POST requests
+      if (provider.method === 'POST') {
+        return handlePostRequest(provider, imgSrcUrl, {
+          active: !openInBackground,
+          index: newTabIndex,
+          openerTabId: tab.id,
+        });
+      }
     }),
   );
 };

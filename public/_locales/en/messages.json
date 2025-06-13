@@ -67,8 +67,19 @@
   "providerURLPlaceholder": {
     "message": "http(s):// at the beginning and %s for the image url..."
   },
+  "providerURLPlaceholderPOST": {
+    "message": "http(s):// at the beginning..."
+  },
   "providerURLPlaceholderError": {
     "message": "The url of provider $index$ is invalid. Use http(s):// at the beginning and %s as a placeholder for the image url.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholderErrorPOST": {
+    "message": "The url of provider $index$ is invalid. Use http(s):// at the beginning.",
     "placeholders": {
       "index": {
         "content": "$1"
@@ -80,6 +91,18 @@
   },
   "stripProtocolLabel": {
     "message": "Remove protocol from image URL"
+  },
+  "httpMethodLabel": {
+    "message": "HTTP Method"
+  },
+  "postFieldNameLabel": {
+    "message": "POST field name"
+  },
+  "postFieldNamePlaceholder": {
+    "message": "url"
+  },
+  "contentTypeLabel": {
+    "message": "Content Type"
   },
   "restoreDefaultSearchProviders": {
     "message": "Restore default"
@@ -98,5 +121,8 @@
   },
   "showOpenAllAtTop": {
     "message": "Show 'Open All' at the top"
+  },
+  "redirectingToSearchEngine": {
+    "message": "Redirecting to search engine..."
   }
 }

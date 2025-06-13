@@ -74,5 +74,55 @@
   },
   "saveOptions": {
     "message": "保存選項"
+  },
+  "redirectingToSearchEngine": {
+    "message": "正在重新導向至搜尋引擎..."
+  },
+  "contentTypeLabel": {
+    "message": "內容類型"
+  },
+  "doNotEncodeUrlLabel": {
+    "message": "不編碼URL"
+  },
+  "errorWhileSaving": {
+    "message": "儲存時發生未知錯誤。"
+  },
+  "httpMethodLabel": {
+    "message": "HTTP方法"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "此瀏覽器不支援在內容功能表中使用圖示。"
+  },
+  "postFieldNameLabel": {
+    "message": "POST欄位名稱"
+  },
+  "postFieldNamePlaceholder": {
+    "message": "url"
+  },
+  "providerURLPlaceholderErrorPOST": {
+    "message": "提供者 $index$ 的URL無效。請在開頭使用http(s)://。",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholderPOST": {
+    "message": "開頭使用http(s)://..."
+  },
+  "searchAllByDefault": {
+    "message": "預設搜尋所有提供者"
+  },
+  "searchAllByDefault_info": {
+    "message": "啟用此選項時，只會顯示一個內容功能表項目，點擊它將開啟所有選定的搜尋提供者。如果停用此選項，將建立子功能表。"
+  },
+  "showOpenAll": {
+    "message": "顯示「全部開啟」"
+  },
+  "showOpenAllAtTop": {
+    "message": "在頂部顯示「全部開啟」"
+  },
+  "stripProtocolLabel": {
+    "message": "從圖片URL中移除協定"
   }
 }

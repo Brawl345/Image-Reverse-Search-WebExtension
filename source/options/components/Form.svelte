@@ -8,14 +8,14 @@
   import { options } from '../stores/options-store';
   import Provider from "./Provider.svelte";
 
-  const save = () => {
+  const validateAndSave = () => {
     if (
       $options.storageProviders.length === 0 ||
       $options.storageProviders.filter((provider) => provider.selected)
         .length === 0
     ) {
       alert.error(getMessage('msgAtLeastOneSearchProvider'));
-      return;
+      return false;
     }
 
     const nameSet = new Set();
@@ -24,24 +24,33 @@
       const providerNumber = index + 1;
       const storageProvider = $options.storageProviders[index];
 
-      if (!/^https?:\/\/.*%s.*$/.test(storageProvider.url)) {
+      // For GET requests, %s is required. For POST requests, %s is optional
+      const requiresPlaceholder = !storageProvider.method || storageProvider.method === 'GET';
+      const urlPattern = requiresPlaceholder
+        ? /^https?:\/\/.*%s.*$/
+        : /^https?:\/\/.*$/;
+
+      if (!urlPattern.test(storageProvider.url)) {
+        const errorKey = requiresPlaceholder
+          ? 'providerURLPlaceholderError'
+          : 'providerURLPlaceholderErrorPOST';
         alert.error(
-          getMessage('providerURLPlaceholderError', providerNumber.toString())
+          getMessage(errorKey, providerNumber.toString())
         );
-        return;
+        return false;
       }
       if (storageProvider.name.length < 2 || storageProvider.name.length > 15) {
         alert.error(
           getMessage('providerNamePlaceholderError', providerNumber.toString())
         );
-        return;
+        return false;
       }
       nameSet.add(storageProvider.name);
     }
 
     if (nameSet.size !== $options.storageProviders.length) {
       alert.error(getMessage('msgDuplicatedProviderName'));
-      return;
+      return false;
     }
 
     chrome.storage.sync
@@ -51,6 +60,12 @@
         setTimeout(() => alert.hide(), 3000);
       })
       .catch(() => alert.error(getMessage('errorWhileSaving')));
+
+    return true;
+  };
+
+  const save = () => {
+    validateAndSave();
   };
 
   const reset = () => {

@@ -74,5 +74,55 @@
   },
   "saveOptions": {
     "message": "Kaydet"
+  },
+  "redirectingToSearchEngine": {
+    "message": "Arama motoruna yönlendiriliyor..."
+  },
+  "contentTypeLabel": {
+    "message": "İçerik Türü"
+  },
+  "doNotEncodeUrlLabel": {
+    "message": "URL'yi kodlama"
+  },
+  "errorWhileSaving": {
+    "message": "Kaydederken bilinmeyen bir hata oluştu."
+  },
+  "httpMethodLabel": {
+    "message": "HTTP Yöntemi"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "Bağlam menülerinde simge kullanımı bu tarayıcı tarafından desteklenmiyor."
+  },
+  "postFieldNameLabel": {
+    "message": "POST alan adı"
+  },
+  "postFieldNamePlaceholder": {
+    "message": "url"
+  },
+  "providerURLPlaceholderErrorPOST": {
+    "message": "Sağlayıcı $index$ URL'si geçersiz. Başlangıçta http(s):// kullanın.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholderPOST": {
+    "message": "Başlangıçta http(s)://..."
+  },
+  "searchAllByDefault": {
+    "message": "Varsayılan olarak tüm sağlayıcılarda ara"
+  },
+  "searchAllByDefault_info": {
+    "message": "Bu seçenek etkinleştirildiğinde, yalnızca bir bağlam menüsü girişi gösterilir ve tıklandığında seçilen tüm arama sağlayıcıları açılır. Bu devre dışı bırakılırsa, bir alt menü oluşturulur."
+  },
+  "showOpenAll": {
+    "message": "'Hepsini Aç'ı göster"
+  },
+  "showOpenAllAtTop": {
+    "message": "'Hepsini Aç'ı üstte göster"
+  },
+  "stripProtocolLabel": {
+    "message": "Görsel URL'sinden protokolü kaldır"
   }
 }

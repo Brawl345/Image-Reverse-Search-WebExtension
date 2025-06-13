@@ -5,6 +5,9 @@ export interface StorageProvider {
   selected: boolean;
   stripProtocol: boolean;
   doNotEncodeUrl: boolean;
+  method?: 'GET' | 'POST';
+  postFieldName?: string;
+  contentType?: string;
 }
 
 export interface Options {

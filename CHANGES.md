@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.3.2
+
+- Support POST requests
+- Update translations
+
 ## v4.3.1
 
 - Add old Google image search as an option (might not work for everyone)

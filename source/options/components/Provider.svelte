@@ -7,7 +7,7 @@
   export let index: number;
   export let provider: StorageProvider;
 
-  const advancedOptionsChanged = provider.stripProtocol || provider.doNotEncodeUrl
+  const advancedOptionsChanged = provider.stripProtocol || provider.doNotEncodeUrl || provider.method === 'POST'
 
   let showAdvanced = advancedOptionsChanged;
   let errorMsg: string | null = null;
@@ -121,9 +121,9 @@
     class="form-control w-50"
     type="url"
     name="url"
-    placeholder={getMessage('providerURLPlaceholder')}
+    placeholder={provider.method === 'POST' ? getMessage('providerURLPlaceholderPOST') : getMessage('providerURLPlaceholder')}
     required
-    pattern="https?:\/\/.*%s.*"
+    pattern={provider.method === 'POST' ? 'https?:\/\/.*' : 'https?:\/\/.*%s.*'}
     bind:value={provider.url}
   />
   <button
@@ -160,6 +160,54 @@
           </label>
         </div>
       </div>
+    </div>
+
+    <div class="row mt-2" transition:slide>
+      <div class="col-md-3">
+        <label class="form-label" for="method-{index}">
+          {getMessage('httpMethodLabel')}
+        </label>
+        <select
+          id="method-{index}"
+          class="form-select form-select-sm"
+          bind:value={provider.method}
+          name="method"
+        >
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+        </select>
+      </div>
+
+      {#if provider.method === 'POST'}
+        <div class="col-md-4">
+          <label class="form-label" for="postFieldName-{index}">
+            {getMessage('postFieldNameLabel')}
+          </label>
+          <input
+            id="postFieldName-{index}"
+            class="form-control form-control-sm"
+            type="text"
+            name="postFieldName"
+            placeholder={getMessage('postFieldNamePlaceholder')}
+            bind:value={provider.postFieldName}
+          />
+        </div>
+
+        <div class="col-md-5">
+          <label class="form-label" for="contentType-{index}">
+            {getMessage('contentTypeLabel')}
+          </label>
+          <select
+            id="contentType-{index}"
+            class="form-select form-select-sm"
+            bind:value={provider.contentType}
+            name="contentType"
+          >
+            <option value="application/x-www-form-urlencoded">application/x-www-form-urlencoded</option>
+            <option value="multipart/form-data">multipart/form-data</option>
+          </select>
+        </div>
+      {/if}
     </div>
   {/if}
 </div>
