@@ -1,6 +1,6 @@
 # Changelog
 
-## v4.3.2
+## v4.4.0
 
 - Support POST requests
 - Update translations
