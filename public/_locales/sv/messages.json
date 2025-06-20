@@ -124,5 +124,16 @@
   },
   "stripProtocolLabel": {
     "message": "Ta bort protokoll från bild-URL"
+  },
+  "privacyPolicy": {
+    "message": "Integritetspolicy"
+  },
+  "version": {
+    "message": "Version $version$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

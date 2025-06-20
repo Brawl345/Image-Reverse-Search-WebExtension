@@ -124,5 +124,16 @@
   },
   "stripProtocolLabel": {
     "message": "从图片URL中移除协议"
+  },
+  "privacyPolicy": {
+    "message": "隐私政策"
+  },
+  "version": {
+    "message": "版本 $version$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

@@ -124,5 +124,16 @@
   },
   "stripProtocolLabel": {
     "message": "Eliminar protocolo de la URL de la imagen"
+  },
+  "privacyPolicy": {
+    "message": "Política de Privacidad"
+  },
+  "version": {
+    "message": "Versión $version$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

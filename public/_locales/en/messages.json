@@ -124,5 +124,16 @@
   },
   "redirectingToSearchEngine": {
     "message": "Redirecting to search engine..."
+  },
+  "privacyPolicy": {
+    "message": "Privacy Policy"
+  },
+  "version": {
+    "message": "Version $version$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

@@ -124,5 +124,16 @@
   },
   "stripProtocolLabel": {
     "message": "画像URLからプロトコルを削除"
+  },
+  "privacyPolicy": {
+    "message": "プライバシーポリシー"
+  },
+  "version": {
+    "message": "バージョン $version$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

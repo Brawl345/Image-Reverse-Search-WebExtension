@@ -25,4 +25,10 @@
   {:else}
     <p class="h1">...</p>
   {/if}
+
+  <p class="text-end small">
+    <small><a href="https://p.nyanya.de/reverse-image-search-privacy-policy.html"
+              target="_blank">{getMessage('privacyPolicy')}</a></small> -
+    <small>{getMessage('version', [chrome.runtime.getManifest().version])}</small>
+  </p>
 </main>

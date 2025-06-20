@@ -124,5 +124,16 @@
   },
   "stripProtocolLabel": {
     "message": "Görsel URL'sinden protokolü kaldır"
+  },
+  "privacyPolicy": {
+    "message": "Gizlilik Politikası"
+  },
+  "version": {
+    "message": "Sürüm $version$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }
