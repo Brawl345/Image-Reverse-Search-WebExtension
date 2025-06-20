@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.4.1
+
+- Add privacy policy
+- Add version info
+
 ## v4.4.0
 
 - Support POST requests
