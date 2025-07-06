@@ -6,3 +6,4 @@ web-ext-artifacts/
 *.crx
 public/_metadata
 public/build
+crowdin.yml

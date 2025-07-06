@@ -19,7 +19,9 @@
     "lint:code": "biome lint",
     "lint:web-ext": "npm run build && web-ext lint",
     "web-ext:build": "npm run build && web-ext build --overwrite-dest",
-    "web-ext:upload": "npm run web-ext:build && web-ext sign --channel=listed"
+    "web-ext:upload": "npm run web-ext:build && web-ext sign --channel=listed",
+    "i18n:upload": "crowdin upload sources",
+    "i18n:download": "crowdin download"
   },
   "webExt": {
     "sourceDir": "./public/",

@@ -4,6 +4,8 @@ WebExtension which adds an option to the context menu to search with an image on
 
 This extension does not collect, transmit, or store any user data. All image searches are performed client-side by opening user-configured reverse image search engines in new tabs. No information is sent to third parties by the extension itself.
 
+Submit translations to [Crowdin](https://crowdin.com/project/reverse-image-search-webextens).
+
 ## Installation
 
 - Available for Firefox on [addons.mozilla.org](https://addons.mozilla.org/firefox/addon/image-reverse-search/)

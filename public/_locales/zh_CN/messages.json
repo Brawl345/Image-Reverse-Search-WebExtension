@@ -8,6 +8,9 @@
   "contextMenuTitle": {
     "message": "搜索该图片"
   },
+  "errorWhileSaving": {
+    "message": "保存时发生未知错误。"
+  },
   "extensionDescription": {
     "message": "添加一组支持通过多个提供商搜索的右键菜单"
   },
@@ -25,6 +28,9 @@
   },
   "msgIconUploadNotSquareImage": {
     "message": "请上传矩形图片！"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "此浏览器不支持在上下文菜单中使用图标。"
   },
   "msgSuccessSaveOptions": {
     "message": "已保存！"
@@ -61,6 +67,9 @@
   "providerURLPlaceholder": {
     "message": "应以 http(s):// 开头，并用 %s 表示图片网址位置..."
   },
+  "providerURLPlaceholderPOST": {
+    "message": "开头使用http(s)://..."
+  },
   "providerURLPlaceholderError": {
     "message": "第 $index$ 个提供商的网址无效。请以 http(s):// 开头，并用 %s 表示图片网址位置。",
     "placeholders": {
@@ -68,6 +77,29 @@
         "content": "$1"
       }
     }
+  },
+  "providerURLPlaceholderErrorPOST": {
+    "message": "提供商 $index$ 的URL无效。请在开头使用http(s)://。",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "doNotEncodeUrlLabel": {
+    "message": "不编码URL"
+  },
+  "stripProtocolLabel": {
+    "message": "从图片URL中移除协议"
+  },
+  "httpMethodLabel": {
+    "message": "HTTP方法"
+  },
+  "postFieldNameLabel": {
+    "message": "POST字段名"
+  },
+  "contentTypeLabel": {
+    "message": "内容类型"
   },
   "restoreDefaultSearchProviders": {
     "message": "恢复默认设置"
@@ -89,41 +121,6 @@
   },
   "redirectingToSearchEngine": {
     "message": "正在重定向到搜索引擎..."
-  },
-  "contentTypeLabel": {
-    "message": "内容类型"
-  },
-  "doNotEncodeUrlLabel": {
-    "message": "不编码URL"
-  },
-  "errorWhileSaving": {
-    "message": "保存时发生未知错误。"
-  },
-  "httpMethodLabel": {
-    "message": "HTTP方法"
-  },
-  "msgIconUploadNotSupported": {
-    "message": "此浏览器不支持在上下文菜单中使用图标。"
-  },
-  "postFieldNameLabel": {
-    "message": "POST字段名"
-  },
-  "postFieldNamePlaceholder": {
-    "message": "url"
-  },
-  "providerURLPlaceholderErrorPOST": {
-    "message": "提供商 $index$ 的URL无效。请在开头使用http(s)://。",
-    "placeholders": {
-      "index": {
-        "content": "$1"
-      }
-    }
-  },
-  "providerURLPlaceholderPOST": {
-    "message": "开头使用http(s)://..."
-  },
-  "stripProtocolLabel": {
-    "message": "从图片URL中移除协议"
   },
   "privacyPolicy": {
     "message": "隐私政策"
@@ -160,7 +157,6 @@
   "consentHowDataUsedDescription": {
     "message": "图像URL仅用于在您选择的服务上执行反向图像搜索。此扩展程序不存储任何数据，除了与所选搜索引擎共享图像URL外，不与第三方共享任何数据。"
   },
-
   "consentAccept": {
     "message": "接受并继续"
   },

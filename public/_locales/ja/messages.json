@@ -8,6 +8,9 @@
   "contextMenuTitle": {
     "message": "画像で検索"
   },
+  "errorWhileSaving": {
+    "message": "保存中に不明なエラーが発生しました。"
+  },
   "extensionDescription": {
     "message": "コンテキストメニューにオプションを追加することで、さまざまなサービスで類似した画像の検索ができます"
   },
@@ -25,6 +28,9 @@
   },
   "msgIconUploadNotSquareImage": {
     "message": "正方形の画像をアップロードしてください！"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "このブラウザではコンテキストメニューでのアイコンの使用はサポートされていません。"
   },
   "msgSuccessSaveOptions": {
     "message": "保存しました！"
@@ -61,6 +67,9 @@
   "providerURLPlaceholder": {
     "message": "http(s)://が始まり、画像のURLの代わりに%sが..."
   },
+  "providerURLPlaceholderPOST": {
+    "message": "http(s)://で始める..."
+  },
   "providerURLPlaceholderError": {
     "message": "$index$番目の検索エンジンのURLは無効です。http(s)://が始まり、画像URLのプレースホルダーとして\"%s \"を使用してください",
     "placeholders": {
@@ -68,36 +77,6 @@
         "content": "$1"
       }
     }
-  },
-  "restoreDefaultSearchProviders": {
-    "message": "デフォルトを復元"
-  },
-  "saveOptions": {
-    "message": "オプションを保存"
-  },
-  "redirectingToSearchEngine": {
-    "message": "検索エンジンにリダイレクト中..."
-  },
-  "contentTypeLabel": {
-    "message": "コンテンツタイプ"
-  },
-  "doNotEncodeUrlLabel": {
-    "message": "URLをエンコードしない"
-  },
-  "errorWhileSaving": {
-    "message": "保存中に不明なエラーが発生しました。"
-  },
-  "httpMethodLabel": {
-    "message": "HTTPメソッド"
-  },
-  "msgIconUploadNotSupported": {
-    "message": "このブラウザではコンテキストメニューでのアイコンの使用はサポートされていません。"
-  },
-  "postFieldNameLabel": {
-    "message": "POSTフィールド名"
-  },
-  "postFieldNamePlaceholder": {
-    "message": "url"
   },
   "providerURLPlaceholderErrorPOST": {
     "message": "検索エンジン $index$ のURLが無効です。http(s)://で始めてください。",
@@ -107,8 +86,26 @@
       }
     }
   },
-  "providerURLPlaceholderPOST": {
-    "message": "http(s)://で始める..."
+  "doNotEncodeUrlLabel": {
+    "message": "URLをエンコードしない"
+  },
+  "stripProtocolLabel": {
+    "message": "画像URLからプロトコルを削除"
+  },
+  "httpMethodLabel": {
+    "message": "HTTPメソッド"
+  },
+  "postFieldNameLabel": {
+    "message": "POSTフィールド名"
+  },
+  "contentTypeLabel": {
+    "message": "コンテンツタイプ"
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "デフォルトを復元"
+  },
+  "saveOptions": {
+    "message": "オプションを保存"
   },
   "searchAllByDefault": {
     "message": "デフォルトですべての検索エンジンを検索"
@@ -122,8 +119,8 @@
   "showOpenAllAtTop": {
     "message": "'すべて開く'を上部に表示"
   },
-  "stripProtocolLabel": {
-    "message": "画像URLからプロトコルを削除"
+  "redirectingToSearchEngine": {
+    "message": "検索エンジンにリダイレクト中..."
   },
   "privacyPolicy": {
     "message": "プライバシーポリシー"
@@ -160,7 +157,6 @@
   "consentHowDataUsedDescription": {
     "message": "画像URLは、選択したサービスで逆画像検索を実行するためにのみ使用されます。この拡張機能はデータを保存せず、選択した検索エンジンへの画像URL以外は第三者とデータを共有しません。"
   },
-
   "consentAccept": {
     "message": "同意して続行"
   },

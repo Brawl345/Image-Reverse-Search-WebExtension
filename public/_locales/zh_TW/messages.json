@@ -8,6 +8,9 @@
   "contextMenuTitle": {
     "message": "逆向圖片搜尋"
   },
+  "errorWhileSaving": {
+    "message": "儲存時發生未知錯誤。"
+  },
   "extensionDescription": {
     "message": "增加右鍵選項，支持多種逆向圖片搜尋"
   },
@@ -25,6 +28,9 @@
   },
   "msgIconUploadNotSquareImage": {
     "message": "請上傳正方形圖片！"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "此瀏覽器不支援在內容功能表中使用圖示。"
   },
   "msgSuccessSaveOptions": {
     "message": "已保存！"
@@ -61,6 +67,9 @@
   "providerURLPlaceholder": {
     "message": "請輸入網址，需以 http(s):// 開頭且包含 %s 作為圖片網址的參數…"
   },
+  "providerURLPlaceholderPOST": {
+    "message": "開頭使用http(s)://..."
+  },
   "providerURLPlaceholderError": {
     "message": "第 $index$ 個搜尋引擎的網址不符合格式，請以 http(s):// 開頭且包含 %s",
     "placeholders": {
@@ -68,36 +77,6 @@
         "content": "$1"
       }
     }
-  },
-  "restoreDefaultSearchProviders": {
-    "message": "還原預設引擎"
-  },
-  "saveOptions": {
-    "message": "保存選項"
-  },
-  "redirectingToSearchEngine": {
-    "message": "正在重新導向至搜尋引擎..."
-  },
-  "contentTypeLabel": {
-    "message": "內容類型"
-  },
-  "doNotEncodeUrlLabel": {
-    "message": "不編碼URL"
-  },
-  "errorWhileSaving": {
-    "message": "儲存時發生未知錯誤。"
-  },
-  "httpMethodLabel": {
-    "message": "HTTP方法"
-  },
-  "msgIconUploadNotSupported": {
-    "message": "此瀏覽器不支援在內容功能表中使用圖示。"
-  },
-  "postFieldNameLabel": {
-    "message": "POST欄位名稱"
-  },
-  "postFieldNamePlaceholder": {
-    "message": "url"
   },
   "providerURLPlaceholderErrorPOST": {
     "message": "提供者 $index$ 的URL無效。請在開頭使用http(s)://。",
@@ -107,8 +86,26 @@
       }
     }
   },
-  "providerURLPlaceholderPOST": {
-    "message": "開頭使用http(s)://..."
+  "doNotEncodeUrlLabel": {
+    "message": "不編碼URL"
+  },
+  "stripProtocolLabel": {
+    "message": "從圖片URL中移除協定"
+  },
+  "httpMethodLabel": {
+    "message": "HTTP方法"
+  },
+  "postFieldNameLabel": {
+    "message": "POST欄位名稱"
+  },
+  "contentTypeLabel": {
+    "message": "內容類型"
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "還原預設引擎"
+  },
+  "saveOptions": {
+    "message": "保存選項"
   },
   "searchAllByDefault": {
     "message": "預設搜尋所有提供者"
@@ -122,8 +119,8 @@
   "showOpenAllAtTop": {
     "message": "在頂部顯示「全部開啟」"
   },
-  "stripProtocolLabel": {
-    "message": "從圖片URL中移除協定"
+  "redirectingToSearchEngine": {
+    "message": "正在重新導向至搜尋引擎..."
   },
   "privacyPolicy": {
     "message": "隱私權政策"
@@ -160,7 +157,6 @@
   "consentHowDataUsedDescription": {
     "message": "圖片URL僅用於在您選擇的服務上執行反向圖片搜尋。此擴充功能不儲存任何資料，除了與所選搜尋引擎分享圖片URL外，不與第三方分享任何資料。"
   },
-
   "consentAccept": {
     "message": "接受並繼續"
   },

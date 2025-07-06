@@ -8,6 +8,9 @@
   "contextMenuTitle": {
     "message": "Sök med bild"
   },
+  "errorWhileSaving": {
+    "message": "Ett okänt fel uppstod vid sparande."
+  },
   "extensionDescription": {
     "message": "Lägger till ett alternativ i kontextmenyn för att söka med bild på olika söktjänster"
   },
@@ -25,6 +28,9 @@
   },
   "msgIconUploadNotSquareImage": {
     "message": "Bilden måste vara kvadratisk!"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "Användning av ikoner i kontextmenyer stöds inte av denna webbläsare."
   },
   "msgSuccessSaveOptions": {
     "message": "Sparat!"
@@ -61,6 +67,9 @@
   "providerURLPlaceholder": {
     "message": "http(s):// i början och %s för bild-url..."
   },
+  "providerURLPlaceholderPOST": {
+    "message": "http(s):// i början..."
+  },
   "providerURLPlaceholderError": {
     "message": "Url:en för söktjänsten $index$ är ogiltig. Ange http(s):// i början och %s som platshållare för bildens url.",
     "placeholders": {
@@ -68,36 +77,6 @@
         "content": "$1"
       }
     }
-  },
-  "restoreDefaultSearchProviders": {
-    "message": "Återställ standard"
-  },
-  "saveOptions": {
-    "message": "Spara ändringar"
-  },
-  "redirectingToSearchEngine": {
-    "message": "Omdirigerar till sökmotor..."
-  },
-  "contentTypeLabel": {
-    "message": "Innehållstyp"
-  },
-  "doNotEncodeUrlLabel": {
-    "message": "Koda inte URL"
-  },
-  "errorWhileSaving": {
-    "message": "Ett okänt fel uppstod vid sparande."
-  },
-  "httpMethodLabel": {
-    "message": "HTTP-metod"
-  },
-  "msgIconUploadNotSupported": {
-    "message": "Användning av ikoner i kontextmenyer stöds inte av denna webbläsare."
-  },
-  "postFieldNameLabel": {
-    "message": "POST-fältnamn"
-  },
-  "postFieldNamePlaceholder": {
-    "message": "url"
   },
   "providerURLPlaceholderErrorPOST": {
     "message": "URL:en för söktjänsten $index$ är ogiltig. Använd http(s):// i början.",
@@ -107,8 +86,26 @@
       }
     }
   },
-  "providerURLPlaceholderPOST": {
-    "message": "http(s):// i början..."
+  "doNotEncodeUrlLabel": {
+    "message": "Koda inte URL"
+  },
+  "stripProtocolLabel": {
+    "message": "Ta bort protokoll från bild-URL"
+  },
+  "httpMethodLabel": {
+    "message": "HTTP-metod"
+  },
+  "postFieldNameLabel": {
+    "message": "POST-fältnamn"
+  },
+  "contentTypeLabel": {
+    "message": "Innehållstyp"
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "Återställ standard"
+  },
+  "saveOptions": {
+    "message": "Spara ändringar"
   },
   "searchAllByDefault": {
     "message": "Sök i alla söktjänster som standard"
@@ -122,8 +119,8 @@
   "showOpenAllAtTop": {
     "message": "Visa 'Öppna Alla' överst"
   },
-  "stripProtocolLabel": {
-    "message": "Ta bort protokoll från bild-URL"
+  "redirectingToSearchEngine": {
+    "message": "Omdirigerar till sökmotor..."
   },
   "privacyPolicy": {
     "message": "Integritetspolicy"
@@ -160,7 +157,6 @@
   "consentHowDataUsedDescription": {
     "message": "Bild-URLerna används endast för att utföra omvänd bildsökning på de tjänster du väljer. Detta tillägg lagrar ingen data och delar ingen data med tredje parter, förutom bild-URL:en med den valda sökmotorn."
   },
-
   "consentAccept": {
     "message": "Acceptera och Fortsätt"
   },

@@ -8,6 +8,9 @@
   "contextMenuTitle": {
     "message": "Görselle Ara"
   },
+  "errorWhileSaving": {
+    "message": "Kaydederken bilinmeyen bir hata oluştu."
+  },
   "extensionDescription": {
     "message": "Çeşitli servisler aracılığıyla tersinden görsel arama için bağlam menüsüne bir seçenek ekler."
   },
@@ -25,6 +28,9 @@
   },
   "msgIconUploadNotSquareImage": {
     "message": "Yüklenen görsel kare olmalı!"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "Bağlam menülerinde simge kullanımı bu tarayıcı tarafından desteklenmiyor."
   },
   "msgSuccessSaveOptions": {
     "message": "Kaydedildi!"
@@ -61,6 +67,9 @@
   "providerURLPlaceholder": {
     "message": "http(s):// ile başlayın ve resim url'si için %s kullanın..."
   },
+  "providerURLPlaceholderPOST": {
+    "message": "Başlangıçta http(s)://..."
+  },
   "providerURLPlaceholderError": {
     "message": "$index$ sağlayıcısının URL'si geçersiz. URL'ye http(s):// ile başlayın ve yer tutucu olarak %s kullanın.",
     "placeholders": {
@@ -68,36 +77,6 @@
         "content": "$1"
       }
     }
-  },
-  "restoreDefaultSearchProviders": {
-    "message": "Varsayılana Dön"
-  },
-  "saveOptions": {
-    "message": "Kaydet"
-  },
-  "redirectingToSearchEngine": {
-    "message": "Arama motoruna yönlendiriliyor..."
-  },
-  "contentTypeLabel": {
-    "message": "İçerik Türü"
-  },
-  "doNotEncodeUrlLabel": {
-    "message": "URL'yi kodlama"
-  },
-  "errorWhileSaving": {
-    "message": "Kaydederken bilinmeyen bir hata oluştu."
-  },
-  "httpMethodLabel": {
-    "message": "HTTP Yöntemi"
-  },
-  "msgIconUploadNotSupported": {
-    "message": "Bağlam menülerinde simge kullanımı bu tarayıcı tarafından desteklenmiyor."
-  },
-  "postFieldNameLabel": {
-    "message": "POST alan adı"
-  },
-  "postFieldNamePlaceholder": {
-    "message": "url"
   },
   "providerURLPlaceholderErrorPOST": {
     "message": "Sağlayıcı $index$ URL'si geçersiz. Başlangıçta http(s):// kullanın.",
@@ -107,8 +86,26 @@
       }
     }
   },
-  "providerURLPlaceholderPOST": {
-    "message": "Başlangıçta http(s)://..."
+  "doNotEncodeUrlLabel": {
+    "message": "URL'yi kodlama"
+  },
+  "stripProtocolLabel": {
+    "message": "Görsel URL'sinden protokolü kaldır"
+  },
+  "httpMethodLabel": {
+    "message": "HTTP Yöntemi"
+  },
+  "postFieldNameLabel": {
+    "message": "POST alan adı"
+  },
+  "contentTypeLabel": {
+    "message": "İçerik Türü"
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "Varsayılana Dön"
+  },
+  "saveOptions": {
+    "message": "Kaydet"
   },
   "searchAllByDefault": {
     "message": "Varsayılan olarak tüm sağlayıcılarda ara"
@@ -122,8 +119,8 @@
   "showOpenAllAtTop": {
     "message": "'Hepsini Aç'ı üstte göster"
   },
-  "stripProtocolLabel": {
-    "message": "Görsel URL'sinden protokolü kaldır"
+  "redirectingToSearchEngine": {
+    "message": "Arama motoruna yönlendiriliyor..."
   },
   "privacyPolicy": {
     "message": "Gizlilik Politikası"
@@ -160,7 +157,6 @@
   "consentHowDataUsedDescription": {
     "message": "Görsel URL'leri yalnızca seçtiğiniz hizmetlerde ters görsel arama yapmak için kullanılır. Bu uzantı hiçbir veri saklamaz ve seçilen arama motoruna görsel URL'si dışında üçüncü taraflarla veri paylaşmaz."
   },
-
   "consentAccept": {
     "message": "Kabul Et ve Devam Et"
   },

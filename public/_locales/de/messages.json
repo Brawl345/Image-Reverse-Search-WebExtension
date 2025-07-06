@@ -45,7 +45,7 @@
     "message": "Suchseite öffnen"
   },
   "openTabAtLeft": {
-    "message": "Links nebem dem aktuellen Tab"
+    "message": "Links neben dem aktuellen Tab"
   },
   "openTabAtRight": {
     "message": "Rechts neben dem aktuellen Tab"
@@ -97,9 +97,6 @@
   },
   "postFieldNameLabel": {
     "message": "POST-Feldname"
-  },
-  "postFieldNamePlaceholder": {
-    "message": "url"
   },
   "contentTypeLabel": {
     "message": "Content-Type"

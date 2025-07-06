@@ -8,6 +8,9 @@
   "contextMenuTitle": {
     "message": "Pesquisa Reversa de Imagens"
   },
+  "errorWhileSaving": {
+    "message": "Houve um erro desconhecido ao salvar."
+  },
   "extensionDescription": {
     "message": "Adicionar uma opção ao menu de contexto para fazer uma busca reversa de uma imagem em vários serviços"
   },
@@ -25,6 +28,9 @@
   },
   "msgIconUploadNotSquareImage": {
     "message": "Por favor envie uma imagem quadrada!"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "O uso de ícones em menus contextuais não é suportado por este navegador."
   },
   "msgSuccessSaveOptions": {
     "message": "Salvo!"
@@ -61,6 +67,9 @@
   "providerURLPlaceholder": {
     "message": "http(s):// no início e %s para a url da imagem..."
   },
+  "providerURLPlaceholderPOST": {
+    "message": "http(s):// no início..."
+  },
   "providerURLPlaceholderError": {
     "message": "A url do provedor $index$ é invalido. Use http(s):// no inicio e %s como espaço reservado para a url da imagem.",
     "placeholders": {
@@ -68,36 +77,6 @@
         "content": "$1"
       }
     }
-  },
-  "restoreDefaultSearchProviders": {
-    "message": "Restaurar Padrão"
-  },
-  "saveOptions": {
-    "message": "Salvar Opções"
-  },
-  "redirectingToSearchEngine": {
-    "message": "Redirecionando para o mecanismo de busca..."
-  },
-  "contentTypeLabel": {
-    "message": "Tipo de Conteúdo"
-  },
-  "doNotEncodeUrlLabel": {
-    "message": "Não codificar URL"
-  },
-  "errorWhileSaving": {
-    "message": "Houve um erro desconhecido ao salvar."
-  },
-  "httpMethodLabel": {
-    "message": "Método HTTP"
-  },
-  "msgIconUploadNotSupported": {
-    "message": "O uso de ícones em menus contextuais não é suportado por este navegador."
-  },
-  "postFieldNameLabel": {
-    "message": "Nome do campo POST"
-  },
-  "postFieldNamePlaceholder": {
-    "message": "url"
   },
   "providerURLPlaceholderErrorPOST": {
     "message": "A URL do provedor $index$ é inválida. Use http(s):// no início.",
@@ -107,8 +86,26 @@
       }
     }
   },
-  "providerURLPlaceholderPOST": {
-    "message": "http(s):// no início..."
+  "doNotEncodeUrlLabel": {
+    "message": "Não codificar URL"
+  },
+  "stripProtocolLabel": {
+    "message": "Remover protocolo da URL da imagem"
+  },
+  "httpMethodLabel": {
+    "message": "Método HTTP"
+  },
+  "postFieldNameLabel": {
+    "message": "Nome do campo POST"
+  },
+  "contentTypeLabel": {
+    "message": "Tipo de Conteúdo"
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "Restaurar Padrão"
+  },
+  "saveOptions": {
+    "message": "Salvar Opções"
   },
   "searchAllByDefault": {
     "message": "Pesquisar em todos os provedores por padrão"
@@ -122,8 +119,8 @@
   "showOpenAllAtTop": {
     "message": "Mostrar 'Abrir Todos' no topo"
   },
-  "stripProtocolLabel": {
-    "message": "Remover protocolo da URL da imagem"
+  "redirectingToSearchEngine": {
+    "message": "Redirecionando para o mecanismo de busca..."
   },
   "privacyPolicy": {
     "message": "Política de Privacidade"
@@ -160,7 +157,6 @@
   "consentHowDataUsedDescription": {
     "message": "As URLs de imagens são usadas apenas para realizar pesquisas reversas de imagens nos serviços que você selecionar. Esta extensão não armazena dados e não compartilha dados com terceiros, exceto a URL da imagem com o mecanismo de busca escolhido."
   },
-
   "consentAccept": {
     "message": "Aceitar e Continuar"
   },
