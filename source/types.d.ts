@@ -17,6 +17,7 @@ export interface Options {
   showOpenAll: boolean;
   showOpenAllAtTop: boolean;
   searchAllByDefault: boolean;
+  consentGiven: boolean;
 }
 
 // https://github.com/DefinitelyTyped/DefinitelyTyped/blob/253f25de35d325a06452802734470c9a3f30e99d/types/firefox-webext-browser/index.d.ts#L7171 not supported by Chrome

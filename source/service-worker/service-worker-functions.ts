@@ -115,7 +115,12 @@ export const onReverseSearch: (
     return;
   }
 
-  const { openTabAt, openInBackground, storageProviders } = await getOptions();
+  const { openTabAt, openInBackground, storageProviders, consentGiven } = await getOptions();
+
+  if (!consentGiven) {
+    await chrome.runtime.openOptionsPage();
+    return;
+  }
 
   const activeProviders = storageProviders.filter((provider) =>
     menuItemId === OPEN_ALL_ID
@@ -165,7 +170,6 @@ export const onReverseSearch: (
         });
       }
 
-      // Handle POST requests
       if (provider.method === 'POST') {
         return handlePostRequest(provider, imgSrcUrl, {
           active: !openInBackground,

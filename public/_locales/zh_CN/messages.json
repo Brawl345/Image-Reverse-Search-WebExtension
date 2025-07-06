@@ -135,5 +135,36 @@
         "content": "$1"
       }
     }
+  },
+  "consentDialogTitle": {
+    "message": "数据收集同意"
+  },
+  "consentDataCollectionTitle": {
+    "message": "此扩展程序的功能是什么？"
+  },
+  "consentDataCollectionDescription": {
+    "message": "此扩展程序通过与外部服务共享图像URL，让您可以在各种搜索引擎中搜索图像。"
+  },
+  "consentWhatDataTitle": {
+    "message": "收集和传输哪些数据？"
+  },
+  "consentDataImageUrls": {
+    "message": "您选择搜索的网页中的图像URL"
+  },
+  "consentDataSearchServices": {
+    "message": "当您使用右键菜单时，这些URL会发送到外部搜索服务（Google、Bing等）"
+  },
+  "consentHowDataUsedTitle": {
+    "message": "这些数据如何使用？"
+  },
+  "consentHowDataUsedDescription": {
+    "message": "图像URL仅用于在您选择的服务上执行反向图像搜索。此扩展程序不存储任何数据，除了与所选搜索引擎共享图像URL外，不与第三方共享任何数据。"
+  },
+
+  "consentAccept": {
+    "message": "接受并继续"
+  },
+  "consentDeclineAndUninstall": {
+    "message": "拒绝并卸载"
   }
 }

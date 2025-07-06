@@ -135,5 +135,36 @@
         "content": "$1"
       }
     }
+  },
+  "consentDialogTitle": {
+    "message": "Veri Toplama Onayı"
+  },
+  "consentDataCollectionTitle": {
+    "message": "Bu uzantı ne yapar?"
+  },
+  "consentDataCollectionDescription": {
+    "message": "Bu uzantı, görsel URL'lerini harici hizmetlerle paylaşarak çeşitli arama motorlarında görsel araması yapmanızı sağlar."
+  },
+  "consentWhatDataTitle": {
+    "message": "Hangi veriler toplanır ve iletilir?"
+  },
+  "consentDataImageUrls": {
+    "message": "Arama yapmayı seçtiğiniz web sayfalarından görsel URL'leri"
+  },
+  "consentDataSearchServices": {
+    "message": "Bağlam menüsünü kullandığınızda bu URL'ler harici arama hizmetlerine (Google, Bing, vb.) gönderilir"
+  },
+  "consentHowDataUsedTitle": {
+    "message": "Bu veriler nasıl kullanılır?"
+  },
+  "consentHowDataUsedDescription": {
+    "message": "Görsel URL'leri yalnızca seçtiğiniz hizmetlerde ters görsel arama yapmak için kullanılır. Bu uzantı hiçbir veri saklamaz ve seçilen arama motoruna görsel URL'si dışında üçüncü taraflarla veri paylaşmaz."
+  },
+
+  "consentAccept": {
+    "message": "Kabul Et ve Devam Et"
+  },
+  "consentDeclineAndUninstall": {
+    "message": "Reddet ve Kaldır"
   }
 }

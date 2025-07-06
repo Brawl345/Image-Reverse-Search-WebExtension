@@ -1,5 +1,9 @@
 # Changelog
 
+## v4.4.2
+
+- Add privacy consent dialog to pass Mozilla's review
+
 ## v4.4.1
 
 - Add privacy policy

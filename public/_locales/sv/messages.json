@@ -135,5 +135,36 @@
         "content": "$1"
       }
     }
+  },
+  "consentDialogTitle": {
+    "message": "Samtycke för Datainsamling"
+  },
+  "consentDataCollectionTitle": {
+    "message": "Vad gör denna tillägg?"
+  },
+  "consentDataCollectionDescription": {
+    "message": "Detta tillägg låter dig söka efter bilder på olika sökmotorer genom att dela bild-URLer med externa tjänster."
+  },
+  "consentWhatDataTitle": {
+    "message": "Vilka data samlas in och överförs?"
+  },
+  "consentDataImageUrls": {
+    "message": "Bild-URLer från webbsidor du väljer att söka"
+  },
+  "consentDataSearchServices": {
+    "message": "Dessa URLer skickas till externa söktjänster (Google, Bing, etc.) när du använder kontextmenyn"
+  },
+  "consentHowDataUsedTitle": {
+    "message": "Hur används denna data?"
+  },
+  "consentHowDataUsedDescription": {
+    "message": "Bild-URLerna används endast för att utföra omvänd bildsökning på de tjänster du väljer. Detta tillägg lagrar ingen data och delar ingen data med tredje parter, förutom bild-URL:en med den valda sökmotorn."
+  },
+
+  "consentAccept": {
+    "message": "Acceptera och Fortsätt"
+  },
+  "consentDeclineAndUninstall": {
+    "message": "Avböj och Avinstallera"
   }
 }

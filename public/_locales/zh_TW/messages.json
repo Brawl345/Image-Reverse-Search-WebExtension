@@ -135,5 +135,36 @@
         "content": "$1"
       }
     }
+  },
+  "consentDialogTitle": {
+    "message": "資料收集同意"
+  },
+  "consentDataCollectionTitle": {
+    "message": "此擴充功能的作用是什麼？"
+  },
+  "consentDataCollectionDescription": {
+    "message": "此擴充功能透過與外部服務分享圖片URL，讓您可以在各種搜尋引擎中搜尋圖片。"
+  },
+  "consentWhatDataTitle": {
+    "message": "收集和傳輸哪些資料？"
+  },
+  "consentDataImageUrls": {
+    "message": "您選擇搜尋的網頁中的圖片URL"
+  },
+  "consentDataSearchServices": {
+    "message": "當您使用右鍵選單時，這些URL會發送到外部搜尋服務（Google、Bing等）"
+  },
+  "consentHowDataUsedTitle": {
+    "message": "這些資料如何使用？"
+  },
+  "consentHowDataUsedDescription": {
+    "message": "圖片URL僅用於在您選擇的服務上執行反向圖片搜尋。此擴充功能不儲存任何資料，除了與所選搜尋引擎分享圖片URL外，不與第三方分享任何資料。"
+  },
+
+  "consentAccept": {
+    "message": "接受並繼續"
+  },
+  "consentDeclineAndUninstall": {
+    "message": "拒絕並解除安裝"
   }
 }

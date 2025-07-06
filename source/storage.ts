@@ -18,6 +18,7 @@ export const defaultOptions: Options = Object.freeze({
   showOpenAll: true,
   showOpenAllAtTop: false,
   searchAllByDefault: false,
+  consentGiven: false,
   storageProviders: [
     {
       name: 'Google Lens',

@@ -17,6 +17,8 @@ const mockChrome = {
   },
   runtime: {
     getURL: vi.fn(),
+    getManifest: vi.fn(),
+    openOptionsPage: vi.fn(),
   },
 };
 
@@ -52,6 +54,7 @@ describe('Service Worker Functions', () => {
         openTabAt: 'right',
         openInBackground: false,
         storageProviders: [getProvider],
+        consentGiven: true,
       });
 
       mockChrome.tabs.create.mockResolvedValue({ id: 2 });
@@ -91,6 +94,7 @@ describe('Service Worker Functions', () => {
         openTabAt: 'right',
         openInBackground: false,
         storageProviders: [postProvider],
+        consentGiven: true,
       });
 
       mockChrome.tabs.create.mockResolvedValue({ id: 2 });
@@ -137,6 +141,7 @@ describe('Service Worker Functions', () => {
         openTabAt: 'right',
         openInBackground: false,
         storageProviders: [postProvider],
+        consentGiven: true,
       });
 
       mockChrome.tabs.create.mockResolvedValue({ id: 2 });
@@ -177,6 +182,7 @@ describe('Service Worker Functions', () => {
         openTabAt: 'right',
         openInBackground: false,
         storageProviders: [postProvider],
+        consentGiven: true,
       });
 
       mockChrome.tabs.create.mockResolvedValue({ id: 2 });
@@ -201,5 +207,42 @@ describe('Service Worker Functions', () => {
       );
       expect(call.url).toContain('fieldName=url');
     });
+
+    it('should open options page without consent', async () => {
+      const getProvider: StorageProvider = {
+        name: 'Test GET',
+        icon: 'test.png',
+        url: 'https://search.example.com/?url=%s',
+        selected: true,
+        doNotEncodeUrl: false,
+        stripProtocol: false,
+        method: 'GET',
+        postFieldName: 'url',
+        contentType: 'application/x-www-form-urlencoded',
+      };
+
+      mockChrome.storage.sync.get.mockResolvedValue({
+        openTabAt: 'right',
+        openInBackground: false,
+        storageProviders: [getProvider],
+        consentGiven: false,
+      });
+
+      mockChrome.runtime.openOptionsPage.mockResolvedValue(undefined);
+
+      await onReverseSearch(
+        {
+          srcUrl: mockSrcUrl,
+          menuItemId: 'Test GET',
+          editable: false,
+          pageUrl: 'https://example.com',
+        },
+        mockTab as chrome.tabs.Tab
+      );
+
+      expect(mockChrome.runtime.openOptionsPage).toHaveBeenCalledOnce();
+    });
+
+
   });
 });
