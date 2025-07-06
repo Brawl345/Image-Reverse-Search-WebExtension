@@ -1,0 +1,36 @@
+# Reverse Image Search WebExtension
+
+## Overview
+
+- WebExtension which adds an option to the context menu to search with an image on various services
+- Code is written in TypeScript
+- UI is built with Svelte 4
+- Linted with Biome
+- Tested with Vitest
+- Built with web-ext
+
+## Source code structure
+
+- `source/`: Source code
+  - `service-worker/`: Service worker code
+  - `options/`: Options page
+    - `components/`: Svelte components
+    - `stores/`: Svelte stores
+    - `App.svelte`: Main Svelte component
+    - `options.scss`: Stylesheet
+    - `options.ts`: For initialization of Svelte
+- `public/`: Built code
+  - `build/`: Built JavaScript and CSS
+  - `_locales/`: Localizations
+  - `manifest.json`: Manifest
+  - `icons/`: Icons
+
+## Build
+
+Build with `npm run build`. Never run the `start:BROWSER` commands, the user will do it manually. Lint with the `npm run lint:types` for TypeScript and `npm run lint:code` for Biome. Do not use `npm run dev` as it will start a long running watch commands - just use `npm run build`.
+
+## Important to note
+
+For every string, add the localization to `public/_locales/LOCALE/messages.json` and use the `getMessage` function to retrieve it. Do not hardcode any strings in the code. Translate the strings in all languages. For German, use the informal (Du) version.
+
+Only add tests for core code and when neccessary. Do not test Svelte components.
