@@ -1,5 +1,9 @@
 # Changelog
 
+## Future
+
+- Remove consent dialog again
+
 ## v4.4.2
 
 - Add privacy consent dialog to pass Mozilla's review
