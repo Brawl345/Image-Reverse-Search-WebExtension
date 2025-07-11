@@ -98,9 +98,6 @@
   "postFieldNameLabel": {
     "message": "POST field name"
   },
-  "postFieldNamePlaceholder": {
-    "message": "url"
-  },
   "contentTypeLabel": {
     "message": "Content Type"
   },

@@ -188,7 +188,7 @@
             class="form-control form-control-sm"
             type="text"
             name="postFieldName"
-            placeholder={getMessage('postFieldNamePlaceholder')}
+            placeholder="url"
             bind:value={provider.postFieldName}
           />
         </div>
