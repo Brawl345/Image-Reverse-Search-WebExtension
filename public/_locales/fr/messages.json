@@ -132,35 +132,5 @@
         "content": "$1"
       }
     }
-  },
-  "consentDialogTitle": {
-    "message": "Consentement de Collecte de Données"
-  },
-  "consentDataCollectionTitle": {
-    "message": "Que fait cette extension ?"
-  },
-  "consentDataCollectionDescription": {
-    "message": "Cette extension vous permet de rechercher des images sur divers moteurs de recherche en partageant les URLs d'images avec des services externes."
-  },
-  "consentWhatDataTitle": {
-    "message": "Quelles données sont collectées et transmises ?"
-  },
-  "consentDataImageUrls": {
-    "message": "URLs d'images des pages web que vous choisissez de rechercher"
-  },
-  "consentDataSearchServices": {
-    "message": "Ces URLs sont envoyées aux services de recherche externes (Google, Bing, etc.) lorsque vous utilisez le menu contextuel"
-  },
-  "consentHowDataUsedTitle": {
-    "message": "Comment ces données sont-elles utilisées ?"
-  },
-  "consentHowDataUsedDescription": {
-    "message": "Les URLs d'images ne sont utilisées que pour effectuer des recherches d'images inversées sur les services que vous sélectionnez. Cette extension ne stocke aucune donnée et ne partage aucune donnée avec des tiers, sauf l'URL d'image avec le moteur de recherche choisi."
-  },
-  "consentAccept": {
-    "message": "Accepter et Continuer"
-  },
-  "consentDeclineAndUninstall": {
-    "message": "Refuser et Désinstaller"
   }
 }

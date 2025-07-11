@@ -132,35 +132,5 @@
         "content": "$1"
       }
     }
-  },
-  "consentDialogTitle": {
-    "message": "Consentimento de Coleta de Dados"
-  },
-  "consentDataCollectionTitle": {
-    "message": "O que esta extensão faz?"
-  },
-  "consentDataCollectionDescription": {
-    "message": "Esta extensão permite pesquisar imagens em vários mecanismos de busca compartilhando URLs de imagens com serviços externos."
-  },
-  "consentWhatDataTitle": {
-    "message": "Quais dados são coletados e transmitidos?"
-  },
-  "consentDataImageUrls": {
-    "message": "URLs de imagens de páginas web que você escolhe pesquisar"
-  },
-  "consentDataSearchServices": {
-    "message": "Essas URLs são enviadas para serviços de busca externos (Google, Bing, etc.) quando você usa o menu de contexto"
-  },
-  "consentHowDataUsedTitle": {
-    "message": "Como esses dados são usados?"
-  },
-  "consentHowDataUsedDescription": {
-    "message": "As URLs de imagens são usadas apenas para realizar pesquisas reversas de imagens nos serviços que você selecionar. Esta extensão não armazena dados e não compartilha dados com terceiros, exceto a URL da imagem com o mecanismo de busca escolhido."
-  },
-  "consentAccept": {
-    "message": "Aceitar e Continuar"
-  },
-  "consentDeclineAndUninstall": {
-    "message": "Recusar e Desinstalar"
   }
 }

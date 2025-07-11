@@ -135,36 +135,5 @@
         "content": "$1"
       }
     }
-  },
-  "consentDialogTitle": {
-    "message": "Data Collection Consent"
-  },
-  "consentDataCollectionTitle": {
-    "message": "What does this extension do?"
-  },
-  "consentDataCollectionDescription": {
-    "message": "This extension allows you to search for images on various search engines by sharing image URLs with external services."
-  },
-  "consentWhatDataTitle": {
-    "message": "What data is collected and transmitted?"
-  },
-  "consentDataImageUrls": {
-    "message": "Image URLs from web pages you choose to search"
-  },
-  "consentDataSearchServices": {
-    "message": "These URLs are sent to external search services (Google, Bing, etc.) when you use the context menu"
-  },
-  "consentHowDataUsedTitle": {
-    "message": "How is this data used?"
-  },
-  "consentHowDataUsedDescription": {
-    "message": "The image URLs are only used to perform reverse image searches on the services you select. No data is stored by this extension and no data is shared with third parties, except the image URL with the chosen search engine."
-  },
-
-  "consentAccept": {
-    "message": "Accept and Continue"
-  },
-  "consentDeclineAndUninstall": {
-    "message": "Decline and Uninstall"
   }
 }

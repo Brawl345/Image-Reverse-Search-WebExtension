@@ -132,35 +132,5 @@
         "content": "$1"
       }
     }
-  },
-  "consentDialogTitle": {
-    "message": "Einverständnis zur Datenerhebung"
-  },
-  "consentDataCollectionTitle": {
-    "message": "Was macht diese Erweiterung?"
-  },
-  "consentDataCollectionDescription": {
-    "message": "Diese Erweiterung ermöglicht es dir, Bilder in verschiedenen Suchmaschinen zu suchen, indem Bild-URLs an externe Dienste weitergegeben werden."
-  },
-  "consentWhatDataTitle": {
-    "message": "Welche Daten werden gesammelt und übertragen?"
-  },
-  "consentDataImageUrls": {
-    "message": "Bild-URLs von Webseiten, die du zum Suchen auswählst"
-  },
-  "consentDataSearchServices": {
-    "message": "Diese URLs werden an externe Suchdienste (Google, Bing, etc.) gesendet, wenn du das Kontextmenü verwendest"
-  },
-  "consentHowDataUsedTitle": {
-    "message": "Wie werden diese Daten verwendet?"
-  },
-  "consentHowDataUsedDescription": {
-    "message": "Die Bild-URLs werden nur verwendet, um umgekehrte Bildsuchen in den von dir ausgewählten Diensten durchzuführen. Diese Erweiterung speichert keine Daten und teilt keine Daten mit Dritten, außer der Bild-URL mit der gewählten Suchmaschine."
-  },
-  "consentAccept": {
-    "message": "Akzeptieren und Fortfahren"
-  },
-  "consentDeclineAndUninstall": {
-    "message": "Ablehnen und Deinstallieren"
   }
 }

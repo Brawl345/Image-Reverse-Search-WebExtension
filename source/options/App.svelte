@@ -2,7 +2,6 @@
   import { onMount } from 'svelte';
   import { getMessage } from '../utils';
   import Form from './components/Form.svelte';
-  import ConsentDialog from './components/ConsentDialog.svelte';
   import { options } from './stores/options-store';
 
   let doneLoading = false;
@@ -16,19 +15,14 @@
     await options.loadFromStorage();
     doneLoading = true;
   });
-
-  $: needsConsent = doneLoading && options.checkConsentNeeded($options);
 </script>
 
 <main class="container mt-3">
-  <h1 class="text-center">{getMessage('extensionName')}</h1>
   {#if doneLoading}
+    <h1 class="text-center">{getMessage('extensionName')}</h1>
+
     <div class="p-3 bg-light">
-      {#if needsConsent}
-        <ConsentDialog />
-      {:else}
-        <Form />
-      {/if}
+      <Form />
     </div>
   {:else}
     <p class="h1">...</p>

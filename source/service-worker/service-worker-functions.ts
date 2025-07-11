@@ -115,12 +115,7 @@ export const onReverseSearch: (
     return;
   }
 
-  const { openTabAt, openInBackground, storageProviders, consentGiven } = await getOptions();
-
-  if (!consentGiven) {
-    await chrome.runtime.openOptionsPage();
-    return;
-  }
+  const { openTabAt, openInBackground, storageProviders } = await getOptions();
 
   const activeProviders = storageProviders.filter((provider) =>
     menuItemId === OPEN_ALL_ID

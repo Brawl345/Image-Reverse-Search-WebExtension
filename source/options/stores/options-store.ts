@@ -50,12 +50,6 @@ const createStore = () => {
         ),
       })),
     loadFromStorage: async () => set(await getOptions()),
-    giveConsent: () =>
-      update((previous) => ({
-        ...previous,
-        consentGiven: true,
-      })),
-    checkConsentNeeded: (currentOptions: Options) => !currentOptions.consentGiven,
   };
 };
 

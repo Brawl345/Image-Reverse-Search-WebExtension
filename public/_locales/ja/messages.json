@@ -132,35 +132,5 @@
         "content": "$1"
       }
     }
-  },
-  "consentDialogTitle": {
-    "message": "データ収集の同意"
-  },
-  "consentDataCollectionTitle": {
-    "message": "この拡張機能は何をしますか？"
-  },
-  "consentDataCollectionDescription": {
-    "message": "この拡張機能は、画像URLを外部サービスと共有することで、さまざまな検索エンジンで画像を検索できるようにします。"
-  },
-  "consentWhatDataTitle": {
-    "message": "どのようなデータが収集・送信されますか？"
-  },
-  "consentDataImageUrls": {
-    "message": "検索を選択したウェブページの画像URL"
-  },
-  "consentDataSearchServices": {
-    "message": "コンテキストメニューを使用すると、これらのURLが外部検索サービス（Google、Bingなど）に送信されます"
-  },
-  "consentHowDataUsedTitle": {
-    "message": "このデータはどのように使用されますか？"
-  },
-  "consentHowDataUsedDescription": {
-    "message": "画像URLは、選択したサービスで逆画像検索を実行するためにのみ使用されます。この拡張機能はデータを保存せず、選択した検索エンジンへの画像URL以外は第三者とデータを共有しません。"
-  },
-  "consentAccept": {
-    "message": "同意して続行"
-  },
-  "consentDeclineAndUninstall": {
-    "message": "拒否してアンインストール"
   }
 }
