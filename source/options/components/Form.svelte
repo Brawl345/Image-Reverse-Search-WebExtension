@@ -8,6 +8,38 @@
   import { options } from '../stores/options-store';
   import Provider from "./Provider.svelte";
 
+  let draggedIndex: number | null = null;
+  let dragOverIndex: number | null = null;
+
+  const handleDragStart = (index: number) => {
+    draggedIndex = index;
+  };
+
+  const handleDragEnd = () => {
+    draggedIndex = null;
+    dragOverIndex = null;
+  };
+
+  const handleDragOver = (event: DragEvent, index: number) => {
+    event.preventDefault();
+    dragOverIndex = index;
+  };
+
+  const handleDragLeave = () => {
+    dragOverIndex = null;
+  };
+
+  const handleDrop = (event: DragEvent, dropIndex: number) => {
+    event.preventDefault();
+
+    if (draggedIndex !== null && draggedIndex !== dropIndex) {
+      options.moveProviderToPosition(draggedIndex, dropIndex);
+    }
+
+    draggedIndex = null;
+    dragOverIndex = null;
+  };
+
   const validateAndSave = () => {
     if (
       $options.storageProviders.length === 0 ||
@@ -177,9 +209,22 @@
   <hr />
 
   {#each $options.storageProviders as provider, index (provider)}
-    <div class="row mb-2" animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}>
+    <div
+      class="row mb-2 drop-zone"
+      class:drag-over={dragOverIndex === index}
+      animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}
+      on:dragover={(e) => handleDragOver(e, index)}
+      on:dragleave={handleDragLeave}
+      on:drop={(e) => handleDrop(e, index)}
+      role="listitem"
+    >
       <div class="col">
-        <Provider {index} {provider} />
+        <Provider
+          {index}
+          {provider}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+        />
       </div>
     </div>
   {/each}

@@ -49,6 +49,15 @@ const createStore = () => {
           getLowerIndex(previous.storageProviders.length, providerIndex),
         ),
       })),
+    moveProviderToPosition: (fromIndex: number, toIndex: number) =>
+      update((previous) => ({
+        ...previous,
+        storageProviders: arraymove(
+          previous.storageProviders,
+          fromIndex,
+          toIndex,
+        ),
+      })),
     loadFromStorage: async () => set(await getOptions()),
   };
 };

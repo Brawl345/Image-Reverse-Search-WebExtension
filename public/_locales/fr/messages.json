@@ -132,5 +132,8 @@
         "content": "$1"
       }
     }
+  },
+  "dragToReorder": {
+    "message": "Glisser pour réorganiser"
   }
 }

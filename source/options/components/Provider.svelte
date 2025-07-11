@@ -6,6 +6,20 @@
 
   export let index: number;
   export let provider: StorageProvider;
+  export let onDragStart: (index: number) => void;
+  export let onDragEnd: () => void;
+
+  let isDragging = false;
+
+  const handleDragStart = () => {
+    isDragging = true;
+    onDragStart(index);
+  };
+
+  const handleDragEnd = () => {
+    isDragging = false;
+    onDragEnd();
+  };
 
   const advancedOptionsChanged = provider.stripProtocol || provider.doNotEncodeUrl || provider.method === 'POST'
 
@@ -82,19 +96,23 @@
 </script>
 
 
-<fieldset class="input-group" name="storageProviders" transition:fly>
-  <button
-    class="btn btn-sm btn-secondary"
-    type="button"
-    on:click={() => options.moveProviderUp(index)}
-  >▲
-  </button>
-  <button
-    class="btn btn-sm btn-secondary"
-    type="button"
-    on:click={() => options.moveProviderDown(index)}
-  >▼
-  </button>
+<fieldset
+  class="input-group provider-item"
+  class:dragging={isDragging}
+  name="storageProviders"
+  transition:fly
+  draggable="true"
+  on:dragstart={handleDragStart}
+  on:dragend={handleDragEnd}
+>
+  <div
+    class="drag-handle input-group-text"
+    role="button"
+    tabindex="0"
+    aria-label={getMessage('dragToReorder')}
+  >
+    ⋮⋮
+  </div>
   <div class="input-group-text">
     <input
       class="form-check-input"

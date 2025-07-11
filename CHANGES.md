@@ -3,6 +3,7 @@
 ## Future
 
 - Remove consent dialog again
+- Drag and drop to reorder search engines
 
 ## v4.4.2
 
