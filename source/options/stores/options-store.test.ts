@@ -93,4 +93,32 @@ describe('Options Store', () => {
       ],
     );
   });
+
+  it('should move provider to specific position (forward)', () => {
+    // Move first provider to third position
+    const originalFirst = defaultOptions.storageProviders[0];
+    store.moveProviderToPosition(0, 2);
+    expectProviderAtIndexToEqual(2, originalFirst);
+  });
+
+  it('should move provider to specific position (backward)', () => {
+    // Move third provider to first position
+    const originalThird = defaultOptions.storageProviders[2];
+    store.moveProviderToPosition(2, 0);
+    expectProviderAtIndexToEqual(0, originalThird);
+  });
+
+  it('should not change order when moving to same position', () => {
+    const originalProviders = [...defaultOptions.storageProviders];
+    store.moveProviderToPosition(1, 1);
+    const updatedStore = getUpdatedStore();
+    expect(updatedStore.storageProviders).toStrictEqual(originalProviders);
+  });
+
+  it('should move provider to last position', () => {
+    const originalFirst = defaultOptions.storageProviders[0];
+    const lastIndex = defaultOptions.storageProviders.length - 1;
+    store.moveProviderToPosition(0, lastIndex);
+    expectProviderAtIndexToEqual(lastIndex, originalFirst);
+  });
 });
