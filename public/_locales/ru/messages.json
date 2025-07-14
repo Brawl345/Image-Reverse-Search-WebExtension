@@ -1,0 +1,139 @@
+{
+  "addSearchProvider": {
+    "message": "Добавить поставщика поиска"
+  },
+  "contextMenuOpenAll": {
+    "message": "Открыть Все"
+  },
+  "contextMenuTitle": {
+    "message": "Reverse Image Search"
+  },
+  "errorWhileSaving": {
+    "message": "При сохранении произошла неизвестная ошибка."
+  },
+  "extensionDescription": {
+    "message": "Добавляет опцию в контекстное меню для обратного поиска изображения на различных сервисах."
+  },
+  "extensionName": {
+    "message": "Reverse Image Search"
+  },
+  "msgAtLeastOneSearchProvider": {
+    "message": "Пожалуйста, выберите хотя бы одного поставщика поиска!"
+  },
+  "msgDuplicatedProviderName": {
+    "message": "Некоторые имена поставщиков дублируются"
+  },
+  "msgIconUploadNotImage": {
+    "message": "Пожалуйста, загрузите доступный формат изображения! (png, jpg, ico)"
+  },
+  "msgIconUploadNotSquareImage": {
+    "message": "Пожалуйста, загрузите квадратное изображение!"
+  },
+  "msgIconUploadNotSupported": {
+    "message": "Использование иконок в контекстных меню не поддерживается этим браузером."
+  },
+  "msgSuccessSaveOptions": {
+    "message": "Сохранено!"
+  },
+  "openInBackgroundLabel": {
+    "message": "Открыть в фоне"
+  },
+  "openTabAtEnd": {
+    "message": "Последняя вкладка"
+  },
+  "openTabAtLabel": {
+    "message": "Открыть страницу поиска"
+  },
+  "openTabAtLeft": {
+    "message": "Слева от текущей вкладки"
+  },
+  "openTabAtRight": {
+    "message": "Справа от текущей вкладки"
+  },
+  "optionsPageTitle": {
+    "message": "Опции"
+  },
+  "providerNamePlaceholder": {
+    "message": "2-15 букв"
+  },
+  "providerNamePlaceholderError": {
+    "message": "Имя поставщика $index$ неправильное. Пожалуйста, используйте 2-15 букв.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholder": {
+    "message": "Начните с http(s):// и укажите %s для ссылки на изображение..."
+  },
+  "providerURLPlaceholderPOST": {
+    "message": "Начните с http(s)://..."
+  },
+  "providerURLPlaceholderError": {
+    "message": "Ссылка поставщика $index$ неправильная. Начните с http(s):// и укажите %s в качестве заменителя ссылки изображения.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "providerURLPlaceholderErrorPOST": {
+    "message": "Ссылка поставщика $index$ неправильная. Начните с http(s)://.",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "doNotEncodeUrlLabel": {
+    "message": "Не кодировать URL"
+  },
+  "stripProtocolLabel": {
+    "message": "Уделить протокол из ссылки на изображение"
+  },
+  "httpMethodLabel": {
+    "message": "HTTP-метод"
+  },
+  "postFieldNameLabel": {
+    "message": "Поле POST имя"
+  },
+  "contentTypeLabel": {
+    "message": "Тип контента"
+  },
+  "restoreDefaultSearchProviders": {
+    "message": "По-умолчанию"
+  },
+  "saveOptions": {
+    "message": "Сохранить опции"
+  },
+  "searchAllByDefault": {
+    "message": "Все поставщики поиска по-умолчанию"
+  },
+  "searchAllByDefault_info": {
+    "message": "Если эта опция включена, отображается только один пункт контекстного меню, при нажатии на который открываются все выбранные поисковые системы. Если опция отключена, будет создано подменю."
+  },
+  "showOpenAll": {
+    "message": "Показывать 'Открыть Все'"
+  },
+  "showOpenAllAtTop": {
+    "message": "Показывать 'Открыть Все' сверху"
+  },
+  "redirectingToSearchEngine": {
+    "message": "Перенаправление в поисковую систему..."
+  },
+  "privacyPolicy": {
+    "message": "Политика приватности"
+  },
+  "version": {
+    "message": "Версия $version$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "dragToReorder": {
+    "message": "Сортировка перетаскиванием"
+  }
+}
