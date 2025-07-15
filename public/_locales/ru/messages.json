@@ -90,7 +90,7 @@
     "message": "Не кодировать URL"
   },
   "stripProtocolLabel": {
-    "message": "Уделить протокол из ссылки на изображение"
+    "message": "Удалить протокол из ссылки на изображение"
   },
   "httpMethodLabel": {
     "message": "HTTP-метод"
