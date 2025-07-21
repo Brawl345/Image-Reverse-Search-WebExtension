@@ -97,17 +97,6 @@ export const defaultOptions: Options = Object.freeze({
       contentType: 'application/x-www-form-urlencoded',
     },
     {
-      name: 'Baidu',
-      icon: 'icons/baidu.png',
-      url: 'https://image.baidu.com/n/pc_search?queryImageUrl=%s',
-      selected: false,
-      doNotEncodeUrl: false,
-      stripProtocol: false,
-      method: 'GET' as const,
-      postFieldName: 'url',
-      contentType: 'application/x-www-form-urlencoded',
-    },
-    {
       name: 'SauceNAO',
       icon: 'icons/saucenao.png',
       url: 'https://saucenao.com/search.php?db=999&url=%s',

@@ -4,6 +4,7 @@
 
 - Remove consent dialog again
 - Drag and drop to reorder search engines
+- Remove Baidu because it doesn't work anymore with URLs
 
 ## v4.4.2
 
