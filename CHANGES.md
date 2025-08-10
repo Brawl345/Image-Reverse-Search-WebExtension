@@ -1,10 +1,11 @@
 # Changelog
 
-## Future
+## v4.4.3
 
-- Remove consent dialog again
+- Remove consent dialog again, due to Mozilla's new "Implicit Consent for Self-Evident, Single-Use Extension" policy
 - Drag and drop to reorder search engines
 - Remove Baidu because it doesn't work anymore with URLs
+- Add Russian translation and update some others
 
 ## v4.4.2
 
