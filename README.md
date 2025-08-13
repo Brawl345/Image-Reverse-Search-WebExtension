@@ -8,7 +8,7 @@ Submit translations to [Crowdin](https://crowdin.com/project/reverse-image-searc
 
 ## Installation
 
-- ~~Available for Firefox on [addons.mozilla.org](https://addons.mozilla.org/firefox/addon/image-reverse-search/)~~ Mozilla removed the add-on from their store, [full story here](https://github.com/Brawl345/Image-Reverse-Search-WebExtension/issues/84)
+- Available for Firefox on [addons.mozilla.org](https://addons.mozilla.org/firefox/addon/image-reverse-search/)
 - Available for Firefox Developer Edition, Nightly and unbranded builds in the [Releases section](https://github.com/Brawl345/Image-Reverse-Search-with-Google/releases) (unsigned XPI)
 - Available for Chrome and Edge in the [Chrome Web Store](https://chrome.google.com/webstore/detail/reverse-image-search/cdgbjhkjjghbjjikgjkkpljlmnpcakco)
 - Available for Opera in the [Opera Add-Ons Store](https://addons.opera.com/extensions/details/image-reverse-search/)
@@ -34,6 +34,8 @@ Submit translations to [Crowdin](https://crowdin.com/project/reverse-image-searc
 
 1. `npm ci`
 2. `npm run web-ext:build`
+
+Code is built inside `public/build/` and the finished ZIP is in the `web-ext-artifacts/` folder.
 
 ## Screenshots
 
